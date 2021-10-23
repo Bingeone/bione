@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang=zh>
+  <head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>vscode基础使用文档 | bione博客园</title>
+  <meta name="description" content="Vs code 快捷键详述1、注释： 　　a) 单行注释：[ctrl+k,ctrl+c] 或 ctrl+&#x2F; 　　b) 取消单行注释：[ctrl+k,ctrl+u] (按下ctrl不放，再按k + u) 　　c) 多行注释：[alt+shift+A] 　　d) 多行注释：&#x2F;** 2、移动行：alt+up&#x2F;down 3、显示&#x2F;隐藏左侧目录栏 ctrl + b 4、复制当前行：shift + alt +">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vscode基础使用文档">
+<meta property="og:url" content="https://bingeone.github.io/bione/posts/43791.html">
+<meta property="og:site_name" content="Bingeone博客园">
+<meta property="og:description" content="Vs code 快捷键详述1、注释： 　　a) 单行注释：[ctrl+k,ctrl+c] 或 ctrl+&#x2F; 　　b) 取消单行注释：[ctrl+k,ctrl+u] (按下ctrl不放，再按k + u) 　　c) 多行注释：[alt+shift+A] 　　d) 多行注释：&#x2F;** 2、移动行：alt+up&#x2F;down 3、显示&#x2F;隐藏左侧目录栏 ctrl + b 4、复制当前行：shift + alt +">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-10-19T15:11:57.000Z">
+<meta property="article:modified_time" content="2021-10-20T13:31:42.546Z">
+<meta property="article:author" content="Bingeone">
+<meta property="article:tag" content="vscode">
+<meta property="article:tag" content="工具">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://bingeone.github.io/bione/posts/43791.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Bingeone博客园" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/bione/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+    
+
+      <body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+        <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/Bingeone" target="_blank">
+          <img class="img-circle img-rotate" src="/bione/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Bingeone</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">生命在于折腾，长寿源于静止</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Hainan, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/bione/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/bione/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/bione/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/bione/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/bione/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/bione/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-bookmark">
+          <a href="/bione/bookmark">
+            
+            <i class="icon icon-book_bookmarked"></i>
+            
+            <span class="menu-title">书签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/bione/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/bione/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Bingeone" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/bione/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+          
+            <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/bione/categories/CSS/">CSS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/bione/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/bione/tags/CSS/" style="font-size: 13px;">CSS</a> <a href="/bione/tags/vscode/" style="font-size: 13px;">vscode</a> <a href="/bione/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13px;">工具</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/bione/archives/2021/10/">十月 2021</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/CSS/">CSS</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/974.html" class="title">CSS入门学习收录</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-23T14:13:15.308Z" itemprop="datePublished">2021-10-23</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/43791.html" class="title">vscode基础使用文档</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-19T15:11:57.000Z" itemprop="datePublished">2021-10-19</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+              
+                
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vs-code-%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AF%A6%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">Vs code 快捷键详述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vs-code-%E9%AB%98%E9%A2%91%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">2.</span> <span class="toc-text">Vs code 高频快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vs-code%E6%8B%93%E5%B1%95%E6%8F%92%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">Vs code拓展插件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#HTMl%E5%BF%85%E5%A4%87"><span class="toc-number">3.1.</span> <span class="toc-text">HTMl必备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CSS%E5%BF%85%E5%A4%87"><span class="toc-number">3.2.</span> <span class="toc-text">CSS必备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Python%E5%BF%85%E5%A4%87"><span class="toc-number">3.3.</span> <span class="toc-text">Python必备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#C-C-%E5%BF%85%E5%A4%87"><span class="toc-number">3.4.</span> <span class="toc-text">C&#x2F;C++必备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Vue%E5%BF%85%E5%A4%87"><span class="toc-number">3.5.</span> <span class="toc-text">Vue必备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#React%E5%BF%85%E5%A4%87"><span class="toc-number">3.6.</span> <span class="toc-text">React必备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Egg%E6%A1%86%E6%9E%B6%E5%BF%85%E5%A4%87"><span class="toc-number">3.7.</span> <span class="toc-text">Egg框架必备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">3.8.</span> <span class="toc-text">数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#other"><span class="toc-number">3.9.</span> <span class="toc-text">other</span></a></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-vscode基础使用文档" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vscode基础使用文档
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/bione/posts/43791.html" class="article-date">
+	  <time datetime="2021-10-19T15:11:57.000Z" itemprop="datePublished">2021-10-19</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/bione/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/bione/tags/vscode/" rel="tag">vscode</a>, <a class="article-tag-link-link" href="/bione/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+		<i class="icon icon-eye-fill" aria-hidden="true"></i>
+		<span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+	
+		
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/bione/posts/43791.html#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 936(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h3 id="Vs-code-快捷键详述"><a href="#Vs-code-快捷键详述" class="headerlink" title="Vs code 快捷键详述"></a>Vs code 快捷键详述</h3><p>1、注释：</p>
+<p>　　a) 单行注释：[ctrl+k,ctrl+c] 或 ctrl+/</p>
+<p>　　b) 取消单行注释：[ctrl+k,ctrl+u] (按下ctrl不放，再按k + u)</p>
+<p>　　c) 多行注释：[alt+shift+A]</p>
+<p>　　d) 多行注释：/**</p>
+<p>2、移动行：alt+up/down</p>
+<p>3、显示/隐藏左侧目录栏 ctrl + b</p>
+<p>4、复制当前行：shift + alt +up/down</p>
+<p>5、删除当前行：shift + ctrl + k</p>
+<p>6、控制台终端显示与隐藏：ctrl + ~</p>
+<p>7、查找文件/安装vs code 插件地址：ctrl + p</p>
+<p>8、代码格式化：shift + alt +f</p>
+<p>9、新建一个窗口: ctrl + shift + n</p>
+<p>10、行增加缩进: ctrl + [</p>
+<p>11、行减少缩进: ctrl + ]</p>
+<p>12、裁剪尾随空格(去掉一行的末尾那些没用的空格) : ctrl + shift + x</p>
+<p>13、字体放大/缩小: ctrl + ( + 或 - )</p>
+<p>14、拆分编辑器 :ctrl + 1/2/3</p>
+<p>15、切换窗口:  ctrl + shift + left/right</p>
+<p>16、关闭编辑器窗口:  ctrl + w</p>
+<p>17、关闭所有窗口 : ctrl + k + w</p>
+<p>18、切换全屏 :F11</p>
+<p>19、自动换行:  alt + z</p>
+<p>20、显示git:   ctrl + shift + g</p>
+<p>21、全局查找文件：ctrl + p</p>
+<p>22、显示相关插件的命令(如：git log)：ctrl + shift + p</p>
+<p>23、选中文字：shift + left / right / up / down</p>
+<p>24、折叠代码： ctrl + k + 0-9 (0是完全折叠)</p>
+<p>25、展开代码： ctrl + k + j (完全展开代码)</p>
+<p>26、删除行 ： ctrl + shift + k</p>
+<p>27、快速切换主题：ctrl + k / ctrl + t</p>
+<p>28、快速回到顶部 ： ctrl + home</p>
+<p>29、快速回到底部 : ctrl + end</p>
+<p>30、格式化选定代码 ：ctrl + k / ctrl +f</p>
+<p>31、选中代码 ： shift + 鼠标左键</p>
+<p>32、多行同时添加内容（光标） ：ctrl + alt + up/down</p>
+<p>33、全局替换：ctrl + shift + h</p>
+<p>34、当前文件替换：ctrl + h</p>
+<p>35、打开最近打开的文件：ctrl + r</p>
+<p>36、打开新的命令窗：ctrl + shift + c</p>
+<p>37、自动生成闭合标签：VsCode内置了Emmet语法,在后缀为.html/.css中输入缩写后按Tab键即会自动生成相应代码</p>
+<h3 id="Vs-code-高频快捷键"><a href="#Vs-code-高频快捷键" class="headerlink" title="Vs code 高频快捷键"></a>Vs code 高频快捷键</h3><table>
+<thead>
+<tr>
+<th>功能</th>
+<th>快捷键</th>
+<th>功能</th>
+<th>快捷键</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>文件检索</td>
+<td>ctrl + p</td>
+<td>关闭文件</td>
+<td>ctrl + w</td>
+</tr>
+<tr>
+<td>打开命令面板</td>
+<td>ctrl + shift + p</td>
+<td>当前行上下移动</td>
+<td>alt+Up/Down</td>
+</tr>
+<tr>
+<td>打开终端</td>
+<td>ctrl + `</td>
+<td>变量名统一命名</td>
+<td>F2</td>
+</tr>
+<tr>
+<td>关闭侧边栏</td>
+<td>ctrl + B</td>
+<td>转到变量定义处</td>
+<td>F12</td>
+</tr>
+<tr>
+<td>复制文本</td>
+<td>ctrl + c</td>
+<td>保存文本</td>
+<td>ctrl + s</td>
+</tr>
+<tr>
+<td>粘贴文本</td>
+<td>ctrl + v</td>
+<td>撤销操作</td>
+<td>ctrl + z</td>
+</tr>
+<tr>
+<td>删除当前行</td>
+<td>ctrl + d（自定义）</td>
+<td>代码格式化</td>
+<td>ctrl +shift + i（Format Document)</td>
+</tr>
+<tr>
+<td>在当前行向下插入一行</td>
+<td>ctrl + enter</td>
+<td>光标移到行首/行尾</td>
+<td>home/end</td>
+</tr>
+<tr>
+<td>在当前行向上插入一行</td>
+<td>ctrl + shift + enter</td>
+<td>根据单词快速移动光标</td>
+<td>ctrl + 左右方向键</td>
+</tr>
+<tr>
+<td>查找/替换</td>
+<td>ctrl+F/ctrl +H</td>
+<td>单词小写转大写</td>
+<td>shift + q（自定义）</td>
+</tr>
+<tr>
+<td>全屏</td>
+<td>F11</td>
+<td>单词大写转小写</td>
+<td>shift + w（自定义）</td>
+</tr>
+<tr>
+<td>空间大小缩放</td>
+<td>ctrl + +/-</td>
+<td>编辑区大小缩放</td>
+<td>ctrl + 鼠标滚轮</td>
+</tr>
+</tbody></table>
+<h3 id="Vs-code拓展插件"><a href="#Vs-code拓展插件" class="headerlink" title="Vs code拓展插件"></a>Vs code拓展插件</h3><h4 id="HTMl必备"><a href="#HTMl必备" class="headerlink" title="HTMl必备"></a>HTMl必备</h4><ul>
+<li><p>Chinese (Simplified) Language Pack for Visual Studio Code    （汉化）</p>
+</li>
+<li><p>open in browser                    （打开浏览器，快捷键“Alt+B”）</p>
+</li>
+<li><p>vscode-icons                    （编辑器的文件图标 =&gt; 好看）</p>
+</li>
+<li><p>Auto Rename Tag                    （自动匹配HMTL标签）</p>
+</li>
+<li><p>Bracket Pair Colorizer            （彩色的括号）</p>
+</li>
+<li><p>Highlight Matching Tag            （高亮对应HTML标签 &amp; 表示对应括号，高效）</p>
+</li>
+<li><p>stylelint（css/sass/less语法检查）</p>
+</li>
+<li><p>Path Intellisense（智能路径提示）</p>
+</li>
+<li><p>HTML Snippets    （智能填充）</p>
+</li>
+<li><p>TODO Hightlight  （注释语法高亮）</p>
+</li>
+<li><p>Prettier-Code formatter   （代码格式化）</p>
+</li>
+</ul>
+<h4 id="CSS必备"><a href="#CSS必备" class="headerlink" title="CSS必备"></a>CSS必备</h4><ul>
+<li>CSS Peek    (智能提取)</li>
+<li>HTML CSS Support</li>
+</ul>
+<h4 id="Python必备"><a href="#Python必备" class="headerlink" title="Python必备"></a>Python必备</h4><ul>
+<li>Python</li>
+<li>Pylance</li>
+<li>Jupyter</li>
+</ul>
+<h4 id="C-C-必备"><a href="#C-C-必备" class="headerlink" title="C/C++必备"></a>C/C++必备</h4><ul>
+<li>C/C++</li>
+<li>CMake</li>
+<li>CMake Tools</li>
+</ul>
+<h4 id="Vue必备"><a href="#Vue必备" class="headerlink" title="Vue必备"></a>Vue必备</h4><ul>
+<li><p>Vetur（Vue必备，提示的嘛，方便）</p>
+</li>
+<li><p>Live Server（代码保存后，浏览器自动更新）</p>
+</li>
+</ul>
+<h4 id="React必备"><a href="#React必备" class="headerlink" title="React必备"></a>React必备</h4><ul>
+<li>Prettier（格式化插件，比Beautify好）</li>
+</ul>
+<h4 id="Egg框架必备"><a href="#Egg框架必备" class="headerlink" title="Egg框架必备"></a>Egg框架必备</h4><ul>
+<li>Egg.js dev tools（NodeJs中 EggJs框架，方便）</li>
+</ul>
+<h4 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h4><ul>
+<li>SQLite </li>
+<li>MySQL</li>
+</ul>
+<h4 id="other"><a href="#other" class="headerlink" title="other"></a>other</h4><ul>
+<li><p>carbon-now-sh（截获代码为PNG，Ctrl+Shift+P =&gt; Carbon）</p>
+</li>
+<li><p>background（界面右下角有个小人）</p>
+</li>
+<li><p>Code Runner   (运行代码)</p>
+</li>
+<li><p>Git Blame   (git管理工具)</p>
+</li>
+<li><p>Vscode Google Translate (谷歌翻译)</p>
+</li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://bingeone.github.io/bione/posts/43791.html" title="vscode基础使用文档" target="_blank" rel="external">https://bingeone.github.io/bione/posts/43791.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/Bingeone" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/bione/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/Bingeone" target="_blank"><span class="text-dark">Bingeone</span><small class="ml-1x">生命在于折腾，长寿源于静止</small></a></h3>
+        <div>个人简介-爱折腾，喜欢足球，python业娱选手。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="lv-container" data-id="city" data-uid="MTAyMC81NDUzNC8zMTAwNQ==">
+        <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+      </div>    
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/bione/posts/974.html" title="CSS入门学习收录"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/bione/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/bione/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+                  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+    
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Bingeone" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/bione/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+        <div class="copyright">
+            
+                &copy; 2021
+                    Bingeone
+                        
+                            <div class="publishby">
+                                Theme by <a href="https://github.com/cofess" target="_blank">
+                                        cofess </a>
+                                    base on <a href="https://github.com/cofess/hexo-theme-pure"
+                                            target="_blank">pure</a>.
+                            </div>
+        </div>
+        <!-- 站点时间 -->
+        <span class="copyright" id="sitetime"></span>
+        <script language=javascript src="/bione/js/src/site_time.js"></script>
+        </br>
+        <!-- 不蒜子统计 -->
+        <div class="copyright">
+            
+                <span id="busuanzi_container_site_uv" style='display:block'>本站访客数<span
+                        id="busuanzi_value_site_uv"></span>人</span>
+                <span class="post-meta-divider">|</span>
+                <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+                
+        </div>
+        <!-- aplayer 播放器 -->
+        <link rel="stylesheet" href="/bione/aplayer/APlayer.min.css">
+        <script src="/bione/aplayer/APlayer.min.js"></script>
+        <script src="/bione/aplayer/Meting.min.js"></script>
+        <div>
+            <meting-js server="netease" type="playlist" id="60198" fixed="true" autoplay="false" loop="all"
+                order="random" preload="auto" list-folded="ture" list-max-height="200px" lrc-type="0">
+            </meting-js>
+        </div>
+</footer>
+                    <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+   window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/bione/js/src/bookmark.js"></script>
+
+   
+<script src="/bione/js/src/angular.min.js"></script>
+
+      
+<script src="/bione/js/src/click.js"></script>
+
+         
+<script src="/bione/js/plugin.min.js"></script>
+
+            
+<script src="/bione/js/application.js"></script>
+
+               
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/bione/',
+        CONTENT_URL: '/bione/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/bione/js/insight.js"></script>
+
+
+
+                  
+                           
+                                    
+                                       
+	<!-- <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+	<script async src="/bione/js/src/busuanzi.pure.mini.js"></script>
+	
+
+		
+                                          
+                                             
+                                                
+    
+<script defer type="text/javascript">
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+
+    if (typeof LivereTower === 'function') { return; }
+
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+
+                                                   
+                                                      
+
+                                                         
+
+
+
+
+      </body>
+
+      </html>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Bingeone博客园</title>
+  
+  <subtitle>博客</subtitle>
+  <link href="https://bingeone.github.io/bione/atom.xml" rel="self"/>
+  
+  <link href="https://bingeone.github.io/bione/"/>
+  <updated>2021-10-23T14:48:41.813Z</updated>
+  <id>https://bingeone.github.io/bione/</id>
+  
+  <author>
+    <name>Bingeone</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CSS入门学习收录</title>
+    <link href="https://bingeone.github.io/bione/posts/974.html"/>
+    <id>https://bingeone.github.io/bione/posts/974.html</id>
+    <published>2021-10-23T14:13:15.308Z</published>
+    <updated>2021-10-23T14:48:41.813Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="CSS基础"><a href="#CSS基础" class="headerlink" title="CSS基础"></a>CSS基础</h3><ul><li>cursor: hand和cursor:pointer的区别</li></ul><blockquote><p>cursor:hand 与 cursor:pointer 的效果是一样的，都像光标指向链接一样，光标变成手行。cursor:hand ：IE完全支持。但是在firefox是不支持的，没有效果。<br>cursor:pointer ：是CSS2.0的标准。所以firefox是支持的，但是IE5.0既之前版本不支持。IE6开始支持。 </p></blockquote><ul><li>background-size: length/percentage/cover/contain  属性规定背景图像的尺寸</li></ul><blockquote><p>background-size：100%;总是X轴100%铺满整个容器，Y轴可能被裁剪会出现空白填不满部分，图片不变形。<br>background-size：100% 100%;图片不保持比例放大或缩小使X轴与Y轴都铺满整个容器，图片可能会变形。<br>background-size：cover;图片保持比例放大或缩小使X轴与Y轴都铺满整个容器，但图片超出容器部分会被裁剪掉，图片不变形。<br>background-size：contain;图片保持比例放大或缩小填充容器，若不能完整填充容器，X轴或Y轴都有可能出现白边，图片不变形。</p></blockquote><ul><li>perspective 属性定义 3D 元素距视图的距离,以像素计</li></ul><h4 id="文本设置"><a href="#文本设置" class="headerlink" title="文本设置"></a>文本设置</h4><ul><li>font-ice：字号参数</li><li>font-style：字体格式</li><li>font-weight：字体粗细</li><li>颜色属性color</li></ul><h4 id="超链接设置"><a href="#超链接设置" class="headerlink" title="超链接设置"></a>超链接设置</h4><ul><li>text_decoration：作用改变浏览器显示文字链接时的下划线（参数）<ul><li>underline：为文字加下画线</li><li>overline：为文字加上画线</li><li>line-through：为文字加删除线</li><li>blink：是文字闪烁</li><li>none：不显示任何效果</li></ul></li></ul><h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><ul><li>background color：参数</li><li>background image：url（背景图片存放路径）</li><li>background repeat：参数（图片重复）<ul><li>now repeat：不重复平铺背景图片</li><li>repeat-x: 使图片只在水平方向上平铺</li><li>repeat-y: 使图片只在垂直方向上平铺</li></ul></li><li>background-attachment：参数（图片固定）<ul><li>filed：网页滚动，图片相对窗口固定不动</li><li>scroll：网页滚动，图片随窗口滚动</li></ul></li></ul><h4 id="区块"><a href="#区块" class="headerlink" title="区块"></a>区块</h4><ul><li>word-spacing: 单词间距</li><li>letter-spacing：字母间距</li><li>text-align：参数（文本对齐）<ul><li>left：左对齐</li><li>right：右对齐</li><li>center：居中对齐</li><li>justify：相对左右对齐</li></ul></li><li>vertical-align：参数（垂直对齐）<ul><li>top：顶对齐</li><li>bottom：底对齐</li><li>text-top：相对文本顶对齐</li><li>text-bottom：相对文本底对齐</li><li>baseline：基准线对齐</li><li>middle：中心对齐</li><li>sub：以下标的形式显示</li><li>super：以上标的形式显示</li></ul></li><li>text-indent：文本缩进（12px相当一个文字距离）</li><li>white-space：参数（空格）<ul><li>normal：正常</li><li>pre：保留</li><li>nowrap：不换行</li></ul></li><li>display：参数（显示样式）<ul><li>block：块级元素，在对象前后都换行</li><li>inline：在对象前后都不换行</li><li>list-item：在对象前后都换行，增加项目符号</li><li>none：无显示</li></ul></li></ul><h4 id="方框"><a href="#方框" class="headerlink" title="方框"></a>方框</h4><ul><li>height：高度</li><li>width：kuandu</li><li>padding：内边距</li><li>margin：外边距</li><li>float：浮动（可以让块级元素在一行中排列）</li><li>clear：清除浮动</li></ul><h4 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h4><ul><li>border style：参数（边框样式）<ul><li>none：无边框</li><li>dotted：边框为点样式</li><li>dashed：边框为长短线</li><li>solid：边框为实线</li><li>double：边框为双线</li></ul></li><li>border width：宽度</li><li>border color：颜色</li></ul><h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><ul><li>list-style-type：列表样式（不同浏览器的列表符不同，显示会出错，一般以图片显示）</li></ul><h4 id="鼠标"><a href="#鼠标" class="headerlink" title="鼠标"></a>鼠标</h4><ul><li>cursor：鼠标形状参数<ul><li>style=“cursor：hand” 手形</li><li>style=“cursor：help” 问号形</li></ul></li></ul><h3 id="CSS好用工具"><a href="#CSS好用工具" class="headerlink" title="CSS好用工具"></a>CSS好用工具</h3><ul><li><strong>动效</strong></li></ul><p><button class="btn btn-outline-success" onclick="showHitokoto(event)"><a href="https://cubic-bezier.com/">cubic-bezier—响应时间曲线</a></button> <button class="btn btn-outline-success" onclick="showHitokoto(event)"><a href="http://michalsnik.github.io/aos/">动效进场</a></button> <button class="btn btn-outline-success" onclick="showHitokoto(event)"><a href="https://animate.style/">animate.style—动画</a></button></p><ul><li>背景形状</li></ul><p><button class="btn btn-outline-success" onclick="showHitokoto(event)"><a href="https://css-tricks.com/the-shapes-of-css/">css-tricks—形状</a></button></p><ul><li>背景颜色</li></ul><p><button class="btn btn-outline-success" onclick="showHitokoto(event)"><a href="https://cssgradient.io/">cssgradient—颜色</a></button></p><ul><li>CSS和html格式校对</li></ul><p><button class="btn btn-outline-success" onclick="showHitokoto(event)"><a href="http://jigsaw.w3.org/css-validator/#validate_by_upload">css-validator</a></button></p><ul><li>html中特殊符号</li></ul><p><button class="btn btn-outline-success" onclick="showHitokoto(event)"><a href="http://jigsaw.w3.org/css-validator/#validate_by_upload">charref</a></button></p><ul><li>图片尺寸修改生成器</li></ul><p><button class="btn btn-outline-success" onclick="showHitokoto(event)"><a href="https://cloudconvert.com/jpeg-to-webp">webp网页图片修改</a></button> <button class="btn btn-outline-success" onclick="showHitokoto(event)"><a href="https://www.responsivebreakpoints.com/">Image Breakpoints Generator </a></button></p><ul><li>矢量图标</li></ul><p><button class="btn btn-outline-success" onclick="showHitokoto(event)"><a href="https://www.iconfont.cn/home/index?spm=a313x.7781069.1998910419.3">阿里矢量图标</a></button> <button class="btn btn-outline-success" onclick="showHitokoto(event)"><a href="https://icons.getbootstrap.com/">Bootstrap图标</a></button></p><h3 id="第三方工具"><a href="#第三方工具" class="headerlink" title="第三方工具"></a>第三方工具</h3><ul><li>表单</li></ul><p><button class="btn btn-outline-success" onclick="showHitokoto(event)"><a href="https://ogp.me/">开放图谱协议</a></button> <button class="btn btn-outline-success" onclick="showHitokoto(event)"><a href="https://getbootstrap.com/">Bootstrap</a></button> <button class="btn btn-outline-success" onclick="showHitokoto(event)"><a href="https://formspree.io/">Fromspree</a></button></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;CSS基础&quot;&gt;&lt;a href=&quot;#CSS基础&quot; class=&quot;headerlink&quot; title=&quot;CSS基础&quot;&gt;&lt;/a&gt;CSS基础&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;cursor: hand和cursor:pointer的区别&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquot</summary>
+      
+    
+    
+    
+    <category term="CSS" scheme="https://bingeone.github.io/bione/categories/CSS/"/>
+    
+    
+    <category term="CSS" scheme="https://bingeone.github.io/bione/tags/CSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vscode基础使用文档</title>
+    <link href="https://bingeone.github.io/bione/posts/43791.html"/>
+    <id>https://bingeone.github.io/bione/posts/43791.html</id>
+    <published>2021-10-19T15:11:57.000Z</published>
+    <updated>2021-10-20T13:31:42.546Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Vs-code-快捷键详述"><a href="#Vs-code-快捷键详述" class="headerlink" title="Vs code 快捷键详述"></a>Vs code 快捷键详述</h3><p>1、注释：</p><p>　　a) 单行注释：[ctrl+k,ctrl+c] 或 ctrl+/</p><p>　　b) 取消单行注释：[ctrl+k,ctrl+u] (按下ctrl不放，再按k + u)</p><p>　　c) 多行注释：[alt+shift+A]</p><p>　　d) 多行注释：/**</p><p>2、移动行：alt+up/down</p><p>3、显示/隐藏左侧目录栏 ctrl + b</p><p>4、复制当前行：shift + alt +up/down</p><p>5、删除当前行：shift + ctrl + k</p><p>6、控制台终端显示与隐藏：ctrl + ~</p><p>7、查找文件/安装vs code 插件地址：ctrl + p</p><p>8、代码格式化：shift + alt +f</p><p>9、新建一个窗口: ctrl + shift + n</p><p>10、行增加缩进: ctrl + [</p><p>11、行减少缩进: ctrl + ]</p><p>12、裁剪尾随空格(去掉一行的末尾那些没用的空格) : ctrl + shift + x</p><p>13、字体放大/缩小: ctrl + ( + 或 - )</p><p>14、拆分编辑器 :ctrl + 1/2/3</p><p>15、切换窗口:  ctrl + shift + left/right</p><p>16、关闭编辑器窗口:  ctrl + w</p><p>17、关闭所有窗口 : ctrl + k + w</p><p>18、切换全屏 :F11</p><p>19、自动换行:  alt + z</p><p>20、显示git:   ctrl + shift + g</p><p>21、全局查找文件：ctrl + p</p><p>22、显示相关插件的命令(如：git log)：ctrl + shift + p</p><p>23、选中文字：shift + left / right / up / down</p><p>24、折叠代码： ctrl + k + 0-9 (0是完全折叠)</p><p>25、展开代码： ctrl + k + j (完全展开代码)</p><p>26、删除行 ： ctrl + shift + k</p><p>27、快速切换主题：ctrl + k / ctrl + t</p><p>28、快速回到顶部 ： ctrl + home</p><p>29、快速回到底部 : ctrl + end</p><p>30、格式化选定代码 ：ctrl + k / ctrl +f</p><p>31、选中代码 ： shift + 鼠标左键</p><p>32、多行同时添加内容（光标） ：ctrl + alt + up/down</p><p>33、全局替换：ctrl + shift + h</p><p>34、当前文件替换：ctrl + h</p><p>35、打开最近打开的文件：ctrl + r</p><p>36、打开新的命令窗：ctrl + shift + c</p><p>37、自动生成闭合标签：VsCode内置了Emmet语法,在后缀为.html/.css中输入缩写后按Tab键即会自动生成相应代码</p><h3 id="Vs-code-高频快捷键"><a href="#Vs-code-高频快捷键" class="headerlink" title="Vs code 高频快捷键"></a>Vs code 高频快捷键</h3><table><thead><tr><th>功能</th><th>快捷键</th><th>功能</th><th>快捷键</th></tr></thead><tbody><tr><td>文件检索</td><td>ctrl + p</td><td>关闭文件</td><td>ctrl + w</td></tr><tr><td>打开命令面板</td><td>ctrl + shift + p</td><td>当前行上下移动</td><td>alt+Up/Down</td></tr><tr><td>打开终端</td><td>ctrl + `</td><td>变量名统一命名</td><td>F2</td></tr><tr><td>关闭侧边栏</td><td>ctrl + B</td><td>转到变量定义处</td><td>F12</td></tr><tr><td>复制文本</td><td>ctrl + c</td><td>保存文本</td><td>ctrl + s</td></tr><tr><td>粘贴文本</td><td>ctrl + v</td><td>撤销操作</td><td>ctrl + z</td></tr><tr><td>删除当前行</td><td>ctrl + d（自定义）</td><td>代码格式化</td><td>ctrl +shift + i（Format Document)</td></tr><tr><td>在当前行向下插入一行</td><td>ctrl + enter</td><td>光标移到行首/行尾</td><td>home/end</td></tr><tr><td>在当前行向上插入一行</td><td>ctrl + shift + enter</td><td>根据单词快速移动光标</td><td>ctrl + 左右方向键</td></tr><tr><td>查找/替换</td><td>ctrl+F/ctrl +H</td><td>单词小写转大写</td><td>shift + q（自定义）</td></tr><tr><td>全屏</td><td>F11</td><td>单词大写转小写</td><td>shift + w（自定义）</td></tr><tr><td>空间大小缩放</td><td>ctrl + +/-</td><td>编辑区大小缩放</td><td>ctrl + 鼠标滚轮</td></tr></tbody></table><h3 id="Vs-code拓展插件"><a href="#Vs-code拓展插件" class="headerlink" title="Vs code拓展插件"></a>Vs code拓展插件</h3><h4 id="HTMl必备"><a href="#HTMl必备" class="headerlink" title="HTMl必备"></a>HTMl必备</h4><ul><li><p>Chinese (Simplified) Language Pack for Visual Studio Code    （汉化）</p></li><li><p>open in browser                    （打开浏览器，快捷键“Alt+B”）</p></li><li><p>vscode-icons                    （编辑器的文件图标 =&gt; 好看）</p></li><li><p>Auto Rename Tag                    （自动匹配HMTL标签）</p></li><li><p>Bracket Pair Colorizer            （彩色的括号）</p></li><li><p>Highlight Matching Tag            （高亮对应HTML标签 &amp; 表示对应括号，高效）</p></li><li><p>stylelint（css/sass/less语法检查）</p></li><li><p>Path Intellisense（智能路径提示）</p></li><li><p>HTML Snippets    （智能填充）</p></li><li><p>TODO Hightlight  （注释语法高亮）</p></li><li><p>Prettier-Code formatter   （代码格式化）</p></li></ul><h4 id="CSS必备"><a href="#CSS必备" class="headerlink" title="CSS必备"></a>CSS必备</h4><ul><li>CSS Peek    (智能提取)</li><li>HTML CSS Support</li></ul><h4 id="Python必备"><a href="#Python必备" class="headerlink" title="Python必备"></a>Python必备</h4><ul><li>Python</li><li>Pylance</li><li>Jupyter</li></ul><h4 id="C-C-必备"><a href="#C-C-必备" class="headerlink" title="C/C++必备"></a>C/C++必备</h4><ul><li>C/C++</li><li>CMake</li><li>CMake Tools</li></ul><h4 id="Vue必备"><a href="#Vue必备" class="headerlink" title="Vue必备"></a>Vue必备</h4><ul><li><p>Vetur（Vue必备，提示的嘛，方便）</p></li><li><p>Live Server（代码保存后，浏览器自动更新）</p></li></ul><h4 id="React必备"><a href="#React必备" class="headerlink" title="React必备"></a>React必备</h4><ul><li>Prettier（格式化插件，比Beautify好）</li></ul><h4 id="Egg框架必备"><a href="#Egg框架必备" class="headerlink" title="Egg框架必备"></a>Egg框架必备</h4><ul><li>Egg.js dev tools（NodeJs中 EggJs框架，方便）</li></ul><h4 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h4><ul><li>SQLite </li><li>MySQL</li></ul><h4 id="other"><a href="#other" class="headerlink" title="other"></a>other</h4><ul><li><p>carbon-now-sh（截获代码为PNG，Ctrl+Shift+P =&gt; Carbon）</p></li><li><p>background（界面右下角有个小人）</p></li><li><p>Code Runner   (运行代码)</p></li><li><p>Git Blame   (git管理工具)</p></li><li><p>Vscode Google Translate (谷歌翻译)</p></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;Vs-code-快捷键详述&quot;&gt;&lt;a href=&quot;#Vs-code-快捷键详述&quot; class=&quot;headerlink&quot; title=&quot;Vs code 快捷键详述&quot;&gt;&lt;/a&gt;Vs code 快捷键详述&lt;/h3&gt;&lt;p&gt;1、注释：&lt;/p&gt;
+&lt;p&gt;　　a) 单行注释：[ct</summary>
+      
+    
+    
+    
+    <category term="开发工具" scheme="https://bingeone.github.io/bione/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="vscode" scheme="https://bingeone.github.io/bione/tags/vscode/"/>
+    
+    <category term="工具" scheme="https://bingeone.github.io/bione/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+</feed>

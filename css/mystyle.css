@@ -1,0 +1,52 @@
+body {
+    cursor: url("https://cdn.jsdelivr.net/gh/qinxs/cdn-assets/img/normal.cur"), auto !important;
+    /* cursor: url('/images/src/link.cur'), auto !important; */
+}
+
+/* aplayer侧边隐藏*/
+.aplayer.aplayer-fixed.aplayer-narrow 
+.aplayer-body{ 
+    left: -66px !important
+  }
+.aplayer.aplayer-fixed.aplayer-narrow 
+.aplayer-body:hover{ 
+    left: 0px !important
+  }
+
+/*aplayer歌词*/
+.aplayer.aplayer-fixed .aplayer-lrc {
+    display: block;
+    position: fixed;
+    bottom: 20px !important;
+    left: 0;
+    right: 0;
+    margin: 0;
+    z-index: 99999 !important;
+    pointer-events: none;
+    text-shadow: 0px 0px 0 #d4237a !important;    
+}
+
+/* button */
+.button_type{
+  border: none !important;
+  margin-right: 5px !important;
+  margin-top: 5px;
+  padding: 3px 6px;
+}
+/* icon图标自选 */
+@font-face {
+  font-family: "icon";
+  src: url('//at.alicdn.com/t/font_2888314_6ga6phhyh3.woff2?t=1634986268913') format('woff2'),
+  url('//at.alicdn.com/t/font_2888314_6ga6phhyh3.woff?t=1634986268913') format('woff'),
+  url('//at.alicdn.com/t/font_2888314_6ga6phhyh3.ttf?t=1634986268913') format('truetype');
+}
+.icon {
+  font-family: "icon" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-book_bookmarked:before {
+  content: "\e932";
+}

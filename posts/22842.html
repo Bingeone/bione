@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang=zh>
+  <head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>mysql关系数据库知识点精简版 | Bingeone博客</title>
+  <meta name="description" content="MySQL 是最流行的关系型数据库管理系统，web应用开发常用的数据库之一，由瑞典 MySQL AB 公司开发，目前属于 Oracle 公司。 mysql数据库特点 是开源的，目前隶属于 Oracle 旗下产品。 支持大型的数据库。可以处理拥有上千万条记录的大型数据库。 使用标准的 SQL 数据语言形式。 可以运行于多个系统上，并且支持多种语言。 对PHP有很好的支持，PHP 是目前最流行的 We">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql关系数据库知识点精简版">
+<meta property="og:url" content="https://bingeone.github.io/bione/posts/22842.html">
+<meta property="og:site_name" content="Bingeone博客园">
+<meta property="og:description" content="MySQL 是最流行的关系型数据库管理系统，web应用开发常用的数据库之一，由瑞典 MySQL AB 公司开发，目前属于 Oracle 公司。 mysql数据库特点 是开源的，目前隶属于 Oracle 旗下产品。 支持大型的数据库。可以处理拥有上千万条记录的大型数据库。 使用标准的 SQL 数据语言形式。 可以运行于多个系统上，并且支持多种语言。 对PHP有很好的支持，PHP 是目前最流行的 We">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-10-24T14:01:32.564Z">
+<meta property="article:modified_time" content="2021-10-25T10:44:52.943Z">
+<meta property="article:author" content="Bingeone">
+<meta property="article:tag" content="mysql">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://bingeone.github.io/bione/posts/22842.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Bingeone博客园" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="images/logo.jpg" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/bione/css/style.css">
+
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+    
+
+      <body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+        <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://bingeone.github.io/bione/" target="_blank">
+          <img class="img-circle img-rotate" src="/bione/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Bingeone</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">生命在于折腾，长寿源于静止</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Hainan, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/bione/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/bione/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/bione/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/bione/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/bione/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/bione/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-bookmark">
+          <a href="/bione/bookmark">
+            
+            <i class="icon icon-book_bookmarked"></i>
+            
+            <span class="menu-title">书签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/bione/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/bione/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Bingeone" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/bione/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+          
+            <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/bione/categories/CSS/">CSS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/bione/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/bione/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/pipenv/" rel="tag">pipenv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/python/" rel="tag">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/redis/" rel="tag">redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/%E7%A8%8B%E5%BA%8F/" rel="tag">程序</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/bione/tags/CSS/" style="font-size: 13px;">CSS</a> <a href="/bione/tags/mysql/" style="font-size: 13px;">mysql</a> <a href="/bione/tags/pipenv/" style="font-size: 13px;">pipenv</a> <a href="/bione/tags/python/" style="font-size: 14px;">python</a> <a href="/bione/tags/redis/" style="font-size: 13px;">redis</a> <a href="/bione/tags/vscode/" style="font-size: 13px;">vscode</a> <a href="/bione/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13px;">工具</a> <a href="/bione/tags/%E7%A8%8B%E5%BA%8F/" style="font-size: 13.5px;">程序</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/bione/archives/2021/10/">十月 2021</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/22842.html" class="title">mysql关系数据库知识点精简版</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-24T14:01:32.564Z" itemprop="datePublished">2021-10-24</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/55879.html" class="title">python虚拟环境的搭建方式</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-24T14:01:32.564Z" itemprop="datePublished">2021-10-24</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/19434.html" class="title">redis非关系型数据库知识点</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-24T14:01:32.564Z" itemprop="datePublished">2021-10-24</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/46956.html" class="title">内置函数(一)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-24T14:01:32.564Z" itemprop="datePublished">2021-10-24</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/30659.html" class="title">内置函数(二)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-24T14:01:32.564Z" itemprop="datePublished">2021-10-24</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+              
+                
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E7%89%B9%E7%82%B9"><span class="toc-number">1.</span> <span class="toc-text">mysql数据库特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">2.</span> <span class="toc-text">创建数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5"><span class="toc-number">3.</span> <span class="toc-text">建表语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">4.</span> <span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E8%AF%AD%E5%8F%A5"><span class="toc-number">5.</span> <span class="toc-text">插入语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5"><span class="toc-number">6.</span> <span class="toc-text">查询语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE"><span class="toc-number">7.</span> <span class="toc-text">修改数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE"><span class="toc-number">8.</span> <span class="toc-text">删除数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E5%AE%83"><span class="toc-number">9.</span> <span class="toc-text">其它</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-mysql关系数据库知识点精简版" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      mysql关系数据库知识点精简版
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/bione/posts/22842.html" class="article-date">
+	  <time datetime="2021-10-24T14:01:32.564Z" itemprop="datePublished">2021-10-24</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/bione/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/bione/tags/mysql/" rel="tag">mysql</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+		<i class="icon icon-eye-fill" aria-hidden="true"></i>
+		<span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+	
+		
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/bione/posts/22842.html#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2.4k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 10(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>MySQL 是最流行的关系型数据库管理系统，web应用开发常用的数据库之一，由瑞典 MySQL AB 公司开发，目前属于 Oracle 公司。</p>
+<h3 id="mysql数据库特点"><a href="#mysql数据库特点" class="headerlink" title="mysql数据库特点"></a>mysql数据库特点</h3><ul>
+<li>是开源的，目前隶属于 Oracle 旗下产品。</li>
+<li>支持大型的数据库。可以处理拥有上千万条记录的大型数据库。</li>
+<li>使用标准的 SQL 数据语言形式。</li>
+<li>可以运行于多个系统上，并且支持多种语言。</li>
+<li>对PHP有很好的支持，PHP 是目前最流行的 Web 开发语言。</li>
+<li>支持大型数据库，支持 5000 万条记录的数据仓库，32 位系统表文件最大可支持 4GB，64 位系统支持最大的表文件为8TB。</li>
+<li> 是可以定制的，采用了 GPL 协议，你可以修改源码来开发自己的 MySQL 系统。</li>
+</ul>
+<h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><ul>
+<li>创建并使用数据库</li>
+</ul>
+<blockquote>
+<p>create datebase ‘mydatebase’;</p>
+<p>use ‘mydatebase’;</p>
+</blockquote>
+<h3 id="建表语句"><a href="#建表语句" class="headerlink" title="建表语句"></a>建表语句</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">create table `students`(</span><br><span class="line">`id` int not null auto_increment primary key,</span><br><span class="line"> `name` varchar(200) not null</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"># 定义联合主键</span><br><span class="line">CREATE TABLE tb_enp4</span><br><span class="line">(</span><br><span class="line">    name  varchar(25),</span><br><span class="line">    deptld  int(11),</span><br><span class="line">    salary  float,</span><br><span class="line">    PRIMARY KEY(name,deptld)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"># 较完整形式</span><br><span class="line">create table students(</span><br><span class="line">id int unsigned not null auto_increment primary key,</span><br><span class="line">name varchar(30),</span><br><span class="line">age tinyint unsigned default 0,</span><br><span class="line">high decimal(5,2),</span><br><span class="line">gender enum(&quot;男&quot;,&quot;女&quot;),</span><br><span class="line">cls_id int unsigned</span><br><span class="line">);</span><br><span class="line">sql_mode=ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVSION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><ul>
+<li>数值类型</li>
+</ul>
+<blockquote>
+<p>值数据类型(integer、smallint、decimal 和 numeric)，以及近似数值数据类型(float、real 和 double precision)</p>
+</blockquote>
+<ul>
+<li>日期和时间类型</li>
+</ul>
+<blockquote>
+<p>表示时间值的日期和时间类型为datetime(YYYY-MM-DD HH:MM:SS)、date(YYYY-MM-DD)、timestamp(YYYYMMDD HHMMSS)、time(HH:MM:SS)和year(YYYY)。</p>
+</blockquote>
+<ul>
+<li>字符串类型</li>
+</ul>
+<br>
+
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>大小</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>char</td>
+<td>0-255 bytes</td>
+<td>定长字符串</td>
+</tr>
+<tr>
+<td>varchar</td>
+<td>0-65535 bytes</td>
+<td>变长字符串</td>
+</tr>
+<tr>
+<td>tinyblob</td>
+<td>0-255 bytes</td>
+<td>不超过 255 个字符的二进制字符串</td>
+</tr>
+<tr>
+<td>tinytext</td>
+<td>0-255 bytes</td>
+<td>短文本字符串</td>
+</tr>
+<tr>
+<td>blob</td>
+<td>0-65 535 bytes</td>
+<td>二进制形式的长文本数据</td>
+</tr>
+<tr>
+<td>text</td>
+<td>0-65 535 bytes</td>
+<td>长文本数据</td>
+</tr>
+<tr>
+<td>mediumblob</td>
+<td>0-16 777 215 bytes</td>
+<td>二进制形式的中等长度文本数据</td>
+</tr>
+<tr>
+<td>mediumblob</td>
+<td>0-16 777 215 bytes</td>
+<td>中等长度文本数据</td>
+</tr>
+<tr>
+<td>longblob</td>
+<td>0-4 294 967 295 bytes</td>
+<td>二进制形式的极大文本数据</td>
+</tr>
+<tr>
+<td>longtext</td>
+<td>0-4 294 967 295 bytes</td>
+<td>极大文本数据</td>
+</tr>
+</tbody></table>
+<br>
+
+<blockquote>
+<p>常见类型</p>
+<p>int    char    varchar    datetime</p>
+</blockquote>
+<h3 id="插入语句"><a href="#插入语句" class="headerlink" title="插入语句"></a>插入语句</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 全部插入（先查看desc students, 表的数据结构）</span><br><span class="line">insert into students values (0,&#x27;小乔&#x27;,18,160.00,02);</span><br><span class="line"></span><br><span class="line"># 部分插入或全部</span><br><span class="line">INSERT INTO `students` (`NAME`,`NICKNAME`,`SEX`) VALUES(&#x27;小张&#x27;,&#x27;张哥&#x27;,&#x27;男&#x27;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="查询语句"><a href="#查询语句" class="headerlink" title="查询语句"></a>查询语句</h3><ul>
+<li>普通查询</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># 字段查询</span><br><span class="line">SELECT name,nickname FROM students;</span><br><span class="line"></span><br><span class="line"># id 倒叙查询</span><br><span class="line">SELECT id,name,nickname FROM students WHERE sex=&#x27;男&#x27; ORDER BY id DESC;</span><br><span class="line"></span><br><span class="line"># 按数据条数跳转查询: (0,2)表示从0开始2为步数跳转</span><br><span class="line">SELECT id,name,nickname FROM students WHERE sex=&#x27;男&#x27; ORDER BY id DESC LIMIT 0,2;</span><br><span class="line"></span><br><span class="line"># 查看表的结构，名字，字段和字段属性</span><br><span class="line">desc students(表名);</span><br><span class="line"></span><br><span class="line"># 查看表内容</span><br><span class="line">select * from students;</span><br><span class="line"></span><br><span class="line"># 查看表的完整属性</span><br><span class="line">show create table studebts</span><br><span class="line"></span><br><span class="line"># 查询字段</span><br><span class="line">select * from students where id&gt;3;		/* 满足条件的所有字段 */</span><br><span class="line">select name,gender from students;		/* 指定的字段 */</span><br><span class="line"></span><br><span class="line"># 查看运行时间</span><br><span class="line">show profiles;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>多条件+逻辑符号查询</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"># and 同时满足条件</span><br><span class="line">select */字段名(表示所有字段) from 表名 where age&gt;18(条件)and age&lt;30;</span><br><span class="line"> </span><br><span class="line">#or 满足一种条件</span><br><span class="line">select */字段名(表示所有字段) from 表名 where age&gt;18(条件)or gender=2;</span><br><span class="line"> </span><br><span class="line"># not </span><br><span class="line">select */字段名(表示所有字段) from 表名 not(where age&gt;18(条件)or gender=2);同时否定两个条件</span><br><span class="line">select */字段名(表示所有字段) from 表名 notwhere age&gt;18(条件)or gender=2;否定not</span><br><span class="line">后面的条件。</span><br><span class="line"> </span><br><span class="line"># like 模糊查询</span><br><span class="line">select */name/字段名(表示所有字段) from 表名 where name like &quot;%小%&quot;；能查询名字中包含小的。</span><br><span class="line">select */name/字段名(表示所有字段) from 表名 where name like &quot;小%&quot; %代表字符或没有，能查询名字以小开头的。</span><br><span class="line"> </span><br><span class="line"># 查询名字是两个字</span><br><span class="line">select */name/字段名(表示所有字段) from 表名 where name like &quot;__&quot;(两个下划线);</span><br><span class="line">查询名字至少是两个字</span><br><span class="line">select */name/字段名(表示所有字段) from 表名 where name like &quot;__%&quot;;</span><br><span class="line"> </span><br><span class="line"># rlike后面接正则表达式</span><br><span class="line"># 查询以周开始的姓名</span><br><span class="line">select */name/字段名(表示所有字段) from 表名 where name rlike &quot;^周.*&quot;;</span><br><span class="line"># 查询以周开始以伦结束的姓名</span><br><span class="line">select */name/字段名(表示所有字段) from 表名 where name rlike &quot;^周.*伦s&quot;;</span><br><span class="line"> </span><br><span class="line"># in 查询年龄为12,18,30的</span><br><span class="line">select */字段名(表示所有字段) from 表名 not where age = 18 or age=22 or age=30;</span><br><span class="line">select */字段名(表示所有字段) from 表名 not where age in (18,22,30);</span><br><span class="line"></span><br><span class="line"># not in 查询年龄不是12,18,30的</span><br><span class="line">select */字段名(表示所有字段) from 表名 not where age not in (18,22,30);</span><br><span class="line"></span><br><span class="line"># 查询范围之内；</span><br><span class="line"># between...and..</span><br><span class="line">select */字段名(表示所有字段) from 表名  where age between 18 and 35;</span><br><span class="line"># 不在范围内</span><br><span class="line">select */字段名(表示所有字段) from 表名  where age not between 18 and 35;</span><br><span class="line">select */字段名(表示所有字段) from 表名  where not age not between 18 and 35;</span><br><span class="line"> </span><br><span class="line"># 空值判断</span><br><span class="line">select */字段名(表示所有字段) from 表名  where 字段名 is null;</span><br><span class="line"># 不空</span><br><span class="line">select */字段名(表示所有字段) from 表名  where 字段名 is not null;</span><br><span class="line"></span><br><span class="line"># 排序</span><br><span class="line"># 按照年龄18到35的男性排序,默认从小到大</span><br><span class="line">select */字段名(表示所有字段) from 表名  where （age between 18 and 35）and gender=1 order by age;</span><br><span class="line">select */字段名(表示所有字段) from 表名  where （age between 18 and 35）and gender=1 order by age asc;</span><br><span class="line"># 从大到小,支持按照多字段排序。</span><br><span class="line">select */字段名(表示所有字段) from 表名  where （age between 18 and 35）and gender=1 order by age dasc，id dasc;		/*先age后id*/</span><br><span class="line"> </span><br><span class="line"># 聚合函数</span><br><span class="line"># count总数</span><br><span class="line">select count(*) as 男性人数（显示注解）from students where gender=1(条件);</span><br><span class="line"># 最大值max,最小值min，求和sum，求平均值avg</span><br><span class="line">select max/min/(age) from students;</span><br><span class="line"># 在students里女性的最大身高</span><br><span class="line">select max/sum(height) from students where gender=2;</span><br><span class="line"># 求平均值</span><br><span class="line">select sum(height)/count(*) from students where gender=2</span><br><span class="line"> </span><br><span class="line"># 保留几位小数round,还有四舍五入的作用</span><br><span class="line">select round(sum(height)/count(*),2(两位小数)) from students where gender=2;</span><br><span class="line"> </span><br><span class="line"># 分组</span><br><span class="line"># group by</span><br><span class="line">select gender(分组后的同一属性) from students group by gender;</span><br><span class="line">select gender，group_concat(name) from students group by gender; /* 可以显示分组后每一组里人的姓名 */</span><br><span class="line"></span><br><span class="line"># 分组后每一组的人数,count（*）是对分组后的数据进行聚合</span><br><span class="line">select gender，count(*) from students group by gender;</span><br><span class="line">select gender，max(age) from students group by gender;每组的最大年龄</span><br><span class="line">select gender，avg(age) from students group by gender;</span><br><span class="line"># 分组后男性的人数</span><br><span class="line">select gender，count(*) from students where gender=1 group by gender;</span><br><span class="line"></span><br><span class="line"># 分组后的跟多操作</span><br><span class="line"># 分组后查询男性的名字，id和年龄，中间添加空格。</span><br><span class="line">select gender，group_concat(name,&#x27; &#x27;,id,&#x27; &#x27;,gae) from students where gender=1 group by gender;</span><br><span class="line"> </span><br><span class="line"># having对结果的判断，where对原始数据的判断所以写的位置不同。</span><br><span class="line">select gender，group_concat(name），avg(age) from students where gender=1 group by gender having avg(age)&gt;30;</span><br><span class="line">select gender，group_concat(name） from students where group by gender having avg(age)&gt;30</span><br><span class="line"> </span><br><span class="line"># 分页</span><br><span class="line">select * from students where 条件 limit 2;只显示两行；</span><br><span class="line">select * from students where 条件 limit 5（开始位置，根据列表，这是第六个），2（两行）;</span><br><span class="line"># 分页显示公式</span><br><span class="line">select * from students where 条件 limit （第m页-1）*n，n;不能直接输入.</span><br><span class="line">                           </span><br><span class="line"># 连接查询 </span><br><span class="line"># inner join ...on on取交集，两个表的匹配列的交集</span><br><span class="line">select *(表示显示所有字段) from students inner join calsses on students.cla_id=classes.id; /* 通过students表里的cla_id和classes表里的id字段匹配连接 */</span><br><span class="line">select s.name,c.name from students as s inner join calsses as c on s.cla_id=c.id; /* 只显示students表里的姓名和classes表里的班级。*/</span><br><span class="line">                           </span><br><span class="line"># 例班级名字在前，学生所有信息在后，按班级排列后，按照id排列</span><br><span class="line">select c.name，s.* from students as s inner join calsses as c on s.cla_id=c.id order by c.name,s.id;</span><br><span class="line">                          </span><br><span class="line"># 左连接 left join on 两个表匹配以后把左边表的信息全部显示，右边表对不上的为空</span><br><span class="line">select c.name，s.* from students as s left join calsses as c on s.cla_id=c.id order by c.name,s.id;</span><br><span class="line">                           </span><br><span class="line"># 上边的语句可以当做新的表来查询</span><br><span class="line">select c.name，s.* from students as s left join calsses as c on s.cla_id=c.id order by c.name,s.id having c.id si null; /*查询两个表内无法匹配的内容。*/</span><br><span class="line">                           </span><br><span class="line"># 自关联 同一个表里的不同列有关联，例如省市县</span><br><span class="line">select *(显示内容) from m（表1）as n inne join m（表1） as s（第二个名字，一个表就可以相当于两个表用。） on n.列=s.列 having（条件） n.列=??;</span><br><span class="line"></span><br><span class="line"># 把一个sql语句当做另一个sql语句的条件</span><br><span class="line">select * from students where height=(select max(height);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 按特定条件修改字段内容</span><br><span class="line">UPDATE students SET sex=&#x27;女&#x27; WHERE id&lt;=2;</span><br><span class="line"></span><br><span class="line"># 添加字段</span><br><span class="line">alter table students(表名) add 字段名 数据类型;</span><br><span class="line"></span><br><span class="line"># 修改字段的数据类型</span><br><span class="line">alter table students modify 字段名 数据类型;</span><br><span class="line"></span><br><span class="line"># 修改字段的名称</span><br><span class="line">alter table students change 字段名 新名字 数据类型;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 按条件删除数据</span><br><span class="line">delete from students where name=**; </span><br><span class="line"></span><br><span class="line"># 删除字段</span><br><span class="line">alter table students dorp 字段名;</span><br><span class="line"></span><br><span class="line"># 删除表格</span><br><span class="line">dorp table students(表名)</span><br><span class="line"></span><br><span class="line"># 删除视图</span><br><span class="line">dorp view 视图名称</span><br><span class="line"></span><br><span class="line"># 逻辑删除</span><br><span class="line"># 逻辑删除增加新行进行删除标记</span><br><span class="line">alter table students add is_delete bit default 0;</span><br><span class="line">update students set is_delete = 1 where id=**;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 建立视图 用以方便查询</span><br><span class="line">create view 视图名称 as select 语句</span><br><span class="line"> </span><br><span class="line"># 查看视图</span><br><span class="line">show tables</span><br><span class="line"></span><br><span class="line"># 使用视图</span><br><span class="line">select * from 视图名称</span><br><span class="line"></span><br><span class="line"># 删除视图</span><br><span class="line">dorp view 视图名称</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>mysql详细使用参见该<a target="_blank" rel="noopener" href="https://www.runoob.com/mysql/mysql-data-types.html">教程</a></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://bingeone.github.io/bione/posts/22842.html" title="mysql关系数据库知识点精简版" target="_blank" rel="external">https://bingeone.github.io/bione/posts/22842.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://bingeone.github.io/bione/" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/bione/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://bingeone.github.io/bione/" target="_blank"><span class="text-dark">Bingeone</span><small class="ml-1x">生命在于折腾，长寿源于静止</small></a></h3>
+        <div>个人简介-爱折腾，喜欢足球，python业娱选手。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="lv-container" data-id="city" data-uid="MTAyMC81NDUzNC8zMTAwNQ==">
+        <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+      </div>    
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/bione/posts/55879.html" title="python虚拟环境的搭建方式"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/bione/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/bione/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+                  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+    
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Bingeone" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/bione/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+        <div class="copyright">
+            
+                &copy; 2021
+                    Bingeone
+                        
+                            <div class="publishby">
+                                Theme by <a href="https://github.com/cofess" target="_blank">
+                                        cofess </a>
+                                    base on <a href="https://github.com/cofess/hexo-theme-pure"
+                                            target="_blank">pure</a>.
+                            </div>
+        </div>
+        <!-- 站点时间 -->
+        <span class="copyright" id="sitetime"></span>
+        <script language=javascript src="/bione/js/src/site_time.js"></script>
+        </br>
+        <!-- 不蒜子统计 -->
+        <div class="copyright">
+            
+                <span id="busuanzi_container_site_uv" style='display:block'>本站访客数<span
+                        id="busuanzi_value_site_uv"></span>人</span>
+                <span class="post-meta-divider">|</span>
+                <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+                
+        </div>
+        <!-- aplayer 播放器 -->
+        <link rel="stylesheet" href="/bione/aplayer/APlayer.min.css">
+        <script src="/bione/aplayer/APlayer.min.js"></script>
+        <script src="/bione/aplayer/Meting.min.js"></script>
+        <div>
+            <meting-js server="netease" type="playlist" id="60198" fixed="true" autoplay="false" loop="all"
+                order="random" preload="auto" list-folded="ture" list-max-height="200px" lrc-type="0">
+            </meting-js>
+        </div>
+</footer>
+                    <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+   window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+            
+<script src="/bione/js/src/click.js"></script>
+
+               
+<script src="/bione/js/plugin.min.js"></script>
+
+                  
+<script src="/bione/js/application.js"></script>
+
+                     
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/bione/',
+        CONTENT_URL: '/bione/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/bione/js/insight.js"></script>
+
+
+
+                        
+                                 
+                                          
+                                             
+	<!-- <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+	<script async src="/bione/js/src/busuanzi.pure.mini.js"></script>
+	
+
+		
+                                                
+                                                   
+                                                      
+    
+<script defer type="text/javascript">
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+
+    if (typeof LivereTower === 'function') { return; }
+
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+
+                                                         
+                                                            
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+                                                               
+
+
+
+
+      </body>
+
+      </html>

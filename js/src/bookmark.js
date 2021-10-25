@@ -1,7 +1,7 @@
 /*
  * @Author: Bingeone
  * @Date: 2021-10-23 12:25:02
- * @LastEditTime: 2021-10-23 22:06:31
+ * @LastEditTime: 2021-10-25 15:44:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \pure\source\js\src\bookmark.js
@@ -49,22 +49,6 @@ var data = [
             {
                 "name": "Python最佳实践指南",
                 "url": "https://pythonguidecn.readthedocs.io/zh/latest/index.html",
-            },
-            {
-                "name": "",
-                "url": "",
-            },
-            {
-                "name": "",
-                "url": "",
-            },
-            {
-                "name": "",
-                "url": "",
-            },
-            {
-                "name": "",
-                "url": "",
             },
         ]
     },
@@ -431,23 +415,6 @@ var data = [
             {
                 "name": "计算机图书-PDF",
                 "url": "https://www.codepdf.com",
-            },
-        ]
-    },
-    {
-        "menu": "",
-        "state": [
-            {
-                "name": "",
-                "url": "",
-            },
-            {
-                "name": "",
-                "url": "",
-            },
-            {
-                "name": "",
-                "url": "",
             },
         ]
     },

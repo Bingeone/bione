@@ -17,22 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>vscode基础使用文档 | Bingeone博客</title>
-  <meta name="description" content="Vs code 快捷键详述1、注释： 　　a) 单行注释：[ctrl+k,ctrl+c] 或 ctrl+&#x2F; 　　b) 取消单行注释：[ctrl+k,ctrl+u] (按下ctrl不放，再按k + u) 　　c) 多行注释：[alt+shift+A] 　　d) 多行注释：&#x2F;** 2、移动行：alt+up&#x2F;down 3、显示&#x2F;隐藏左侧目录栏 ctrl + b 4、复制当前行：shift + alt +">
+  <title>redis非关系型数据库知识点 | Bingeone博客</title>
+  <meta name="description" content="REmote DIctionary Server(Redis) 是一个由 Salvatore Sanfilippo 写的 key-value 存储系统，是跨平台的非关系型数据库,Redis 是一个开源的使用 ANSI C 语言编写、遵守 BSD 协议、支持网络、可基于内存、分布式、可选持久性的键值对(Key-Value)存储数据库，并提供多种语言的 API。 redis安装 widows下安装">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vscode基础使用文档">
-<meta property="og:url" content="https://bingeone.github.io/bione/posts/43791.html">
+<meta property="og:title" content="redis非关系型数据库知识点">
+<meta property="og:url" content="https://bingeone.github.io/bione/posts/19434.html">
 <meta property="og:site_name" content="Bingeone博客园">
-<meta property="og:description" content="Vs code 快捷键详述1、注释： 　　a) 单行注释：[ctrl+k,ctrl+c] 或 ctrl+&#x2F; 　　b) 取消单行注释：[ctrl+k,ctrl+u] (按下ctrl不放，再按k + u) 　　c) 多行注释：[alt+shift+A] 　　d) 多行注释：&#x2F;** 2、移动行：alt+up&#x2F;down 3、显示&#x2F;隐藏左侧目录栏 ctrl + b 4、复制当前行：shift + alt +">
+<meta property="og:description" content="REmote DIctionary Server(Redis) 是一个由 Salvatore Sanfilippo 写的 key-value 存储系统，是跨平台的非关系型数据库,Redis 是一个开源的使用 ANSI C 语言编写、遵守 BSD 协议、支持网络、可基于内存、分布式、可选持久性的键值对(Key-Value)存储数据库，并提供多种语言的 API。 redis安装 widows下安装">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-10-19T15:11:57.000Z">
-<meta property="article:modified_time" content="2021-10-24T14:24:44.285Z">
+<meta property="article:published_time" content="2021-10-24T14:01:32.564Z">
+<meta property="article:modified_time" content="2021-10-25T10:46:24.713Z">
 <meta property="article:author" content="Bingeone">
-<meta property="article:tag" content="vscode">
-<meta property="article:tag" content="工具">
+<meta property="article:tag" content="redis">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://bingeone.github.io/bione/posts/43791.html">
+  <link rel="canonical" href="https://bingeone.github.io/bione/posts/19434.html">
   
     <link rel="alternate" href="/atom.xml" title="Bingeone博客园" type="application/atom+xml">
   
@@ -364,21 +363,21 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">文章目录</h3>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vs-code-%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AF%A6%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">Vs code 快捷键详述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vs-code-%E9%AB%98%E9%A2%91%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">2.</span> <span class="toc-text">Vs code 高频快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vs-code%E6%8B%93%E5%B1%95%E6%8F%92%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">Vs code拓展插件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#HTMl%E5%BF%85%E5%A4%87"><span class="toc-number">3.1.</span> <span class="toc-text">HTMl必备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CSS%E5%BF%85%E5%A4%87"><span class="toc-number">3.2.</span> <span class="toc-text">CSS必备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Python%E5%BF%85%E5%A4%87"><span class="toc-number">3.3.</span> <span class="toc-text">Python必备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#C-C-%E5%BF%85%E5%A4%87"><span class="toc-number">3.4.</span> <span class="toc-text">C&#x2F;C++必备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Vue%E5%BF%85%E5%A4%87"><span class="toc-number">3.5.</span> <span class="toc-text">Vue必备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#React%E5%BF%85%E5%A4%87"><span class="toc-number">3.6.</span> <span class="toc-text">React必备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Egg%E6%A1%86%E6%9E%B6%E5%BF%85%E5%A4%87"><span class="toc-number">3.7.</span> <span class="toc-text">Egg框架必备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">3.8.</span> <span class="toc-text">数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#other"><span class="toc-number">3.9.</span> <span class="toc-text">other</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#redis%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">redis安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%89%B9%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">数据库特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redis%E6%9C%8D%E5%8A%A1%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">redis服务命令操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redis%E4%B8%ADkey%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-number">4.</span> <span class="toc-text">redis中key的类型</span></a></li></ol>
     </nav>
   </div>
 </aside>
 
 <main class="main" role="main">
   <div class="content">
-  <article id="post-vscode基础使用文档" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-redis非关系型数据库知识点" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      vscode基础使用文档
+      redis非关系型数据库知识点
     </h1>
   
 
@@ -386,20 +385,20 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/bione/posts/43791.html" class="article-date">
-	  <time datetime="2021-10-19T15:11:57.000Z" itemprop="datePublished">2021-10-19</time>
+	<a href="/bione/posts/19434.html" class="article-date">
+	  <time datetime="2021-10-24T14:01:32.564Z" itemprop="datePublished">2021-10-24</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/bione/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
+    <a class="article-category-link" href="/bione/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/bione/tags/vscode/" rel="tag">vscode</a>, <a class="article-tag-link-link" href="/bione/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a>
+	<a class="article-tag-link-link" href="/bione/tags/redis/" rel="tag">redis</a>
   </span>
 
 
@@ -412,208 +411,72 @@
 	</span>
 	
 		
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/bione/posts/43791.html#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/bione/posts/19434.html#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 936(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 843(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3(分)</span>
 	
 
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h3 id="Vs-code-快捷键详述"><a href="#Vs-code-快捷键详述" class="headerlink" title="Vs code 快捷键详述"></a>Vs code 快捷键详述</h3><p>1、注释：</p>
-<p>　　a) 单行注释：[ctrl+k,ctrl+c] 或 ctrl+/</p>
-<p>　　b) 取消单行注释：[ctrl+k,ctrl+u] (按下ctrl不放，再按k + u)</p>
-<p>　　c) 多行注释：[alt+shift+A]</p>
-<p>　　d) 多行注释：/**</p>
-<p>2、移动行：alt+up/down</p>
-<p>3、显示/隐藏左侧目录栏 ctrl + b</p>
-<p>4、复制当前行：shift + alt +up/down</p>
-<p>5、删除当前行：shift + ctrl + k</p>
-<p>6、控制台终端显示与隐藏：ctrl + ~</p>
-<p>7、查找文件/安装vs code 插件地址：ctrl + p</p>
-<p>8、代码格式化：shift + alt +f</p>
-<p>9、新建一个窗口: ctrl + shift + n</p>
-<p>10、行增加缩进: ctrl + [</p>
-<p>11、行减少缩进: ctrl + ]</p>
-<p>12、裁剪尾随空格(去掉一行的末尾那些没用的空格) : ctrl + shift + x</p>
-<p>13、字体放大/缩小: ctrl + ( + 或 - )</p>
-<p>14、拆分编辑器 :ctrl + 1/2/3</p>
-<p>15、切换窗口:  ctrl + shift + left/right</p>
-<p>16、关闭编辑器窗口:  ctrl + w</p>
-<p>17、关闭所有窗口 : ctrl + k + w</p>
-<p>18、切换全屏 :F11</p>
-<p>19、自动换行:  alt + z</p>
-<p>20、显示git:   ctrl + shift + g</p>
-<p>21、全局查找文件：ctrl + p</p>
-<p>22、显示相关插件的命令(如：git log)：ctrl + shift + p</p>
-<p>23、选中文字：shift + left / right / up / down</p>
-<p>24、折叠代码： ctrl + k + 0-9 (0是完全折叠)</p>
-<p>25、展开代码： ctrl + k + j (完全展开代码)</p>
-<p>26、删除行 ： ctrl + shift + k</p>
-<p>27、快速切换主题：ctrl + k / ctrl + t</p>
-<p>28、快速回到顶部 ： ctrl + home</p>
-<p>29、快速回到底部 : ctrl + end</p>
-<p>30、格式化选定代码 ：ctrl + k / ctrl +f</p>
-<p>31、选中代码 ： shift + 鼠标左键</p>
-<p>32、多行同时添加内容（光标） ：ctrl + alt + up/down</p>
-<p>33、全局替换：ctrl + shift + h</p>
-<p>34、当前文件替换：ctrl + h</p>
-<p>35、打开最近打开的文件：ctrl + r</p>
-<p>36、打开新的命令窗：ctrl + shift + c</p>
-<p>37、自动生成闭合标签：VsCode内置了Emmet语法,在后缀为.html/.css中输入缩写后按Tab键即会自动生成相应代码</p>
-<h3 id="Vs-code-高频快捷键"><a href="#Vs-code-高频快捷键" class="headerlink" title="Vs code 高频快捷键"></a>Vs code 高频快捷键</h3><table>
-<thead>
-<tr>
-<th>功能</th>
-<th>快捷键</th>
-<th>功能</th>
-<th>快捷键</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>文件检索</td>
-<td>ctrl + p</td>
-<td>关闭文件</td>
-<td>ctrl + w</td>
-</tr>
-<tr>
-<td>打开命令面板</td>
-<td>ctrl + shift + p</td>
-<td>当前行上下移动</td>
-<td>alt+Up/Down</td>
-</tr>
-<tr>
-<td>打开终端</td>
-<td>ctrl + `</td>
-<td>变量名统一命名</td>
-<td>F2</td>
-</tr>
-<tr>
-<td>关闭侧边栏</td>
-<td>ctrl + B</td>
-<td>转到变量定义处</td>
-<td>F12</td>
-</tr>
-<tr>
-<td>复制文本</td>
-<td>ctrl + c</td>
-<td>保存文本</td>
-<td>ctrl + s</td>
-</tr>
-<tr>
-<td>粘贴文本</td>
-<td>ctrl + v</td>
-<td>撤销操作</td>
-<td>ctrl + z</td>
-</tr>
-<tr>
-<td>删除当前行</td>
-<td>ctrl + d（自定义）</td>
-<td>代码格式化</td>
-<td>ctrl +shift + i（Format Document)</td>
-</tr>
-<tr>
-<td>在当前行向下插入一行</td>
-<td>ctrl + enter</td>
-<td>光标移到行首/行尾</td>
-<td>home/end</td>
-</tr>
-<tr>
-<td>在当前行向上插入一行</td>
-<td>ctrl + shift + enter</td>
-<td>根据单词快速移动光标</td>
-<td>ctrl + 左右方向键</td>
-</tr>
-<tr>
-<td>查找/替换</td>
-<td>ctrl+F/ctrl +H</td>
-<td>单词小写转大写</td>
-<td>shift + q（自定义）</td>
-</tr>
-<tr>
-<td>全屏</td>
-<td>F11</td>
-<td>单词大写转小写</td>
-<td>shift + w（自定义）</td>
-</tr>
-<tr>
-<td>空间大小缩放</td>
-<td>ctrl + +/-</td>
-<td>编辑区大小缩放</td>
-<td>ctrl + 鼠标滚轮</td>
-</tr>
-</tbody></table>
-<h3 id="Vs-code拓展插件"><a href="#Vs-code拓展插件" class="headerlink" title="Vs code拓展插件"></a>Vs code拓展插件</h3><h4 id="HTMl必备"><a href="#HTMl必备" class="headerlink" title="HTMl必备"></a>HTMl必备</h4><ul>
-<li><p>Chinese (Simplified) Language Pack for Visual Studio Code    （汉化）</p>
-</li>
-<li><p>open in browser                    （打开浏览器，快捷键“Alt+B”）</p>
-</li>
-<li><p>vscode-icons                    （编辑器的文件图标 =&gt; 好看）</p>
-</li>
-<li><p>Auto Rename Tag                    （自动匹配HMTL标签）</p>
-</li>
-<li><p>Bracket Pair Colorizer            （彩色的括号）</p>
-</li>
-<li><p>Highlight Matching Tag            （高亮对应HTML标签 &amp; 表示对应括号，高效）</p>
-</li>
-<li><p>stylelint（css/sass/less语法检查）</p>
-</li>
-<li><p>Path Intellisense（智能路径提示）</p>
-</li>
-<li><p>HTML Snippets    （智能填充）</p>
-</li>
-<li><p>TODO Hightlight  （注释语法高亮）</p>
-</li>
-<li><p>Prettier-Code formatter   （代码格式化）</p>
-</li>
+        <p>REmote DIctionary Server(Redis) 是一个由 Salvatore Sanfilippo 写的 key-value 存储系统，是跨平台的非关系型数据库,Redis 是一个开源的使用 ANSI C 语言编写、遵守 BSD 协议、支持网络、可基于内存、分布式、可选持久性的键值对(Key-Value)存储数据库，并提供多种语言的 API。</p>
+<h2 id="redis安装"><a href="#redis安装" class="headerlink" title="redis安装"></a>redis安装</h2><ul>
+<li>widows下安装</li>
 </ul>
-<h4 id="CSS必备"><a href="#CSS必备" class="headerlink" title="CSS必备"></a>CSS必备</h4><ul>
-<li>CSS Peek    (智能提取)</li>
-<li>HTML CSS Support</li>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/tporadowski/redis/releases">官网下载地址</a>：根据系统选择相应的32位或64位安装包</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在命令行cmd中启动redis服务</span></span><br><span class="line">redis-server.exe redis.windows.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 出现对应的redis运行界面，可以看到运行的端口6379</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到另一个cmd窗口，运行redis</span></span><br><span class="line">redis-cli.exe -h 127.0.0.1 -p 6379</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置键值对</span></span><br><span class="line"><span class="built_in">set</span> key1 abc</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取键值对</span></span><br><span class="line">get key1</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>ubuntu中安装</li>
 </ul>
-<h4 id="Python必备"><a href="#Python必备" class="headerlink" title="Python必备"></a>Python必备</h4><ul>
-<li>Python</li>
-<li>Pylance</li>
-<li>Jupyter</li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 更新软件源</span></span><br><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载redis</span></span><br><span class="line">sudo apt-get install redis-server</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动redis服务</span></span><br><span class="line">redis-server</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行redis</span></span><br><span class="line">redis-cli</span><br></pre></td></tr></table></figure>
+
+<p>安装详情及Linux中编译安装<a target="_blank" rel="noopener" href="https://www.runoob.com/redis/redis-install.html">教程</a></p>
+<h2 id="数据库特点"><a href="#数据库特点" class="headerlink" title="数据库特点"></a>数据库特点</h2><ul>
+<li>支持数据的持久化，可以将内存中的数据保存在磁盘中，重启时再次加载</li>
+<li>支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储</li>
+<li>支持数据的备份，即master-slave模式的数据备份</li>
 </ul>
-<h4 id="C-C-必备"><a href="#C-C-必备" class="headerlink" title="C/C++必备"></a>C/C++必备</h4><ul>
-<li>C/C++</li>
-<li>CMake</li>
-<li>CMake Tools</li>
+<blockquote>
+<p>redis                 总共有16个库，0-15<br>select 15        选择15号库，默认0号库<br>key-values      key 同一个库不能重复</p>
+</blockquote>
+<h2 id="redis服务命令操作"><a href="#redis服务命令操作" class="headerlink" title="redis服务命令操作"></a>redis服务命令操作</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 卸载服务：</span></span><br><span class="line">redis-server --service-uninstall</span><br><span class="line"></span><br><span class="line"><span class="comment"># 开启服务：</span></span><br><span class="line">redis-server --service-start</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止服务：</span></span><br><span class="line">redis-server --service-stop</span><br></pre></td></tr></table></figure>
+
+<h2 id="redis中key的类型"><a href="#redis中key的类型" class="headerlink" title="redis中key的类型"></a>redis中key的类型</h2><blockquote>
+<p>type key：查看key的类型<br>    none (key不存在)<br>    string (字符串)<br>    list (列表)<br>    set (集合)<br>    zset (有序集)<br>    hash (哈希表)</p>
+</blockquote>
+<ul>
+<li>字符串string</li>
 </ul>
-<h4 id="Vue必备"><a href="#Vue必备" class="headerlink" title="Vue必备"></a>Vue必备</h4><ul>
-<li><p>Vetur（Vue必备，提示的嘛，方便）</p>
-</li>
-<li><p>Live Server（代码保存后，浏览器自动更新）</p>
-</li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> key value</span><br><span class="line">get key</span><br><span class="line">mget key1 key2...			获取多个的key1 key2的值</span><br><span class="line">getrange key 0 -1			获取从头到尾的value字符串</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>hash 哈希</li>
 </ul>
-<h4 id="React必备"><a href="#React必备" class="headerlink" title="React必备"></a>React必备</h4><ul>
-<li>Prettier（格式化插件，比Beautify好）</li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hmset key file1 value1 file2 value2（多个字符串或值）</span><br><span class="line">hgetall key					获取哈希所有key-值</span><br><span class="line">hmget key file1 file2		获取key中某个file1 file2的值</span><br><span class="line">hdel key file1				删除key中file1的值</span><br><span class="line">hexists key file1			查询file1是否在key中</span><br><span class="line">hkeys key					获取哈希所有key</span><br><span class="line">hvals key					获取哈希所有值</span><br><span class="line">hlen key 					获取哈希表中字段的数量	</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>list 列表</li>
 </ul>
-<h4 id="Egg框架必备"><a href="#Egg框架必备" class="headerlink" title="Egg框架必备"></a>Egg框架必备</h4><ul>
-<li>Egg.js dev tools（NodeJs中 EggJs框架，方便）</li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">lpush key value1 value2 value3	设置key的多个值</span><br><span class="line">lpush key	 value			在list前插入值</span><br><span class="line">lrange key 0 -1				查看key的所有值</span><br><span class="line">lindex key 1				索引key的第二个元素（0为第一个）</span><br><span class="line">llen key					获取key长度</span><br><span class="line">lpop key	value			移除key中的元素</span><br><span class="line">lrem key -2 value			移除list中重复的元素（删除两个）</span><br><span class="line">lset key					list集合移除重复的元素</span><br><span class="line">ltrim key 1 -1				修剪list的一个个元素</span><br><span class="line">rpop key					移除列表最后一个元素</span><br><span class="line">rpoplpush key1 key2			将key1最后一个元素移动到key2</span><br><span class="line">lrem key 0 <span class="string">&#x27;del&#x27;</span>			删除列表中指定的值</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>set 集合</li>
 </ul>
-<h4 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h4><ul>
-<li>SQLite </li>
-<li>MySQL</li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sadd key value1 value2</span><br><span class="line">smembers key</span><br><span class="line">sismember key value 	查看value是否在key中</span><br><span class="line">scard key				查看集合key的元素个数</span><br><span class="line">srem key value			删除集合key中的value</span><br><span class="line">mset key1 value1 key2 value2	设置一个或多个 key-value 对</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>zset 有序集合</li>
 </ul>
-<h4 id="other"><a href="#other" class="headerlink" title="other"></a>other</h4><ul>
-<li><p>carbon-now-sh（截获代码为PNG，Ctrl+Shift+P =&gt; Carbon）</p>
-</li>
-<li><p>background（界面右下角有个小人）</p>
-</li>
-<li><p>Code Runner   (运行代码)</p>
-</li>
-<li><p>Git Blame   (git管理工具)</p>
-</li>
-<li><p>Vscode Google Translate (谷歌翻译)</p>
-</li>
-</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">zadd key value1 value2	设置有序集合</span><br><span class="line">zrange key 0 -1			查询有序集合</span><br><span class="line">zcard key				查询集合值的数量</span><br><span class="line">zrangebyscore key -inf +inf			查询key有序集合中所有成员（递增）</span><br><span class="line">zrangebyscore key -inf 5000 withscores	显示工资 &lt;=5000 的所有成员</span><br><span class="line">zrank key 成员					   查询成员的排序</span><br><span class="line">zrem key1 key2						移除</span><br><span class="line">zrank salary 0 -1 withscores       	递增排列	</span><br><span class="line">zrevrank salary 0 -1 withscores		递减排序</span><br><span class="line">zscore salary 成员				   返回值 注意返回值是字符串	</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -623,7 +486,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://bingeone.github.io/bione/posts/43791.html" title="vscode基础使用文档" target="_blank" rel="external">https://bingeone.github.io/bione/posts/43791.html</a>
+      <a href="https://bingeone.github.io/bione/posts/19434.html" title="redis非关系型数据库知识点" target="_blank" rel="external">https://bingeone.github.io/bione/posts/19434.html</a>
     </li>
     
     <li class="post-copyright-license">
@@ -672,9 +535,13 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/bione/posts/974.html" title="CSS入门学习收录"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+      <a href="/bione/posts/55879.html" title="python虚拟环境的搭建方式"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
     </li>
     
+    
+    <li class="next">
+      <a href="/bione/posts/46956.html" title="内置函数(一)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
     
     
     <li class="toggle-toc">

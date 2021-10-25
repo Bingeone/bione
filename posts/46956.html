@@ -26,7 +26,7 @@
 <meta property="og:description" content="python内置函数(一) abs()    #取绝对值   1234567#abs()是python内置函数,而fabs()是math中的一个模块#fabs() 函数只适用于 float 和 integer 类型，而 abs() 也适用于复数。import mathd &#x3D; 1+1.0je &#x3D; 3+4.0jprint(f&quot;d的绝对值:&quot;,abs(d))		#结果为1.41421">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-10-24T14:01:32.564Z">
-<meta property="article:modified_time" content="2021-10-24T14:43:54.491Z">
+<meta property="article:modified_time" content="2021-10-24T15:25:30.928Z">
 <meta property="article:author" content="Bingeone">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="程序">
@@ -45,6 +45,8 @@
   
   
   
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
   
 <meta name="generator" content="Hexo 5.4.0"></head>
 
@@ -57,7 +59,7 @@
       
       
       <div class="profile-block text-center">
-        <a id="avatar" href="https://github.com/Bingeone" target="_blank">
+        <a id="avatar" href="https://bingeone.github.io/bione/" target="_blank">
           <img class="img-circle img-rotate" src="/bione/images/avatar.jpg" width="200" height="200">
         </a>
         <h2 id="name" class="hidden-xs hidden-sm">Bingeone</h2>
@@ -231,7 +233,7 @@
   <div class="widget">
     <h3 class="widget-title">分类</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/bione/categories/CSS/">CSS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/bione/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/bione/categories/CSS/">CSS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/bione/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/bione/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -241,7 +243,7 @@
   <div class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/python/" rel="tag">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/%E7%A8%8B%E5%BA%8F/" rel="tag">程序</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/pipenv/" rel="tag">pipenv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/python/" rel="tag">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/redis/" rel="tag">redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/%E7%A8%8B%E5%BA%8F/" rel="tag">程序</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -251,7 +253,7 @@
   <div class="widget">
     <h3 class="widget-title">标签云</h3>
     <div class="widget-body tagcloud">
-      <a href="/bione/tags/CSS/" style="font-size: 13px;">CSS</a> <a href="/bione/tags/python/" style="font-size: 14px;">python</a> <a href="/bione/tags/vscode/" style="font-size: 13px;">vscode</a> <a href="/bione/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13px;">工具</a> <a href="/bione/tags/%E7%A8%8B%E5%BA%8F/" style="font-size: 14px;">程序</a>
+      <a href="/bione/tags/CSS/" style="font-size: 13px;">CSS</a> <a href="/bione/tags/mysql/" style="font-size: 13px;">mysql</a> <a href="/bione/tags/pipenv/" style="font-size: 13px;">pipenv</a> <a href="/bione/tags/python/" style="font-size: 14px;">python</a> <a href="/bione/tags/redis/" style="font-size: 13px;">redis</a> <a href="/bione/tags/vscode/" style="font-size: 13px;">vscode</a> <a href="/bione/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13px;">工具</a> <a href="/bione/tags/%E7%A8%8B%E5%BA%8F/" style="font-size: 13.5px;">程序</a>
     </div>
   </div>
 
@@ -260,7 +262,7 @@
   <div class="widget">
     <h3 class="widget-title">归档</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/bione/archives/2021/10/">十月 2021</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/bione/archives/2021/10/">十月 2021</a><span class="archive-list-count">7</span></li></ul>
     </div>
   </div>
 
@@ -272,6 +274,51 @@
     <div class="widget-body">
       <ul class="recent-post-list list-unstyled no-thumbnail">
         
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/22842.html" class="title">mysql关系数据库知识点精简版</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-24T14:01:32.564Z" itemprop="datePublished">2021-10-24</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/55879.html" class="title">python虚拟环境的搭建方式</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-24T14:01:32.564Z" itemprop="datePublished">2021-10-24</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/19434.html" class="title">redis非关系型数据库知识点</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-24T14:01:32.564Z" itemprop="datePublished">2021-10-24</time>
+              </p>
+            </div>
+          </li>
+          
           <li>
             
             <div class="item-inner">
@@ -298,36 +345,6 @@
               </p>
               <p class="item-date">
                 <time datetime="2021-10-24T14:01:32.564Z" itemprop="datePublished">2021-10-24</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/bione/categories/CSS/">CSS</a>
-              </p>
-              <p class="item-title">
-                <a href="/bione/posts/974.html" class="title">CSS入门学习收录</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2021-10-23T14:13:15.308Z" itemprop="datePublished">2021-10-23</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/bione/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
-              </p>
-              <p class="item-title">
-                <a href="/bione/posts/43791.html" class="title">vscode基础使用文档</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2021-10-19T15:11:57.000Z" itemprop="datePublished">2021-10-19</time>
               </p>
             </div>
           </li>
@@ -581,7 +598,7 @@
   <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">self,x</span>):</span></span><br><span class="line"><span class="meta">... </span>         y = x+<span class="number">1</span></span><br><span class="line"><span class="meta">... </span>         <span class="built_in">print</span>(y)</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">B</span>(<span class="params">A</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">self,x</span>):</span></span><br><span class="line"><span class="meta">... </span>        <span class="built_in">super</span>().add(x)		//调用父类中的add函数</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = B()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.add(<span class="number">2</span>)</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="comment">#--------------------------------</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FooParent</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.parent = <span class="string">&#x27;I\&#x27;m the parent.&#x27;</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Parent&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bar</span>(<span class="params">self,message</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;%s from Parent&quot;</span> % message)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FooChild</span>(<span class="params">FooParent</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(FooChild,self).__init__()		//步骤①</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Child&quot;</span>)						//步骤②</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bar</span>(<span class="params">self,message</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(FooChild,self).bar(message)	//步骤③</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;Child bar function&#x27;</span>)			//步骤④</span><br><span class="line">        <span class="built_in">print</span>(self.parent)					//步骤⑤</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    fooChild = FooChild()					//执行结果打印前两个结果</span><br><span class="line">    fooChild.bar(<span class="string">&quot;Helloworld&quot;</span>)				//打印后三个</span><br><span class="line">结果：</span><br><span class="line">Parent</span><br><span class="line">Child</span><br><span class="line">Helloworld <span class="keyword">from</span> Parent</span><br><span class="line">Child bar function</span><br><span class="line">I<span class="string">&#x27;m the parent.</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>​    </p>
-<p>​        <strong>内置函数第二部分详见下文。。。</strong><a href="/posts/30659.html">内置函数(二)</a></p>
+<p>​        <strong>内置函数第二部分详见下文。。。</strong><a href="/bione/posts/30659.html">内置函数(二)</a></p>
 <p>​        </p>
 
       
@@ -606,12 +623,12 @@
   <div class="panel-body">
     <figure class="media">
       <div class="media-left">
-        <a href="https://github.com/Bingeone" target="_blank" class="img-burn thumb-sm visible-lg">
+        <a href="https://bingeone.github.io/bione/" target="_blank" class="img-burn thumb-sm visible-lg">
           <img src="/bione/images/avatar.jpg" class="img-rounded w-full" alt="">
         </a>
       </div>
       <div class="media-body">
-        <h3 class="media-heading"><a href="https://github.com/Bingeone" target="_blank"><span class="text-dark">Bingeone</span><small class="ml-1x">生命在于折腾，长寿源于静止</small></a></h3>
+        <h3 class="media-heading"><a href="https://bingeone.github.io/bione/" target="_blank"><span class="text-dark">Bingeone</span><small class="ml-1x">生命在于折腾，长寿源于静止</small></a></h3>
         <div>个人简介-爱折腾，喜欢足球，python业娱选手。</div>
       </div>
     </figure>
@@ -639,6 +656,10 @@
   <div class="bar-inner">
   
   <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/bione/posts/19434.html" title="redis非关系型数据库知识点"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
     
     
     <li class="next">
@@ -776,21 +797,16 @@
    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 </script>
 
-<script src="/bione/js/src/bookmark.js"></script>
-
-   
-<script src="/bione/js/src/angular.min.js"></script>
-
-      
+            
 <script src="/bione/js/src/click.js"></script>
 
-         
+               
 <script src="/bione/js/plugin.min.js"></script>
 
-            
+                  
 <script src="/bione/js/application.js"></script>
 
-               
+                     
     <script>
 (function (window) {
     var INSIGHT_CONFIG = {
@@ -812,18 +828,18 @@
 
 
 
-                  
-                           
-                                    
-                                       
+                        
+                                 
+                                          
+                                             
 	<!-- <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
 	<script async src="/bione/js/src/busuanzi.pure.mini.js"></script>
 	
 
 		
-                                          
-                                             
                                                 
+                                                   
+                                                      
     
 <script defer type="text/javascript">
   (function(d, s) {
@@ -840,10 +856,39 @@
 </script>
 
 
-                                                   
-                                                      
-
                                                          
+                                                            
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+                                                               
 
 
 

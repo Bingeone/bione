@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang=zh>
+  <head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>python装饰器 | Bingeone博客</title>
+  <meta name="description" content="装饰器好比一种语法糖，实现优化语言、增强被修饰对象的行为。装饰器是可调用的对象，其参数是另一个函数(被装饰的函数)；装饰器可能会处理被装饰的函数，然后把它返回，或者将其替换成另一个函数或可调用对象^1^。装饰器两大特性：  能把被装饰的函数替换成其他函数 装饰器在加载模块时立即执行  装饰器在python装饰方式特点 通用装饰器装饰函数  12345678910111213141516171819">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python装饰器">
+<meta property="og:url" content="https://bingeone.github.io/bione/posts/4059878826.html">
+<meta property="og:site_name" content="Bingeone博客园">
+<meta property="og:description" content="装饰器好比一种语法糖，实现优化语言、增强被修饰对象的行为。装饰器是可调用的对象，其参数是另一个函数(被装饰的函数)；装饰器可能会处理被装饰的函数，然后把它返回，或者将其替换成另一个函数或可调用对象^1^。装饰器两大特性：  能把被装饰的函数替换成其他函数 装饰器在加载模块时立即执行  装饰器在python装饰方式特点 通用装饰器装饰函数  12345678910111213141516171819">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-06T15:05:57.000Z">
+<meta property="article:modified_time" content="2021-11-06T15:07:14.969Z">
+<meta property="article:author" content="Bingeone">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="程序">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://bingeone.github.io/bione/posts/4059878826.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Bingeone博客园" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="images/logo.jpg" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/bione/css/style.css">
+
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+    
+
+      <body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+        <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://bingeone.github.io/bione/" target="_blank">
+          <img class="img-circle img-rotate" src="/bione/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Bingeone</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">生命在于折腾，长寿源于静止</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Hainan, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/bione/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/bione/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/bione/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/bione/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/bione/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/bione/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-bookmark">
+          <a href="/bione/bookmark">
+            
+            <i class="icon icon-book_bookmarked"></i>
+            
+            <span class="menu-title">书签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/bione/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/bione/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Bingeone" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/bione/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+          
+            <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/bione/categories/CSS/">CSS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/bione/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/bione/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a><span class="category-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/pipenv/" rel="tag">pipenv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/python/" rel="tag">python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/redis/" rel="tag">redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/%E7%A8%8B%E5%BA%8F/" rel="tag">程序</a><span class="tag-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/bione/tags/CSS/" style="font-size: 13px;">CSS</a> <a href="/bione/tags/mysql/" style="font-size: 13px;">mysql</a> <a href="/bione/tags/pipenv/" style="font-size: 13px;">pipenv</a> <a href="/bione/tags/python/" style="font-size: 14px;">python</a> <a href="/bione/tags/redis/" style="font-size: 13px;">redis</a> <a href="/bione/tags/vscode/" style="font-size: 13px;">vscode</a> <a href="/bione/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13px;">工具</a> <a href="/bione/tags/%E7%A8%8B%E5%BA%8F/" style="font-size: 13.5px;">程序</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/bione/archives/2021/11/">十一月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/bione/archives/2021/10/">十月 2021</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/4035240104.html" class="title">python面对对象</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-06T15:05:57.000Z" itemprop="datePublished">2021-11-06</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/4059878826.html" class="title">python装饰器</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-06T15:05:57.000Z" itemprop="datePublished">2021-11-06</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/3069614490.html" class="title">python类和对象\模块\错误和异常</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-06T15:05:57.000Z" itemprop="datePublished">2021-11-06</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/22842.html" class="title">mysql关系数据库知识点精简版</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-24T14:01:32.564Z" itemprop="datePublished">2021-10-24</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/55879.html" class="title">python虚拟环境的搭建方式</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-24T14:01:32.564Z" itemprop="datePublished">2021-10-24</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+              
+                
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8%E5%9C%A8python%E8%A3%85%E9%A5%B0%E6%96%B9%E5%BC%8F%E7%89%B9%E7%82%B9"><span class="toc-number">1.</span> <span class="toc-text">装饰器在python装饰方式特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AD%E5%8C%85"><span class="toc-number">2.</span> <span class="toc-text">闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E7%BD%AE%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="toc-number">3.</span> <span class="toc-text">内置装饰器</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-python装饰器" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python装饰器
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/bione/posts/4059878826.html" class="article-date">
+	  <time datetime="2021-11-06T15:05:57.000Z" itemprop="datePublished">2021-11-06</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/bione/tags/python/" rel="tag">python</a>, <a class="article-tag-link-link" href="/bione/tags/%E7%A8%8B%E5%BA%8F/" rel="tag">程序</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+		<i class="icon icon-eye-fill" aria-hidden="true"></i>
+		<span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+	
+		
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/bione/posts/4059878826.html#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.5k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 7(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p><strong>装饰器</strong>好比一种语法糖，实现优化语言、增强被修饰对象的行为。装饰器是可调用的对象，其参数是另一个函数(被装饰的函数)；装饰器可能会处理被装饰的函数，然后把它返回，或者将其替换成另一个函数或可调用对象^1^。装饰器两大特性：</p>
+<ul>
+<li>能把被装饰的函数替换成其他函数</li>
+<li>装饰器在加载模块时立即执行</li>
+</ul>
+<h3 id="装饰器在python装饰方式特点"><a href="#装饰器在python装饰方式特点" class="headerlink" title="装饰器在python装饰方式特点"></a>装饰器在python装饰方式特点</h3><ul>
+<li>通用装饰器装饰函数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">functionName</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func_in</span>(<span class="params">*args, **kwargs</span>):</span></span><br><span class="line">        ret = functionName(*args, **kwargs)</span><br><span class="line">        <span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> func_in</span><br><span class="line"></span><br><span class="line"><span class="meta">@func</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;---test---&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;haha&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@func</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test2</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;---test2---&quot;</span>)</span><br><span class="line">    </span><br><span class="line"><span class="meta">@func</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test3</span>(<span class="params">a</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;---test---a=%d---&quot;</span> %a)</span><br><span class="line"></span><br><span class="line">ret = test()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;test return value is %s&quot;</span> %ret)</span><br><span class="line"></span><br><span class="line">a = test2()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;test2 return value is %s&quot;</span>%a)         <span class="comment"># 没有返回值， 返回None</span></span><br><span class="line"></span><br><span class="line">test3(<span class="number">11</span>)</span><br><span class="line"><span class="comment">#-------------结果----------------</span></span><br><span class="line">---test---</span><br><span class="line">test <span class="keyword">return</span> value <span class="keyword">is</span> haha</span><br><span class="line">---test2---</span><br><span class="line">test2 <span class="keyword">return</span> value <span class="keyword">is</span> <span class="literal">None</span></span><br><span class="line">---test---a=<span class="number">11</span>---</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>带参数的装饰器</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func_arg</span>(<span class="params">arg</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">functionName</span>):</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">func_in</span>():</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;----记录日记-args----&quot;</span>)</span><br><span class="line">            <span class="keyword">if</span> arg == <span class="string">&quot;haha&quot;</span>:</span><br><span class="line">                functionName()			<span class="comment"># 此处相当于调用def test()</span></span><br><span class="line">                functionName()</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;---不记录---&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> func_in</span><br><span class="line">    <span class="keyword">return</span> func</span><br><span class="line"></span><br><span class="line"><span class="meta">@func_arg(<span class="params"><span class="string">&quot;haha&quot;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;---test---&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@func_arg(<span class="params"><span class="string">&quot;nihao&quot;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test2</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;---test2---&quot;</span>)</span><br><span class="line"></span><br><span class="line">test()</span><br><span class="line">test2()</span><br><span class="line"><span class="comment">#-----------结果---------------</span></span><br><span class="line">----记录日记-args----</span><br><span class="line">---test---</span><br><span class="line">---test---</span><br><span class="line">----记录日记-args----</span><br><span class="line">---不记录---</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>被装饰函数有参数传递</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">functionName</span>):</span> </span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;---func---1---&quot;</span>)				<span class="comment"># ②</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func_in</span>(<span class="params">a,b</span>):</span>					<span class="comment"># ③</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;---func_in---1---&quot;</span>)		<span class="comment"># ⑧</span></span><br><span class="line">        functionName(a,b)				<span class="comment"># ⑨	⑪</span></span><br><span class="line">        </span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;---func_in---2---&quot;</span>)		<span class="comment"># ⑫</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;---func---2---&quot;</span>)				<span class="comment"># ④</span></span><br><span class="line">    <span class="keyword">return</span> func_in 						<span class="comment"># ⑤</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@func   </span><span class="comment"># 裝飾器的效果 相当于第18行 test = func(test)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span>(<span class="params">a,b</span>):</span>								<span class="comment"># ① ⑥</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;----test- a=%d,b=%d----&quot;</span>%(a,b))	<span class="comment"># ⑩</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># test = func(test)</span></span><br><span class="line">test(<span class="number">11</span>,<span class="number">22</span>)								<span class="comment"># ⑦ ⑬</span></span><br><span class="line"><span class="comment">#-----------结果: 在第14、19行打斷點調試運行結果---------------</span></span><br><span class="line">---func---<span class="number">1</span>---</span><br><span class="line">---func---<span class="number">2</span>---</span><br><span class="line">---func_in---<span class="number">1</span>---</span><br><span class="line">----test- a=<span class="number">11</span>,b=<span class="number">22</span>----</span><br><span class="line">---func_in---<span class="number">2</span>---</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>被装饰函数有多个参数*args和**kwargs传递</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">functionName</span>):</span> </span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;---func---1---&quot;</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func_in</span>(<span class="params">*args,**kwargs</span>):</span>      </span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;---func_in---1---&quot;</span>)</span><br><span class="line">        functionName(*args,**kwargs)  </span><br><span class="line">        </span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;---func_in---2---&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;---func---2---&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> func_in </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@func 		</span><span class="comment"># 相当于 test_1 = func(test_1)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_1</span>(<span class="params">a,b,c,d</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;----test- a=%d,b=%d,c=%d,d=%d----&quot;</span>%(a,b,c,d))</span><br><span class="line"></span><br><span class="line"><span class="comment">#test_1 = func(test_1)</span></span><br><span class="line">test_1(<span class="number">11</span>,<span class="number">22</span>,<span class="number">33</span>,<span class="number">44</span>)			<span class="comment"># *args关键位置接受11，**kwargs关键字接受22,33,44</span></span><br><span class="line"><span class="comment">#-----------结果---------------</span></span><br><span class="line">---func---<span class="number">1</span>---</span><br><span class="line">---func---<span class="number">2</span>---</span><br><span class="line">---func_in---<span class="number">1</span>---</span><br><span class="line">----test- a=<span class="number">11</span>,b=<span class="number">22</span>,c=<span class="number">33</span>,d=<span class="number">44</span>----</span><br><span class="line">---func_in---<span class="number">2</span>---</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>对带有返回值的函数装饰</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">functionName</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;----func----1----&quot;</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func_in</span>():</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;----func_in----1---&quot;</span>)</span><br><span class="line">        xxxx = functionName()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;----func_in----2----&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> xxxx</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;----func----2----&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> func_in </span><br><span class="line"></span><br><span class="line"><span class="meta">@func</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;----test----&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;AAAA&quot;</span></span><br><span class="line">ret = test()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;test return value is %s&quot;</span>%ret)</span><br><span class="line"><span class="comment">#-----------结果---------------</span></span><br><span class="line">----func----<span class="number">1</span>----</span><br><span class="line">----func----<span class="number">2</span>----</span><br><span class="line">----func_in----<span class="number">1</span>---</span><br><span class="line">----test----</span><br><span class="line">----func_in----<span class="number">2</span>----</span><br><span class="line">test <span class="keyword">return</span> value <span class="keyword">is</span> AAAA</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>装饰的顺序</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">w1</span>(<span class="params">func</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;----装饰1----&quot;</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span>():</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;-----验证通过1-----&quot;</span>)</span><br><span class="line">        func()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">w2</span>(<span class="params">func</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;----装饰2----&quot;</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span>():</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;-----验证通过2-----&quot;</span>)</span><br><span class="line">        func()</span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line"><span class="meta">@w1</span></span><br><span class="line"><span class="meta">@w2</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f3</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;----3----&quot;</span>)</span><br><span class="line"></span><br><span class="line">f3()</span><br><span class="line"><span class="comment">#-----------结果: 函数f3 对装饰内容就近原则，执行内部函数从上而下输出---------------</span></span><br><span class="line">----装饰<span class="number">2</span>----</span><br><span class="line">----装饰<span class="number">1</span>----</span><br><span class="line">-----验证通过<span class="number">1</span>-----</span><br><span class="line">-----验证通过<span class="number">2</span>-----</span><br><span class="line">----<span class="number">3</span>----</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>多个装饰器</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">makeBold</span>(<span class="params">fn</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">warpped</span>():</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;-----1-----&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&lt;b&gt;&quot;</span> + fn() + <span class="string">&quot;&lt;/b&gt;&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> warpped</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义函数: 完成数据包裹</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">makeItalic</span>(<span class="params">fn</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">warpped</span>():</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;-----2-----&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&lt;i&gt;&quot;</span> + fn() + <span class="string">&quot;&lt;/i&gt;&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> warpped</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@makeItalic         </span><span class="comment"># 先调用 -a- </span></span><br><span class="line"><span class="meta">@makeBold           </span><span class="comment"># 然后 -b- </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test3</span>():</span>        <span class="comment"># 再执行 -c-  </span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;-----3-----&quot;</span>) </span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Hello,world-3&quot;</span> </span><br><span class="line"></span><br><span class="line">ret = test3() </span><br><span class="line"><span class="built_in">print</span>(ret) </span><br><span class="line"><span class="comment">#-----------结果: 函数返回值多层装饰输出, 先函数f3的返回值，再遵循装饰就近原则---------------</span></span><br><span class="line">-----<span class="number">2</span>-----</span><br><span class="line">-----<span class="number">1</span>-----</span><br><span class="line">-----<span class="number">3</span>-----</span><br><span class="line">&lt;i&gt;&lt;b&gt;Hello,world-<span class="number">3</span>&lt;/b&gt;&lt;/i&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p>闭包中外部函数返回的不是一个具体的值，而是一个函数。通常返回的函数会赋值给一个变量，后面会被继续执行调用。</p>
+<ul>
+<li>计算移动平均值的类</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Averager</span>():</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.series = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span>(<span class="params">self, new_value</span>):</span></span><br><span class="line">        self.series.append(new_value)</span><br><span class="line">        total = <span class="built_in">sum</span>(self.series)</span><br><span class="line">        <span class="keyword">return</span> total/<span class="built_in">len</span>(self.series)</span><br><span class="line"><span class="comment">#--------------averager_oo.py-----------------</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> averager_oo <span class="keyword">import</span> *</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>avg = Averager()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>avg(<span class="number">10</span>)</span><br><span class="line"><span class="number">10.0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>avg(<span class="number">11</span>)</span><br><span class="line"><span class="number">10.5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>avg(<span class="number">12</span>)</span><br><span class="line"><span class="number">11.0</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>计算移动平均值的高阶函数(闭包形式)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_averager</span>:</span></span><br><span class="line">    series = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">averager</span>(<span class="params">new_value</span>):</span></span><br><span class="line">        series.append(new_value)</span><br><span class="line">        total = <span class="built_in">sum</span>(series)</span><br><span class="line">        <span class="keyword">return</span> total/<span class="built_in">len</span>(series)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> averager		<span class="comment"># 返回值是 averager 函数</span></span><br><span class="line"><span class="comment">#--------------averager.py-----------------</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> averager <span class="keyword">import</span> *</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>avg = make_averager()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>avg(<span class="number">10</span>)</span><br><span class="line"><span class="number">10.0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>avg(<span class="number">11</span>)</span><br><span class="line"><span class="number">10.5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>avg(<span class="number">12</span>)</span><br><span class="line"><span class="number">11.0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>avg.__code__.co_varnames		<span class="comment"># __code__ 属性查看局部变量和自由变量</span></span><br><span class="line">(<span class="string">&#x27;new_value&#x27;</span>, <span class="string">&#x27;total&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>avg.__code__.co_freevars</span><br><span class="line">(<span class="string">&#x27;series&#x27;</span>,)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>avg.__closure__</span><br><span class="line">(&lt;cell at <span class="number">0x7f13cb64eee0</span>: <span class="built_in">list</span> <span class="built_in">object</span> at <span class="number">0x7f13ca9f9040</span>&gt;,)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>avg.__closure__[<span class="number">0</span>].cell_contents</span><br><span class="line">[<span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="内置装饰器"><a href="#内置装饰器" class="headerlink" title="内置装饰器"></a>内置装饰器</h3><ul>
+<li>@staticmethod和@classmethod</li>
+</ul>
+<blockquote>
+<p>​    @staticmethod不需要表示自身对象的self和自身类的cls参数，就跟使用函数一样。</p>
+<p>​    @classmethod也不需要self参数，但第一个参数需要是表示自身类的cls参数。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SayHi</span>():</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name=<span class="literal">None</span></span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func_1</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;say hello&quot;</span>)</span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func_2</span>():</span>			<span class="comment"># 无参数要求</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;say hi&quot;</span>)</span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func_3</span>(<span class="params">cls</span>):</span>		<span class="comment"># 第一个参数必须cls</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;say well&quot;</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    a = SayHi()</span><br><span class="line">    a.func_1()</span><br><span class="line">    SayHi.func_2() 			<span class="comment"># 直接类名.方法名()来调用</span></span><br><span class="line">    SayHi.func_3() 			<span class="comment"># 直接类名.方法名()来调用</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br><span class="line"><span class="comment">#-----------结果---------------</span></span><br><span class="line">say hello</span><br><span class="line">say hi</span><br><span class="line">say well</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>@property</li>
+</ul>
+<blockquote>
+<p>@property 装饰器，可以直接通过方法名来访问方法，不需要在方法名后添加一对“（）”小括号</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self._x = <span class="literal">None</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">x</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;I&#x27;m the &#x27;x&#x27; property.&quot;&quot;&quot;</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;getx(): self._x=&quot;</span>, self._x)</span><br><span class="line">        <span class="keyword">return</span> self._x</span><br><span class="line"> </span><br><span class="line"><span class="meta">    @x.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">x</span>(<span class="params">self, value</span>):</span></span><br><span class="line">        self._x = value</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;setx()&quot;</span>)</span><br><span class="line"> </span><br><span class="line"><span class="meta">    @x.deleter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">x</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;del()&quot;</span>)</span><br><span class="line">        <span class="keyword">del</span> self._x</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    a = C()</span><br><span class="line">    a.x = <span class="number">1</span>		<span class="comment"># 输出setx()</span></span><br><span class="line">    a.x			<span class="comment"># 输出getx()</span></span><br><span class="line">    <span class="keyword">del</span> a.x		<span class="comment"># 输出del()</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br><span class="line"></span><br><span class="line"><span class="comment">#-----------结果-------------</span></span><br><span class="line">setx()</span><br><span class="line">getx(): self._x= <span class="number">1</span></span><br><span class="line"><span class="keyword">del</span>()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>不使用装饰器形式的property函数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self._x = <span class="literal">None</span></span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getx</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;getx(): self._x=&quot;</span>, self._x)</span><br><span class="line">        <span class="keyword">return</span> self._x</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setx</span>(<span class="params">self, value</span>):</span></span><br><span class="line">        self._x = value</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;setx()&quot;</span>)</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">delx</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">del</span> self._x</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;del()&quot;</span>)</span><br><span class="line"> </span><br><span class="line">    y = <span class="built_in">property</span>(getx, setx, delx)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    a = C()</span><br><span class="line">    a.y = <span class="number">1</span></span><br><span class="line">    a.y</span><br><span class="line">    <span class="keyword">del</span> a.y</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br><span class="line"><span class="comment">#-----------结果-------------</span></span><br><span class="line">setx()</span><br><span class="line">getx(): self._x= <span class="number">1</span></span><br><span class="line"><span class="keyword">del</span>()</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://bingeone.github.io/bione/posts/4059878826.html" title="python装饰器" target="_blank" rel="external">https://bingeone.github.io/bione/posts/4059878826.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://bingeone.github.io/bione/" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/bione/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://bingeone.github.io/bione/" target="_blank"><span class="text-dark">Bingeone</span><small class="ml-1x">生命在于折腾，长寿源于静止</small></a></h3>
+        <div>个人简介-爱折腾，喜欢足球，python业娱选手。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="lv-container" data-id="city" data-uid="MTAyMC81NDUzNC8zMTAwNQ==">
+        <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+      </div>    
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/bione/posts/4035240104.html" title="python面对对象"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/bione/posts/3069614490.html" title="python类和对象\模块\错误和异常"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/bione/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/bione/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+                  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+   window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<!-- 
+<script src="/bione/js/src/pjax_main.js"></script>
+ -->
+
+<script src="/bione/js/src/jquery_pjax.min.js"></script>
+
+   
+               
+<script src="/bione/js/src/click.js"></script>
+
+                  
+<script src="/bione/js/plugin.min.js"></script>
+
+                     
+<script src="/bione/js/application.js"></script>
+
+                        
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/bione/',
+        CONTENT_URL: '/bione/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/bione/js/insight.js"></script>
+
+
+
+                           
+                                    
+                                             
+                                                
+	<!-- <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+	<script async src="/bione/js/src/busuanzi.pure.mini.js"></script>
+	
+
+		
+                                                   
+                                                      
+                                                         
+    
+<script defer type="text/javascript">
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+
+    if (typeof LivereTower === 'function') { return; }
+
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+
+                                                            
+                                                               
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+                                                                  
+
+
+                    <!-- <script src="/bione/js/jquery.min.js"></script> -->
+                    <!-- <script src="/bione/js/src/jquery_pjax.min.js"></script> -->
+                    <!-- <div class="pjax_loading"></div>
+            <div class="pjax_loading1"></div>
+            <script src="js/src/pjax_main.js"></script> -->
+                    <!-- <div id="content">
+            </div> -->
+                    <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+    
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Bingeone" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/bione/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+        <div class="copyright">
+            
+                &copy; 2021
+                    Bingeone
+                        
+                            <div class="publishby">
+                                Theme by <a href="https://github.com/cofess" target="_blank">
+                                        cofess </a>
+                                    base on <a href="https://github.com/cofess/hexo-theme-pure"
+                                            target="_blank">pure</a>.
+                            </div>
+        </div>
+        <!-- 站点时间 -->
+        <span class="copyright" id="sitetime"></span>
+        <script language=javascript src="/bione/js/src/site_time.js"></script>
+        </br>
+        <!-- 不蒜子统计 -->
+        <div class="copyright">
+            
+                <span id="busuanzi_container_site_uv" style='display:block'>本站访客数<span
+                        id="busuanzi_value_site_uv"></span>人</span>
+                <span class="post-meta-divider">|</span>
+                <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+                
+        </div>
+        <!-- aplayer 播放器 -->
+        <link rel="stylesheet" href="/bione/aplayer/APlayer.min.css">
+        <script src="/bione/aplayer/APlayer.min.js"></script>
+        <script src="/bione/aplayer/Meting.min.js"></script>
+        <div>
+            <meting-js server="netease" type="playlist" id="60198" fixed="true" autoplay="false" loop="all"
+                order="random" preload="auto" list-folded="ture" list-max-height="200px" lrc-type="0">
+            </meting-js>
+        </div>
+        <!-- <script>
+            $(document).pjax('a[target!=_blank]', '#content', { fragment: '#content', timeout: 6000 });
+        </script>
+        <script type="text/javascript" src="/bione/js/src/jquery_pjax.min.js"></script> -->
+</footer>
+
+      </body>
+
+      </html>

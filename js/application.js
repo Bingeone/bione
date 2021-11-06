@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
   // bootstrap tooltip
   $('[data-toggle="tooltip"]').tooltip();
 
@@ -13,7 +13,7 @@ $(function() {
     });
   }
 
-  $('#collapseToc').on('shown.bs.collapse', function() {
+  $('#collapseToc').on('shown.bs.collapse', function () {
     // do something…
     // slimscroll
     if (typeof $.fn.slimScroll != 'undefined') {
@@ -22,7 +22,7 @@ $(function() {
   });
 
   // geopattern 背景生成
-  $(".geopattern").each(function() {
+  $(".geopattern").each(function () {
     $(this).geopattern($(this).data('pattern-id'));
   });
 
@@ -48,7 +48,7 @@ $(function() {
     zindex: 42,
     edgeOffset: 0
   });
-  
+
   $('[data-stick-top]').keepInView({
     fixed: true,
     parentClass: "has-sticky",

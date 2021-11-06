@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang=zh>
+  <head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>python面对对象 | Bingeone博客</title>
+  <meta name="description" content="面向对象简述Python中的类提供了面向对象编程的所有基本功能：类的继承机制允许多个基类，派生类可以覆盖基类中的任何方法，方法中可以调用基类中的同名方法。 对象可以包含任意数量和类型的数据。   类(Class): 用来描述具有相同的属性和方法的对象的集合。它定义了该集合中每个对象所共有的属性和方法。对象是类的实例。 方法：类中定义的函数。 类变量：类变量在整个实例化的对象中是公用的。类变量定义在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python面对对象">
+<meta property="og:url" content="https://bingeone.github.io/bione/posts/4035240104.html">
+<meta property="og:site_name" content="Bingeone博客园">
+<meta property="og:description" content="面向对象简述Python中的类提供了面向对象编程的所有基本功能：类的继承机制允许多个基类，派生类可以覆盖基类中的任何方法，方法中可以调用基类中的同名方法。 对象可以包含任意数量和类型的数据。   类(Class): 用来描述具有相同的属性和方法的对象的集合。它定义了该集合中每个对象所共有的属性和方法。对象是类的实例。 方法：类中定义的函数。 类变量：类变量在整个实例化的对象中是公用的。类变量定义在">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-06T15:05:57.000Z">
+<meta property="article:modified_time" content="2021-11-06T15:07:37.169Z">
+<meta property="article:author" content="Bingeone">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="程序">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://bingeone.github.io/bione/posts/4035240104.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Bingeone博客园" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="images/logo.jpg" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/bione/css/style.css">
+
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+    
+
+      <body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+        <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://bingeone.github.io/bione/" target="_blank">
+          <img class="img-circle img-rotate" src="/bione/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Bingeone</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">生命在于折腾，长寿源于静止</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Hainan, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/bione/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/bione/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/bione/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/bione/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/bione/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/bione/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-bookmark">
+          <a href="/bione/bookmark">
+            
+            <i class="icon icon-book_bookmarked"></i>
+            
+            <span class="menu-title">书签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/bione/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/bione/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Bingeone" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/bione/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+          
+            <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/bione/categories/CSS/">CSS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/bione/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/bione/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a><span class="category-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/pipenv/" rel="tag">pipenv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/python/" rel="tag">python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/redis/" rel="tag">redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/%E7%A8%8B%E5%BA%8F/" rel="tag">程序</a><span class="tag-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/bione/tags/CSS/" style="font-size: 13px;">CSS</a> <a href="/bione/tags/mysql/" style="font-size: 13px;">mysql</a> <a href="/bione/tags/pipenv/" style="font-size: 13px;">pipenv</a> <a href="/bione/tags/python/" style="font-size: 14px;">python</a> <a href="/bione/tags/redis/" style="font-size: 13px;">redis</a> <a href="/bione/tags/vscode/" style="font-size: 13px;">vscode</a> <a href="/bione/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13px;">工具</a> <a href="/bione/tags/%E7%A8%8B%E5%BA%8F/" style="font-size: 13.5px;">程序</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/bione/archives/2021/11/">十一月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/bione/archives/2021/10/">十月 2021</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/4035240104.html" class="title">python面对对象</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-06T15:05:57.000Z" itemprop="datePublished">2021-11-06</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/4059878826.html" class="title">python装饰器</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-06T15:05:57.000Z" itemprop="datePublished">2021-11-06</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/3069614490.html" class="title">python类和对象\模块\错误和异常</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-06T15:05:57.000Z" itemprop="datePublished">2021-11-06</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/22842.html" class="title">mysql关系数据库知识点精简版</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-24T14:01:32.564Z" itemprop="datePublished">2021-10-24</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/55879.html" class="title">python虚拟环境的搭建方式</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-24T14:01:32.564Z" itemprop="datePublished">2021-10-24</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+              
+                
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%AE%80%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">面向对象简述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%AE%9A%E4%B9%89"><span class="toc-number">2.</span> <span class="toc-text">类定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.</span> <span class="toc-text">类对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">类的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF"><span class="toc-number">5.</span> <span class="toc-text">继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E7%BB%A7%E6%89%BF"><span class="toc-number">6.</span> <span class="toc-text">多继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99"><span class="toc-number">7.</span> <span class="toc-text">方法重写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%B1%9E%E6%80%A7%E4%B8%8E%E6%96%B9%E6%B3%95"><span class="toc-number">8.</span> <span class="toc-text">类属性与方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E4%B8%93%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">9.</span> <span class="toc-text">类的专用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-number">10.</span> <span class="toc-text">运算符重载</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Python 面对对象" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python面对对象
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/bione/posts/4035240104.html" class="article-date">
+	  <time datetime="2021-11-06T15:05:57.000Z" itemprop="datePublished">2021-11-06</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/bione/tags/python/" rel="tag">python</a>, <a class="article-tag-link-link" href="/bione/tags/%E7%A8%8B%E5%BA%8F/" rel="tag">程序</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+		<i class="icon icon-eye-fill" aria-hidden="true"></i>
+		<span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+	
+		
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/bione/posts/4035240104.html#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2.1k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 8(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h3 id="面向对象简述"><a href="#面向对象简述" class="headerlink" title="面向对象简述"></a>面向对象简述</h3><p>Python中的类提供了面向对象编程的所有基本功能：类的继承机制允许多个基类，派生类可以覆盖基类中的任何方法，方法中可以调用基类中的同名方法。</p>
+<p>对象可以包含任意数量和类型的数据。</p>
+<blockquote>
+<ul>
+<li><strong>类(Class):</strong> 用来描述具有相同的属性和方法的对象的集合。它定义了该集合中每个对象所共有的属性和方法。对象是类的实例。</li>
+<li><strong>方法：</strong>类中定义的函数。</li>
+<li><strong>类变量：</strong>类变量在整个实例化的对象中是公用的。类变量定义在类中且在函数体之外。类变量通常不作为实例变量使用。</li>
+<li><strong>数据成员：</strong>类变量或者实例变量用于处理类及其实例对象的相关的数据。</li>
+<li><strong>方法重写：</strong>如果从父类继承的方法不能满足子类的需求，可以对其进行改写，这个过程叫方法的覆盖（override），也称为方法的重写。</li>
+<li><strong>局部变量：</strong>定义在方法中的变量，只作用于当前实例的类。</li>
+<li><strong>实例变量：</strong>在类的声明中，属性是用变量来表示的，这种变量就称为实例变量，实例变量就是一个用 self 修饰的变量。</li>
+<li><strong>继承：</strong>即一个派生类（derived class）继承基类（base  class）的字段和方法。继承也允许把一个派生类的对象作为一个基类对象对待。例如，有这样一个设计：一个Dog类型的对象派生自Animal类，这是模拟”是一个（is-a）”关系（例图，Dog是一个Animal）。</li>
+<li><strong>实例化：</strong>创建一个类的实例，类的具体对象。</li>
+<li><strong>对象：</strong>通过类定义的数据结构实例。对象包括两个数据成员（类变量和实例变量）和方法。</li>
+</ul>
+</blockquote>
+<h3 id="类定义"><a href="#类定义" class="headerlink" title="类定义"></a>类定义</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span>:</span></span><br><span class="line">    &lt;statement-<span class="number">1</span>&gt;</span><br><span class="line">    .</span><br><span class="line">    .</span><br><span class="line">    .</span><br><span class="line">    &lt;statement-N&gt;</span><br><span class="line"><span class="comment"># 类实例化后，可以使用其属性，实际上，创建一个类之后，可以通过类名访问其属性。		</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="类对象"><a href="#类对象" class="headerlink" title="类对象"></a>类对象</h3><blockquote>
+<p>类对象的两种用法: 属性引用和实例化</p>
+<p>属性引用和Python中所有的属性引用语法相同：object.name</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Myclass</span>:</span></span><br><span class="line">    a = <span class="number">1</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello world!&quot;</span></span><br><span class="line"><span class="comment"># 实例化类</span></span><br><span class="line">x = Myclass()	</span><br><span class="line"></span><br><span class="line"><span class="comment"># 访问类的属性和方法</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Myclass 类的属性i 为：&quot;</span>, x.i)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Myclass 类的方法func为：&quot;</span>, x.func())</span><br><span class="line"></span><br><span class="line"><span class="comment">#结果</span></span><br><span class="line">Myclass 类的属性i 为：<span class="number">1</span></span><br><span class="line">Myclass 类的方法func为: hello world!</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>类有一个名为 _<em>init</em>_() 的特殊方法（<strong>构造方法</strong>），该方法在类实例化时会自动调用</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Complex</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, realpart, imagpart</span>)</span></span><br><span class="line"><span class="function">    	<span class="title">self</span>.<span class="title">r</span> = <span class="title">realpart</span></span></span><br><span class="line"><span class="function">        <span class="title">self</span>.<span class="title">i</span> = <span class="title">imagpart</span></span></span><br><span class="line"><span class="function"><span class="title">x</span> = <span class="title">Complex</span>(<span class="params"><span class="number">3.0</span>, -<span class="number">2</span>,<span class="number">5</span></span>)</span></span><br><span class="line"><span class="function"><span class="title">print</span>(<span class="params">x.r, x.i</span>)</span></span><br><span class="line"><span class="function">#结果</span></span><br><span class="line"><span class="function">3.0 -2.5</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>self代表类的实例</li>
+</ul>
+<blockquote>
+<p>类的方法与普通的函数只有一个特别的区别——它们必须有一个额外的<strong>第一个参数名称</strong>, 按照惯例它的名称是 self</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(self)</span><br><span class="line">        <span class="built_in">print</span>(self.__class__)</span><br><span class="line">y = Text()</span><br><span class="line">y.yunc()</span><br><span class="line"><span class="comment"># 结果</span></span><br><span class="line">&lt;__main__.Test <span class="built_in">object</span> at <span class="number">0x7fa4e933a3a0</span>&gt;		<span class="comment"># 类对象所在的地址</span></span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">__main__</span>.<span class="title">Test</span>&#x27;&gt;							# <span class="title">self</span>为<span class="title">Test</span>类的实例</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="类的方法"><a href="#类的方法" class="headerlink" title="类的方法"></a>类的方法</h3><blockquote>
+<p>在类的内部，使用 <strong>def</strong> 关键字来定义一个方法，与一般函数定义不同，类方法必须包含参数 self, 且为第一个参数，self 代表的是类的实例</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">people</span>:</span></span><br><span class="line"><span class="meta">... </span>    name = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="meta">... </span>    age = <span class="string">&#x27;&#x27;</span>			<span class="comment"># 定义基本属性</span></span><br><span class="line"><span class="meta">... </span>    __weight = <span class="number">0</span>		<span class="comment"># 定义私有属性,私有属性在类外部无法直接进行访问</span></span><br><span class="line"><span class="meta">... </span>    </span><br><span class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,n, a, w</span>):</span>	<span class="comment"># 定义构造方法</span></span><br><span class="line"><span class="meta">... </span>            self.name = n</span><br><span class="line"><span class="meta">... </span>            self.age = a</span><br><span class="line"><span class="meta">... </span>            self.__weight = w</span><br><span class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">speak</span>(<span class="params">self</span>):</span></span><br><span class="line"><span class="meta">... </span>            <span class="built_in">print</span>(<span class="string">&quot;%s 说: 我 %d 岁。&quot;</span> %(self.name, self.age))</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p = people(<span class="string">&quot;xiaoli&quot;</span>, <span class="number">18</span>, <span class="number">55</span>)		<span class="comment"># 类people实例化</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p.speak()							<span class="comment"># 调用speak方法（也叫函数）</span></span><br><span class="line">xiaoli 说: 我 <span class="number">18</span> 岁。</span><br></pre></td></tr></table></figure>
+
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><blockquote>
+<p>子类继承父类的属性和方法（派生类 DerivedClassName，基类 BaseClassName）</p>
+<p>class DerivedClassName(modname, BaseClassName):</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">people</span>:</span>	<span class="comment"># 父类定义</span></span><br><span class="line"><span class="meta">... </span>    name=<span class="string">&#x27;&#x27;</span>		<span class="comment"># 定义基本属性</span></span><br><span class="line"><span class="meta">... </span>    age=<span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="meta">... </span>    __weight = <span class="number">0</span>	<span class="comment"># 定义私有属性,私有属性在类外部无法直接进行访问</span></span><br><span class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,n,a,w</span>):</span>	<span class="comment"># 定义构造方法</span></span><br><span class="line"><span class="meta">... </span>            slef.name = n</span><br><span class="line"><span class="meta">... </span>            self.age = a</span><br><span class="line"><span class="meta">... </span>            self.__weight = w</span><br><span class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">speak</span>(<span class="params">self</span>):</span></span><br><span class="line"><span class="meta">... </span>            <span class="built_in">print</span>(<span class="string">&quot;%s说：我%d岁。&quot;</span> %(self.name,self.age))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">student</span>(<span class="params">people</span>):</span>	<span class="comment"># 单继承示例 （子类）</span></span><br><span class="line"><span class="meta">... </span>    grade = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,n,a,w,g</span>):</span></span><br><span class="line"><span class="meta">... </span>            people.__init__(self,n,a,w)		<span class="comment"># 调用父类的构函</span></span><br><span class="line"><span class="meta">... </span>            self.grade = g</span><br><span class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">speak</span>(<span class="params">self</span>):</span>						<span class="comment"># 重写父类的方法</span></span><br><span class="line"><span class="meta">... </span>            <span class="built_in">print</span>(<span class="string">&quot;%s 说：我%d岁，我在读%d年级&quot;</span> %(self.name, self.age,self.grade))</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = student(<span class="string">&quot;小李&quot;</span>, <span class="number">10</span>,<span class="number">50</span>,<span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.speak()</span><br><span class="line">小李 说：我<span class="number">10</span>岁，我在读<span class="number">5</span>年级</span><br></pre></td></tr></table></figure>
+
+<h3 id="多继承"><a href="#多继承" class="headerlink" title="多继承"></a>多继承</h3><blockquote>
+<p>class DerivedClassName(Base1, Base2, Base3):</p>
+<p>注意圆括号中父类的顺序</p>
+<p>若是父类中有相同的方法名，而在子类使用时未指定，python从左至右搜索 即方法在子类中未找到时，从左到右查找父类中是否包含方法</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">people</span>:</span></span><br><span class="line">    name=<span class="string">&#x27;&#x27;</span></span><br><span class="line">    age=<span class="string">&#x27;&#x27;</span></span><br><span class="line">    __weight=<span class="number">0</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,n,a,w</span>):</span></span><br><span class="line">        self.name = n</span><br><span class="line">        self.age = a</span><br><span class="line">        self.__weight = w</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">speak</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.name&#125;</span>说:我<span class="subst">&#123;self.age&#125;</span>岁！&quot;</span>)</span><br><span class="line"><span class="comment"># 单继承示例</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">student</span>(<span class="params">people</span>):</span></span><br><span class="line">    grade=<span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,n,a,w,g</span>):</span></span><br><span class="line">        people.__init__(self,n,a,w)</span><br><span class="line">        self.grade = g</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">speak</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.name&#125;</span>说：我读<span class="subst">&#123;self.grade&#125;</span>年级！&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">speaker</span>():</span></span><br><span class="line">    topic=<span class="string">&#x27;&#x27;</span></span><br><span class="line">    name=<span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,n,t</span>):</span></span><br><span class="line">        self.name=n</span><br><span class="line">        self.topic=t</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">speak</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;我叫<span class="subst">&#123;self.name&#125;</span>,我是一个演说家，演讲的主题是<span class="subst">&#123;self.topic&#125;</span>&quot;</span>)</span><br><span class="line"><span class="comment"># 多重继承</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">sample</span>(<span class="params">speaker,student</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,n,a,w,g,t</span>):</span></span><br><span class="line">        student.__init__(self,n,a,w,g)</span><br><span class="line">        speaker.__init__(self,n,t)</span><br><span class="line"></span><br><span class="line">test = sample(<span class="string">&#x27;Tim&#x27;</span>,<span class="number">25</span>,<span class="number">65</span>,<span class="number">4</span>,<span class="string">&#x27;English&#x27;</span>)</span><br><span class="line">test.speak()		<span class="comment"># 方法名同，默认调用的是在括号中排前地父类的方法</span></span><br><span class="line"><span class="comment">#结果</span></span><br><span class="line">我叫Tim,我是一个演说家，演讲的主题是English</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法重写"><a href="#方法重写" class="headerlink" title="方法重写"></a>方法重写</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span>:</span>		<span class="comment"># 定义父类</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">myMethod</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;调用父类方法&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span>(<span class="params">Parent</span>):</span>	<span class="comment"># 定义子类</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">myMethod</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;调用子类方法&#x27;</span>)</span><br><span class="line"></span><br><span class="line">c = Child()		<span class="comment"># 实例化</span></span><br><span class="line">c.myMethod()	<span class="comment"># 子类调用方法重写</span></span><br><span class="line"><span class="built_in">super</span>(Child,c).myMethod()	<span class="comment">#用子类对象调用，父类覆盖相同的方法 	super()函数是用于调用父类</span></span><br><span class="line"><span class="comment">#结果</span></span><br><span class="line">调用子类方法</span><br><span class="line">调用父类方法</span><br></pre></td></tr></table></figure>
+
+<h3 id="类属性与方法"><a href="#类属性与方法" class="headerlink" title="类属性与方法"></a>类属性与方法</h3><ul>
+<li>类的私有属性</li>
+</ul>
+<blockquote>
+<p><strong>__private_attrs</strong>：两个下划线开头，声明该属性为私有，不能在类的外部被使用或直接访问。在类内部的方法中使用时 <strong>self.__private_attrs</strong></p>
+</blockquote>
+<ul>
+<li>类的方法</li>
+</ul>
+<blockquote>
+<p>在类的内部，使用 def 关键字来定义一个方法，与一般函数定义不同，类方法必须包含参数 self，且为第一个参数，self 代表的是类的实例</p>
+</blockquote>
+<ul>
+<li>类的私有方法</li>
+</ul>
+<blockquote>
+<p><strong>__private_method</strong>：两个下划线开头，声明该方法为私有方法，只能在类的内部调用 ，不能在类的外部调用。<strong>self.__private_methods</strong></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">JustCounter</span>:</span></span><br><span class="line">    __secretCount = <span class="number">0</span>	<span class="comment"># 私有变量</span></span><br><span class="line">    publicCount = <span class="number">0</span>		<span class="comment"># 公开变量</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">count</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.__secretCount +=<span class="number">1</span></span><br><span class="line">        self.publicCount +=<span class="number">1</span></span><br><span class="line">        <span class="built_in">print</span>(self.__secretCount)</span><br><span class="line">counter = JustCounter()</span><br><span class="line">counter.count()		<span class="comment"># 输出 1</span></span><br><span class="line">counter.count()		<span class="comment"># 输出 2</span></span><br><span class="line"><span class="built_in">print</span>(counter.publicCount)	<span class="comment">#输出 2，反应上次publicCount的值	</span></span><br><span class="line"><span class="built_in">print</span>(counter.__secretCount)	<span class="comment"># 私有属性在类外部无法调用，报错</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>类的私有方法</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Site</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name, url</span>):</span></span><br><span class="line">        self.name =name		<span class="comment"># public</span></span><br><span class="line">        self.url = url		<span class="comment"># private</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">who</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;name: <span class="subst">&#123;self.name&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;url: <span class="subst">&#123;self.url&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__foo</span>(<span class="params">self</span>):</span>		<span class="comment"># 私有方法</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;私有方法&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span>(<span class="params">self</span>):</span>			<span class="comment"># 公开方法</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;公开方法&#x27;</span>)</span><br><span class="line">        self.__foo()</span><br><span class="line">a = Site(<span class="string">&#x27;百度&#x27;</span>,<span class="string">&#x27;www.baidu.com&#x27;</span>)	<span class="comment"># 实例化</span></span><br><span class="line">a.who()		<span class="comment"># 调who</span></span><br><span class="line">a.foo()		<span class="comment"># 调foo及__foo()方法</span></span><br><span class="line">a.__foo()	<span class="comment"># 私有方法无法访问</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="类的专用方法"><a href="#类的专用方法" class="headerlink" title="类的专用方法"></a>类的专用方法</h3><blockquote>
+<p>_<em>init</em>_: 构造函数，在生成对象时调用</p>
+<p>_<em>del</em>_: 析构函数，释放对象时使用</p>
+<p>_<em>repr</em>_: 打印、转换</p>
+<p>_<em>setitem</em>_: 按照索引赋值</p>
+<p>_<em>getitem</em>_: 按照索引获值</p>
+<p>_<em>len</em>_: 获得长度</p>
+<p>_<em>cmp</em>_: 比较运算</p>
+<p>_<em>call</em>_: 函数调用</p>
+<p>_<em>add</em>_: 加运算</p>
+<p>_<em>sub</em>_: 减运算</p>
+<p>_<em>mul</em>_: 乘运算</p>
+<p>_<em>truediv</em>_: 除运算</p>
+<p>_<em>mod</em>_: 求余运算</p>
+<p>_<em>pow</em>_: 乘方运算</p>
+</blockquote>
+<h3 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h3><blockquote>
+<p>对类的专有方法进行重载</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vector</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,a,b</span>):</span></span><br><span class="line">        self.a =a</span><br><span class="line">        self.b=b</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&#x27;Vector (<span class="subst">&#123;self.a&#125;</span>,<span class="subst">&#123;self.b&#125;</span>)&#x27;</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__add__</span>(<span class="params">self,other</span>):</span></span><br><span class="line">        <span class="keyword">return</span> Vector(self.a + other.a,self.b + other.b)</span><br><span class="line">        </span><br><span class="line">v1 = Vector(<span class="number">2</span>,<span class="number">10</span>)</span><br><span class="line">v2 = Vector(<span class="number">5</span>,-<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(v1 + v2)		<span class="comment"># 调用__str__</span></span><br><span class="line"><span class="comment">#结果</span></span><br><span class="line">Vector (<span class="number">7</span>,<span class="number">8</span>)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://bingeone.github.io/bione/posts/4035240104.html" title="python面对对象" target="_blank" rel="external">https://bingeone.github.io/bione/posts/4035240104.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://bingeone.github.io/bione/" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/bione/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://bingeone.github.io/bione/" target="_blank"><span class="text-dark">Bingeone</span><small class="ml-1x">生命在于折腾，长寿源于静止</small></a></h3>
+        <div>个人简介-爱折腾，喜欢足球，python业娱选手。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="lv-container" data-id="city" data-uid="MTAyMC81NDUzNC8zMTAwNQ==">
+        <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+      </div>    
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/bione/posts/4059878826.html" title="python装饰器"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/bione/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/bione/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+                  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+   window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<!-- 
+<script src="/bione/js/src/pjax_main.js"></script>
+ -->
+
+<script src="/bione/js/src/jquery_pjax.min.js"></script>
+
+   
+               
+<script src="/bione/js/src/click.js"></script>
+
+                  
+<script src="/bione/js/plugin.min.js"></script>
+
+                     
+<script src="/bione/js/application.js"></script>
+
+                        
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/bione/',
+        CONTENT_URL: '/bione/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/bione/js/insight.js"></script>
+
+
+
+                           
+                                    
+                                             
+                                                
+	<!-- <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+	<script async src="/bione/js/src/busuanzi.pure.mini.js"></script>
+	
+
+		
+                                                   
+                                                      
+                                                         
+    
+<script defer type="text/javascript">
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+
+    if (typeof LivereTower === 'function') { return; }
+
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+
+                                                            
+                                                               
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+                                                                  
+
+
+                    <!-- <script src="/bione/js/jquery.min.js"></script> -->
+                    <!-- <script src="/bione/js/src/jquery_pjax.min.js"></script> -->
+                    <!-- <div class="pjax_loading"></div>
+            <div class="pjax_loading1"></div>
+            <script src="js/src/pjax_main.js"></script> -->
+                    <!-- <div id="content">
+            </div> -->
+                    <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+    
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Bingeone" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/bione/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+        <div class="copyright">
+            
+                &copy; 2021
+                    Bingeone
+                        
+                            <div class="publishby">
+                                Theme by <a href="https://github.com/cofess" target="_blank">
+                                        cofess </a>
+                                    base on <a href="https://github.com/cofess/hexo-theme-pure"
+                                            target="_blank">pure</a>.
+                            </div>
+        </div>
+        <!-- 站点时间 -->
+        <span class="copyright" id="sitetime"></span>
+        <script language=javascript src="/bione/js/src/site_time.js"></script>
+        </br>
+        <!-- 不蒜子统计 -->
+        <div class="copyright">
+            
+                <span id="busuanzi_container_site_uv" style='display:block'>本站访客数<span
+                        id="busuanzi_value_site_uv"></span>人</span>
+                <span class="post-meta-divider">|</span>
+                <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+                
+        </div>
+        <!-- aplayer 播放器 -->
+        <link rel="stylesheet" href="/bione/aplayer/APlayer.min.css">
+        <script src="/bione/aplayer/APlayer.min.js"></script>
+        <script src="/bione/aplayer/Meting.min.js"></script>
+        <div>
+            <meting-js server="netease" type="playlist" id="60198" fixed="true" autoplay="false" loop="all"
+                order="random" preload="auto" list-folded="ture" list-max-height="200px" lrc-type="0">
+            </meting-js>
+        </div>
+        <!-- <script>
+            $(document).pjax('a[target!=_blank]', '#content', { fragment: '#content', timeout: 6000 });
+        </script>
+        <script type="text/javascript" src="/bione/js/src/jquery_pjax.min.js"></script> -->
+</footer>
+
+      </body>
+
+      </html>

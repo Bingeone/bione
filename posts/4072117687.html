@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang=zh>
+  <head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>gcc编译和Cmake使用 | Bingeone博客</title>
+  <meta name="description" content="GCC编译器 使用gcc编译C代码  使用g++ 编译C++代码  man gcc&#x2F;g++  查看使用手册  编译过程  预处理-Pre-Proccessing          # .i文件  #-E 选项指示编译器仅对输入文件进行预处理 g++ -E test.cpp -o test.i        &#x2F;&#x2F; .i文件   编译-Compiling           #.s文件  #-s 编译">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gcc编译和Cmake使用">
+<meta property="og:url" content="https://bingeone.github.io/bione/posts/4072117687.html">
+<meta property="og:site_name" content="Bingeone博客园">
+<meta property="og:description" content="GCC编译器 使用gcc编译C代码  使用g++ 编译C++代码  man gcc&#x2F;g++  查看使用手册  编译过程  预处理-Pre-Proccessing          # .i文件  #-E 选项指示编译器仅对输入文件进行预处理 g++ -E test.cpp -o test.i        &#x2F;&#x2F; .i文件   编译-Compiling           #.s文件  #-s 编译">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-01-25T14:15:06.000Z">
+<meta property="article:modified_time" content="2022-01-30T14:15:38.909Z">
+<meta property="article:author" content="Bingeone">
+<meta property="article:tag" content="Cmake">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://bingeone.github.io/bione/posts/4072117687.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Bingeone博客园" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="images/logo.jpg" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/bione/css/style.css">
+
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+    
+
+      <body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+        <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://bingeone.github.io/bione/" target="_blank">
+          <img class="img-circle img-rotate" src="/bione/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Bingeone</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">生命在于折腾，长寿源于静止</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Hainan, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/bione/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/bione/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/bione/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/bione/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/bione/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/bione/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-bookmark">
+          <a href="/bione/bookmark">
+            
+            <i class="icon icon-book_bookmarked"></i>
+            
+            <span class="menu-title">书签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/bione/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/bione/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Bingeone" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/bione/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+          
+            <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/bione/categories/CSS/">CSS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/bione/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/bione/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/bione/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a><span class="category-list-count">9</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/Cmake/" rel="tag">Cmake</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/django/" rel="tag">django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/docker/" rel="tag">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/pipenv/" rel="tag">pipenv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/python/" rel="tag">python</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/redis/" rel="tag">redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/ubuntu/" rel="tag">ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/vim/" rel="tag">vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/%E7%A8%8B%E5%BA%8F/" rel="tag">程序</a><span class="tag-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/bione/tags/CSS/" style="font-size: 13px;">CSS</a> <a href="/bione/tags/Cmake/" style="font-size: 13px;">Cmake</a> <a href="/bione/tags/Linux/" style="font-size: 13px;">Linux</a> <a href="/bione/tags/django/" style="font-size: 13px;">django</a> <a href="/bione/tags/docker/" style="font-size: 13px;">docker</a> <a href="/bione/tags/git/" style="font-size: 13px;">git</a> <a href="/bione/tags/mysql/" style="font-size: 13.33px;">mysql</a> <a href="/bione/tags/pipenv/" style="font-size: 13px;">pipenv</a> <a href="/bione/tags/python/" style="font-size: 14px;">python</a> <a href="/bione/tags/redis/" style="font-size: 13px;">redis</a> <a href="/bione/tags/ubuntu/" style="font-size: 13px;">ubuntu</a> <a href="/bione/tags/vim/" style="font-size: 13px;">vim</a> <a href="/bione/tags/vscode/" style="font-size: 13px;">vscode</a> <a href="/bione/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13px;">工具</a> <a href="/bione/tags/%E7%A8%8B%E5%BA%8F/" style="font-size: 13.67px;">程序</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/bione/archives/2022/01/">一月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/bione/archives/2021/12/">十二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/bione/archives/2021/11/">十一月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/bione/archives/2021/10/">十月 2021</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/1178053341.html" class="title">Ubuntu20.04下mysql数据库相关操作</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-01-25T14:15:06.000Z" itemprop="datePublished">2022-01-25</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/3708940461.html" class="title">docker容器技术基础</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-01-25T14:15:06.000Z" itemprop="datePublished">2022-01-25</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/4072117687.html" class="title">gcc编译和Cmake使用</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-01-25T14:15:06.000Z" itemprop="datePublished">2022-01-25</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/Linux/">Linux</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/2396000966.html" class="title">Linux 基础知识</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-01-25T14:15:06.000Z" itemprop="datePublished">2022-01-25</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/3869305285.html" class="title">初始化Django项目一般流程(虚拟环境env)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-01-25T14:15:06.000Z" itemprop="datePublished">2022-01-25</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+              
+                
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#GCC%E7%BC%96%E8%AF%91%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">GCC编译器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CMake-%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">CMake 简要使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E6%B5%81%E7%A8%8B"><span class="toc-number">2.1.</span> <span class="toc-text">编译流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E6%9E%84%E5%BB%BA%E6%96%B9%E5%BC%8F"><span class="toc-number">2.2.</span> <span class="toc-text">两种构建方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CMake%E7%BC%96%E5%86%99CMakeLists-txt"><span class="toc-number">2.3.</span> <span class="toc-text">CMake编写CMakeLists.txt</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">2.3.1.</span> <span class="toc-text">语法及注意事项</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%8F%98%E9%87%8F"><span class="toc-number">2.3.2.</span> <span class="toc-text">常用变量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%87%8D%E8%A6%81%E6%8C%87%E4%BB%A4"><span class="toc-number">2.3.3.</span> <span class="toc-text">重要指令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Vscode-%E8%B0%83%E8%AF%95-C-%E4%BB%A3%E7%A0%81"><span class="toc-number">2.3.4.</span> <span class="toc-text">Vscode 调试 C++代码</span></a></li></ol></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-gcc编译和Cmake使用" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      gcc编译和Cmake使用
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/bione/posts/4072117687.html" class="article-date">
+	  <time datetime="2022-01-25T14:15:06.000Z" itemprop="datePublished">2022-01-25</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/bione/tags/Cmake/" rel="tag">Cmake</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+		<i class="icon icon-eye-fill" aria-hidden="true"></i>
+		<span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+	
+		
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/bione/posts/4072117687.html#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2.1k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 9(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h3 id="GCC编译器"><a href="#GCC编译器" class="headerlink" title="GCC编译器"></a>GCC编译器</h3><ul>
+<li><p>使用gcc编译C代码</p>
+</li>
+<li><p>使用g++ 编译C++代码</p>
+</li>
+<li><p>man gcc/g++  查看使用手册</p>
+</li>
+<li><p>编译过程</p>
+<ol>
+<li><p><strong>预处理-Pre-Proccessing          # .i文件</strong></p>
+<blockquote>
+<p>#-E 选项指示编译器仅对输入文件进行预处理</p>
+<p>g++ -E test.cpp -o test.i        // .i文件</p>
+</blockquote>
+</li>
+<li><p><strong>编译-Compiling           #.s文件</strong></p>
+<blockquote>
+<p>#-s 编译选项告诉 g++ 在为C++ 代码产生了汇编语言文件后停止编译</p>
+<p>#g++ 产生的汇编语言文件的缺省扩展名是 .s</p>
+<p>g++ -S test.i -o test.s</p>
+</blockquote>
+</li>
+<li><p><strong>汇编-Assembling        # .o文件</strong></p>
+<blockquote>
+<p>#-c  选项告诉 g++ 仅把源代码编译为机器语言的目标代码</p>
+<p>g++ -c test.s -o test.o</p>
+</blockquote>
+</li>
+<li><p><strong>链接-Linking       #bin文件</strong></p>
+<blockquote>
+<p>#-o 编译选项来为将产生的可执行文件用指定文件名==(单一文件编译)==</p>
+<p>g++ test.o -o test</p>
+<p>#==多目录多文件下编译实例如下：==</p>
+<p>g++ main.cpp src/swap.cpp -Iinclude -o main    —– 编译文件main.cpp swap.cpp ;        头文件(引用的 .h文件)indclude     可执行文件 main</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>g++重要的编译参数</p>
+<ul>
+<li><p>-g    编译带调试信息的可执行文件   </p>
+<blockquote>
+<p>#带有调试的文件</p>
+<p>g++ -g text.cpp -o test</p>
+</blockquote>
+</li>
+<li><p>-O[数字]      优化源代码</p>
+<blockquote>
+<p>##优化即  例如省略代码中从未使用过的变量，直接将变量表达式用结果值代替等等，这些操作会缩减目标文件的所含的代码量，提高最终生成的可执行文件的运行效率。</p>
+<p>g++  test.cpp -O2 -o test</p>
+</blockquote>
+</li>
+<li><p>-I       指定头文件搜索目录</p>
+<blockquote>
+<p>g++  -I/myinclude(路径) test.cpp</p>
+</blockquote>
+</li>
+<li><p>-Wall   打印警告信息</p>
+<blockquote>
+<p>#打印出gcc提供的警告信息</p>
+<p>g++ -Wall test.cpp </p>
+</blockquote>
+</li>
+<li><p>-w   关闭警告信息</p>
+<blockquote>
+<p>g++ -w test.cpp</p>
+</blockquote>
+</li>
+<li><p>-o    输出文件头名</p>
+<blockquote>
+<p>g++ test.cpp -o test</p>
+</blockquote>
+</li>
+<li><p>-std=c++11   设置编译标准</p>
+<blockquote>
+<p>g++  -std=c++11 test.cpp </p>
+</blockquote>
+</li>
+<li><p>案例：</p>
+</li>
+</ul>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#示例:</span></span><br><span class="line">g++ main.cpp src/Gun.cpp src/Soldier.cpp -Iinclude -o myexe -Wall -g -O2		//输出 警告 调试 优化代码</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="CMake-简要使用"><a href="#CMake-简要使用" class="headerlink" title="CMake 简要使用"></a>CMake 简要使用</h3><h4 id="编译流程"><a href="#编译流程" class="headerlink" title="编译流程"></a><strong>编译流程</strong></h4><p>==在linux平台上CMake构建 C/C++工程的流程==: </p>
+<ul>
+<li>编写CMakeListstxt</li>
+<li>执行命令cmake PATH 生成Makefile(PATH 是顶层CMakeLists.txt 所在目录)</li>
+<li>执行命令make进行编译</li>
+</ul>
+<h4 id="两种构建方式"><a href="#两种构建方式" class="headerlink" title="两种构建方式"></a>两种构建方式</h4><ul>
+<li><p>内部构建(in-source build): 会在同级目录下产生大量的中间文件，使工程文件杂乱无章</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 内部构建</span></span><br><span class="line"><span class="comment"># 在当前工程文件目录下，编译本目录的CMakeists.txt，生成Makefile和其他文件</span></span><br><span class="line">cmake .</span><br><span class="line"><span class="comment"># 执行make命令，生成target</span></span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<p>  ==<strong>简单的CMakeLists.txt编写如下：</strong>==</p>
+  <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cmake最低版本要求</span></span><br><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.0</span>)</span><br><span class="line"><span class="comment"># 项目名称</span></span><br><span class="line"><span class="keyword">project</span>(HELLOWORLD)</span><br><span class="line"><span class="comment"># 编译.cpp文件生成可执行文件（如下：helloWorld_cmake）</span></span><br><span class="line"><span class="keyword">add_executable</span>(helloWorld_cmake helloworld.cpp)</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>外部构建(out-of -source build): 编译输出文件与工程文件不再同一目录下==(推荐使用)==</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 外部构建</span></span><br><span class="line"><span class="comment"># 1.在当前目录下，创建一个build文件夹</span></span><br><span class="line">mkdir build</span><br><span class="line"><span class="comment"># 2.进入到build文件夹中</span></span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line"><span class="comment"># 3.编译上级目录的CMakeists.txt，生成Makefile和其他文件</span></span><br><span class="line">cmake ..</span><br><span class="line"><span class="comment"># 4.执行make命令，生成target</span></span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<p>  ==<strong>复杂多目录下构建CMakeLists.txt编写如下：</strong>==</p>
+  <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cmake最低版本要求</span></span><br><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.0</span>)</span><br><span class="line"><span class="comment"># 项目名称</span></span><br><span class="line"><span class="keyword">project</span>(SWAP)</span><br><span class="line"><span class="comment"># 项目引用的头文件(.h文件)</span></span><br><span class="line"><span class="keyword">include_directories</span>(<span class="keyword">include</span>)</span><br><span class="line"><span class="comment"># 编译多目录使用的.cpp文件生成可执行文件（如下：main_cmake）</span></span><br><span class="line"><span class="keyword">add_executable</span>(main_cmake main.cpp src/swap.cpp )</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="CMake编写CMakeLists-txt"><a href="#CMake编写CMakeLists-txt" class="headerlink" title="CMake编写CMakeLists.txt"></a>CMake编写CMakeLists.txt</h4><h5 id="语法及注意事项"><a href="#语法及注意事项" class="headerlink" title="语法及注意事项"></a>语法及注意事项</h5><ul>
+<li><p>基本语法格式：指令(参数1 参数2)</p>
+<ul>
+<li>参数使用==<strong>括弧</strong>==括起</li>
+<li>参数之间使用==<strong>空格</strong>==或==<strong>分号</strong>==分开</li>
+</ul>
+</li>
+<li><p>指令不分大小写</p>
+  <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加到头文件搜索路径</span></span><br><span class="line"><span class="keyword">include_directories</span>(<span class="keyword">include</span>)</span><br><span class="line"><span class="keyword">INCLUDE_DIRECTORIES</span>(<span class="keyword">include</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p>变量是大小写相关的，使用**${}<strong>方式</strong>取值<strong>。但在</strong>if**语句中是直接使用变量名</p>
+  <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置一个变量HELLO，值是hello.cpp</span></span><br><span class="line"><span class="keyword">set</span>(HELLO hello.cpp)  </span><br><span class="line"><span class="keyword">add_executable</span>(hello main.cpp <span class="variable">$&#123;HELLO&#125;</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="常用变量"><a href="#常用变量" class="headerlink" title="常用变量"></a>常用变量</h5><p>==cmake_c_flags==：gcc编译选项<br>==cmake_cxx_flags==：g++编译选项</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在cmake_cxx_flags编译选项后追加-std=c++14</span></span><br><span class="line"><span class="keyword">set</span>(cmake_cxx_flags <span class="string">&quot;$&#123;cmake_cxx_flags&#125; -std=c++14&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>==cmake_build_type==：编译类型(Debug, Release)</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设定编译类型为debug，因为在调试时需要选择debug</span></span><br><span class="line"><span class="keyword">set</span>(cmake_build_type Debug)</span><br><span class="line"><span class="comment"># 设定编译类型为release，因为在发布时需要选择release</span></span><br><span class="line"><span class="keyword">set</span>(cmake_build_type release)</span><br></pre></td></tr></table></figure>
+
+<p>==executable_output_path==：可执行文件输出的存放路径</p>
+<p>==library_output_path==：库文件输出的存放路径</p>
+<p>​    </p>
+<h5 id="重要指令"><a href="#重要指令" class="headerlink" title="重要指令"></a>重要指令</h5><p>==cmake_minimum_required==：指定CMake的最小版本要求<br>语法：cmake_minimum_required(VERSION 版本号 [FATAL_ERROR])</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># CMake最小版本要求为3.0</span></span><br><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>==project==：定义工程名称，并可指定工程支持的语言<br>语法：project(工程名称 [CXX] [C] [java])</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定工程名为HELLOWORLD</span></span><br><span class="line"><span class="keyword">project</span>(HELLOWORLD)</span><br></pre></td></tr></table></figure>
+
+<p>==set==：显式的定义变量<br>语法：set(变量名 [变量值] [CACHE TYPE DOCSTRING [FORCE]])</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义SRC变量，其值为main.cpp hello.cpp</span></span><br><span class="line"><span class="keyword">set</span>(SRC sayhello.cpp hello.cpp)</span><br></pre></td></tr></table></figure>
+
+<p>==include_directories==：向工程添加多个特定的头文件搜索路径，相当于指定g++编译器的-I参数<br>语法：include_directories([AFTER|BEFORE][SYSTEM] dir1 dir2 …)</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将/usr/include/myincludefolder 和 ./include 添加到头文件搜索路径</span></span><br><span class="line"><span class="keyword">include_directories</span>(/usr/<span class="keyword">include</span>/myincludefolder ./<span class="keyword">include</span>)</span><br></pre></td></tr></table></figure>
+
+<p>==link_directories==：向工程添加多个特定的库文件搜索路径，相当于指定g++编译器的-L参数<br>语法：link_directories(dir1 dir2 …)</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将/usr/lib/mylibfolder 和 ./lib 添加到库文件搜索路径</span></span><br><span class="line"><span class="keyword">link_directories</span>(/usr/lib/mylibfolder ./lib)</span><br></pre></td></tr></table></figure>
+
+<p>==add_library==：生成库文件<br>语法：add_library(库名 [SHARED|STATIC|MODULE] [EXCLUDE_FROM_ALL] source1 source2 .. sourceN)</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 通过变量 SRC 生成 libhello.so 共享库</span></span><br><span class="line"><span class="comment"># SHARED代表动态库，STATIC代表静态库</span></span><br><span class="line"><span class="keyword">add_library</span>(hello SHARED <span class="variable">$&#123;SRC&#125;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>==add_compile_options==：添加编译参数<br>语法：add_compile_options(编译参数)</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加编译参数 -wall -std=c++11</span></span><br><span class="line"><span class="keyword">add_compile_options</span>(-wall -std=c++<span class="number">11</span> -o2)</span><br></pre></td></tr></table></figure>
+
+<p>==add_executable==：生成可执行文件<br>语法：add_executable(exe文件名 source1 source2 .. sourceN)</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编译main.cpp生成可执行文件main</span></span><br><span class="line"><span class="keyword">add_executable</span>(main main.cpp)</span><br></pre></td></tr></table></figure>
+
+<p>==target_link_libraries==：为target添加需要链接的共享库，相当于指定g++编译器-l参数<br>语法：target_link_libraries(target library1&lt;debug|optimized&gt; library2…)</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将hello动态库文件链接到可执行文件main</span></span><br><span class="line"><span class="keyword">target_link_libraries</span>(main hello)</span><br></pre></td></tr></table></figure>
+
+<p>==add_subdirectory==：向当前工程添加存放源文件的子目录，并可以指定中间二进制和目标二进制存放的位置<br>语法：add_subdirectory(source_dir [binary_dir] [EXCLUDE_FROM_ALL])</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加src子目录，src中需要有一个CMakeLists.txt</span></span><br><span class="line"><span class="keyword">add_subdirectory</span>(src)</span><br></pre></td></tr></table></figure>
+
+<p>==aux_source_directory==：发现一个目录下所有的源代码文件并将列表存储在一个变量中，这个指令临时被用来自动构建源文件列表<br>语法：aux_source_directory(文件夹路径 变量名)</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义SRC变量，其值为当前目录下所有的源代码文件</span></span><br><span class="line"><span class="keyword">aux_source_directory</span>(. SRC)</span><br><span class="line"><span class="comment"># 编译SRC变量所代表的源代码文件，生成main可执行文件</span></span><br><span class="line"><span class="keyword">add_executable</span>(main <span class="variable">$&#123;SRC&#125;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>参考资料</strong>：<a target="_blank" rel="noopener" href="http://www.wang-hj.cn/?p=2629">CMake 资料</a></p>
+<h5 id="Vscode-调试-C-代码"><a href="#Vscode-调试-C-代码" class="headerlink" title="Vscode 调试 C++代码"></a>Vscode 调试 C++代码</h5><ul>
+<li>调试代码一般操作流程(==前提配置好launch.json文件==)<ul>
+<li>在主程序main.cpp文件打断点</li>
+<li>按F5，进入并命中断点位置</li>
+<li>F11，单步执行（执行代码行所指向所有文件）</li>
+<li>F10，单步并跳过执行（略过代码行所指向所有文件）</li>
+<li>执行完程序，按F5退出调试</li>
+</ul>
+</li>
+</ul>
+<p>​    ==(launch.json 和 tasks.json 文件配置)—linux/ubuntu系统==</p>
+<ul>
+<li>launch.json 配置</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="comment">// Use IntelliSense to learn about possible attributes.</span></span><br><span class="line">    <span class="comment">// Hover to view descriptions of existing attributes.</span></span><br><span class="line">    <span class="comment">// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387</span></span><br><span class="line">    <span class="string">&quot;version&quot;</span>: <span class="string">&quot;0.2.0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;configurations&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&quot;name&quot;</span>: <span class="string">&quot;g++ - 生成和调试活动文件&quot;</span>,</span><br><span class="line">            <span class="string">&quot;type&quot;</span>: <span class="string">&quot;cppdbg&quot;</span>,</span><br><span class="line">            <span class="string">&quot;request&quot;</span>: <span class="string">&quot;launch&quot;</span>,</span><br><span class="line">            <span class="string">&quot;program&quot;</span>: <span class="string">&quot;$&#123;workspaceFolder&#125;/build/main_cmake&quot;</span>,</span><br><span class="line">            <span class="string">&quot;args&quot;</span>: [],</span><br><span class="line">            <span class="string">&quot;stopAtEntry&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="string">&quot;cwd&quot;</span>: <span class="string">&quot;$&#123;workspaceFolder&#125;&quot;</span>,     </span><br><span class="line">            <span class="string">&quot;environment&quot;</span>: [],</span><br><span class="line">            <span class="string">&quot;externalConsole&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="string">&quot;MIMode&quot;</span>: <span class="string">&quot;gdb&quot;</span>,</span><br><span class="line">            <span class="string">&quot;setupCommands&quot;</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;为 gdb 启用整齐打印&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;text&quot;</span>: <span class="string">&quot;-enable-pretty-printing&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;ignoreFailures&quot;</span>: <span class="literal">true</span></span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            <span class="string">&quot;preLaunchTask&quot;</span>: <span class="string">&quot;Build&quot;</span>,   <span class="comment">//此处直接调用tasks任务执行，省略 在终端执行（cmake ..) 和 (make)两步命令</span></span><br><span class="line">            <span class="string">&quot;miDebuggerPath&quot;</span>: <span class="string">&quot;/usr/bin/gdb&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>tasks.json 配置—作用：实现自动化调试，省去代码修改在编译过程</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="string">&quot;version&quot;</span>: <span class="string">&quot;2.0.0&quot;</span>,		<span class="comment">//声明最低cmake版本</span></span><br><span class="line">	<span class="string">&quot;options&quot;</span>: &#123;</span><br><span class="line">		<span class="string">&quot;cwd&quot;</span>: <span class="string">&quot;$&#123;workspaceFolder&#125;/build&quot;</span>    <span class="comment">//需要进入到我们执行build任务的文件夹中</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="string">&quot;tasks&quot;</span>: [    <span class="comment">//tasks包含三个小任务</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="string">&quot;type&quot;</span>: <span class="string">&quot;shell&quot;</span>,</span><br><span class="line">			<span class="string">&quot;label&quot;</span>: <span class="string">&quot;cmake&quot;</span>,    <span class="comment">//第一个任务的名字叫cmake</span></span><br><span class="line">			<span class="string">&quot;command&quot;</span>: <span class="string">&quot;cmake&quot;</span>,    <span class="comment">//它要执行的命令是cmake</span></span><br><span class="line">			<span class="string">&quot;args&quot;</span>: [</span><br><span class="line">				<span class="string">&quot;..&quot;</span>    <span class="comment">//参数是..</span></span><br><span class="line">			]</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="string">&quot;label&quot;</span>: <span class="string">&quot;make&quot;</span>,    <span class="comment">//第二个任务的名字叫make</span></span><br><span class="line">			<span class="string">&quot;group&quot;</span>: &#123;</span><br><span class="line">				<span class="string">&quot;kind&quot;</span>: <span class="string">&quot;build&quot;</span>,</span><br><span class="line">				<span class="string">&quot;isDefault&quot;</span>: <span class="literal">true</span></span><br><span class="line">			&#125;,</span><br><span class="line">			<span class="string">&quot;command&quot;</span>: <span class="string">&quot;make&quot;</span>,    <span class="comment">//它要执行的命令是make</span></span><br><span class="line">			<span class="string">&quot;args&quot;</span>: [</span><br><span class="line">				</span><br><span class="line">			]</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="string">&quot;label&quot;</span>: <span class="string">&quot;Build&quot;</span>,    <span class="comment">//第三个任务的名字叫Build</span></span><br><span class="line">			<span class="string">&quot;dependsOrder&quot;</span>: <span class="string">&quot;sequence&quot;</span>,    <span class="comment">//顺序执行依赖项</span></span><br><span class="line">			<span class="string">&quot;dependsOn&quot;</span>:[    <span class="comment">//依赖的两个项为cmake和make</span></span><br><span class="line">				<span class="string">&quot;cmake&quot;</span>,    <span class="comment">//即第一个任务的label</span></span><br><span class="line">				<span class="string">&quot;make&quot;</span>      <span class="comment">//即第二个任务的label</span></span><br><span class="line">			]</span><br><span class="line">		&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://bingeone.github.io/bione/posts/4072117687.html" title="gcc编译和Cmake使用" target="_blank" rel="external">https://bingeone.github.io/bione/posts/4072117687.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://bingeone.github.io/bione/" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/bione/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://bingeone.github.io/bione/" target="_blank"><span class="text-dark">Bingeone</span><small class="ml-1x">生命在于折腾，长寿源于静止</small></a></h3>
+        <div>个人简介-爱折腾，喜欢足球，python业娱选手。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="lv-container" data-id="city" data-uid="MTAyMC81NDUzNC8zMTAwNQ==">
+        <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+      </div>    
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/bione/posts/3708940461.html" title="docker容器技术基础"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/bione/posts/2396000966.html" title="Linux 基础知识"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/bione/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/bione/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+                  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+   window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<!-- 
+<script src="/bione/js/src/pjax_main.js"></script>
+ -->
+
+<script src="/bione/js/src/jquery_pjax.min.js"></script>
+
+   
+               
+<script src="/bione/js/src/click.js"></script>
+
+                  
+<script src="/bione/js/plugin.min.js"></script>
+
+                     
+<script src="/bione/js/application.js"></script>
+
+                        
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/bione/',
+        CONTENT_URL: '/bione/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/bione/js/insight.js"></script>
+
+
+
+                           
+                                    
+                                             
+                                                
+	<!-- <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+	<script async src="/bione/js/src/busuanzi.pure.mini.js"></script>
+	
+
+		
+                                                   
+                                                      
+                                                         
+    
+<script defer type="text/javascript">
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+
+    if (typeof LivereTower === 'function') { return; }
+
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+
+                                                            
+                                                               
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+                                                                  
+
+
+                    <!-- <script src="/bione/js/jquery.min.js"></script> -->
+                    <!-- <script src="/bione/js/src/jquery_pjax.min.js"></script> -->
+                    <!-- <div class="pjax_loading"></div>
+            <div class="pjax_loading1"></div>
+            <script src="js/src/pjax_main.js"></script> -->
+                    <!-- <div id="content">
+            </div> -->
+                    <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+    
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Bingeone" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/bione/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+        <div class="copyright">
+            
+                &copy; 2022
+                    Bingeone
+                        
+                            <div class="publishby">
+                                Theme by <a href="https://github.com/cofess" target="_blank">
+                                        cofess </a>
+                                    base on <a href="https://github.com/cofess/hexo-theme-pure"
+                                            target="_blank">pure</a>.
+                            </div>
+        </div>
+        <!-- 站点时间 -->
+        <span class="copyright" id="sitetime"></span>
+        <script language=javascript src="/bione/js/src/site_time.js"></script>
+        </br>
+        <!-- 不蒜子统计 -->
+        <div class="copyright">
+            
+                <span id="busuanzi_container_site_uv" style='display:block'>本站访客数<span
+                        id="busuanzi_value_site_uv"></span>人</span>
+                <span class="post-meta-divider">|</span>
+                <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+                
+        </div>
+        <!-- aplayer 播放器 -->
+        <link rel="stylesheet" href="/bione/aplayer/APlayer.min.css">
+        <script src="/bione/aplayer/APlayer.min.js"></script>
+        <script src="/bione/aplayer/Meting.min.js"></script>
+        <div>
+            <meting-js server="netease" type="playlist" id="60198" fixed="true" autoplay="false" loop="all"
+                order="random" preload="auto" list-folded="ture" list-max-height="200px" lrc-type="0">
+            </meting-js>
+        </div>
+        <!-- <script>
+            $(document).pjax('a[target!=_blank]', '#content', { fragment: '#content', timeout: 6000 });
+        </script>
+        <script type="text/javascript" src="/bione/js/src/jquery_pjax.min.js"></script> -->
+</footer>
+
+      </body>
+
+      </html>

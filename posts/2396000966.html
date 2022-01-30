@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang=zh>
+  <head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Linux 基础知识 | Bingeone博客</title>
+  <meta name="description" content="ubuntu 使用技巧 mkdir的技巧  1234#创建 ～&#x2F;a&#x2F;b&#x2F;cmkdir -p  ~&#x2F;a&#x2F;b&#x2F;c&#x2F;#创建多个文件夹mkdir  a b c   touch  1234#创建文件touch a.txt#在绝对路径中创建文件touch &#x2F;home&#x2F;robot&#x2F;myfile.txt   rm 删除  12345#删除文件rm a.txt#删除文件夹rm -rf a或者 trash-put a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 基础知识">
+<meta property="og:url" content="https://bingeone.github.io/bione/posts/2396000966.html">
+<meta property="og:site_name" content="Bingeone博客园">
+<meta property="og:description" content="ubuntu 使用技巧 mkdir的技巧  1234#创建 ～&#x2F;a&#x2F;b&#x2F;cmkdir -p  ~&#x2F;a&#x2F;b&#x2F;c&#x2F;#创建多个文件夹mkdir  a b c   touch  1234#创建文件touch a.txt#在绝对路径中创建文件touch &#x2F;home&#x2F;robot&#x2F;myfile.txt   rm 删除  12345#删除文件rm a.txt#删除文件夹rm -rf a或者 trash-put a">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-01-25T14:15:06.000Z">
+<meta property="article:modified_time" content="2022-01-30T14:15:45.186Z">
+<meta property="article:author" content="Bingeone">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="ubuntu">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://bingeone.github.io/bione/posts/2396000966.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Bingeone博客园" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="images/logo.jpg" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/bione/css/style.css">
+
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+    
+
+      <body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+        <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://bingeone.github.io/bione/" target="_blank">
+          <img class="img-circle img-rotate" src="/bione/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Bingeone</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">生命在于折腾，长寿源于静止</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Hainan, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/bione/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/bione/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/bione/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/bione/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/bione/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/bione/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-bookmark">
+          <a href="/bione/bookmark">
+            
+            <i class="icon icon-book_bookmarked"></i>
+            
+            <span class="menu-title">书签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/bione/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/bione/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Bingeone" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/bione/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+          
+            <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/bione/categories/CSS/">CSS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/bione/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/bione/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/bione/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a><span class="category-list-count">9</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/Cmake/" rel="tag">Cmake</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/django/" rel="tag">django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/docker/" rel="tag">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/pipenv/" rel="tag">pipenv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/python/" rel="tag">python</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/redis/" rel="tag">redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/ubuntu/" rel="tag">ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/vim/" rel="tag">vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/bione/tags/%E7%A8%8B%E5%BA%8F/" rel="tag">程序</a><span class="tag-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/bione/tags/CSS/" style="font-size: 13px;">CSS</a> <a href="/bione/tags/Cmake/" style="font-size: 13px;">Cmake</a> <a href="/bione/tags/Linux/" style="font-size: 13px;">Linux</a> <a href="/bione/tags/django/" style="font-size: 13px;">django</a> <a href="/bione/tags/docker/" style="font-size: 13px;">docker</a> <a href="/bione/tags/git/" style="font-size: 13px;">git</a> <a href="/bione/tags/mysql/" style="font-size: 13.33px;">mysql</a> <a href="/bione/tags/pipenv/" style="font-size: 13px;">pipenv</a> <a href="/bione/tags/python/" style="font-size: 14px;">python</a> <a href="/bione/tags/redis/" style="font-size: 13px;">redis</a> <a href="/bione/tags/ubuntu/" style="font-size: 13px;">ubuntu</a> <a href="/bione/tags/vim/" style="font-size: 13px;">vim</a> <a href="/bione/tags/vscode/" style="font-size: 13px;">vscode</a> <a href="/bione/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13px;">工具</a> <a href="/bione/tags/%E7%A8%8B%E5%BA%8F/" style="font-size: 13.67px;">程序</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/bione/archives/2022/01/">一月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/bione/archives/2021/12/">十二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/bione/archives/2021/11/">十一月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/bione/archives/2021/10/">十月 2021</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/1178053341.html" class="title">Ubuntu20.04下mysql数据库相关操作</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-01-25T14:15:06.000Z" itemprop="datePublished">2022-01-25</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/3708940461.html" class="title">docker容器技术基础</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-01-25T14:15:06.000Z" itemprop="datePublished">2022-01-25</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/4072117687.html" class="title">gcc编译和Cmake使用</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-01-25T14:15:06.000Z" itemprop="datePublished">2022-01-25</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/Linux/">Linux</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/2396000966.html" class="title">Linux 基础知识</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-01-25T14:15:06.000Z" itemprop="datePublished">2022-01-25</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+              </p>
+              <p class="item-title">
+                <a href="/bione/posts/3869305285.html" class="title">初始化Django项目一般流程(虚拟环境env)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-01-25T14:15:06.000Z" itemprop="datePublished">2022-01-25</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+              
+                
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ubuntu-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7"><span class="toc-number">1.</span> <span class="toc-text">ubuntu 使用技巧</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-linux使用技巧" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux 基础知识
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/bione/posts/2396000966.html" class="article-date">
+	  <time datetime="2022-01-25T14:15:06.000Z" itemprop="datePublished">2022-01-25</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/bione/categories/Linux/">Linux</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/bione/tags/Linux/" rel="tag">Linux</a>, <a class="article-tag-link-link" href="/bione/tags/ubuntu/" rel="tag">ubuntu</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+		<i class="icon icon-eye-fill" aria-hidden="true"></i>
+		<span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+	
+		
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/bione/posts/2396000966.html#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2.5k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 10(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="ubuntu-使用技巧"><a href="#ubuntu-使用技巧" class="headerlink" title="ubuntu 使用技巧"></a>ubuntu 使用技巧</h2><ol>
+<li>mkdir的技巧</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建 ～/a/b/c</span></span><br><span class="line">mkdir -p  ~/a/b/c/</span><br><span class="line"><span class="comment">#创建多个文件夹</span></span><br><span class="line">mkdir  a b c</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>touch</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建文件</span></span><br><span class="line">touch a.txt</span><br><span class="line"><span class="comment">#在绝对路径中创建文件</span></span><br><span class="line">touch /home/robot/myfile.txt</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>rm 删除</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#删除文件</span></span><br><span class="line">rm a.txt</span><br><span class="line"></span><br><span class="line"><span class="comment">#删除文件夹</span></span><br><span class="line">rm -rf a或者 trash-put a  <span class="comment">#将文件移动到回收站 需安装trash-cli</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>cp 复制</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#复制文件夹到指定位置</span></span><br><span class="line">cp -r myfile/ /home/robot/</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>mv 移动或重命名文件</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#移动文件夹到指定位置</span></span><br><span class="line">mv myfile /home/robot</span><br><span class="line"></span><br><span class="line"><span class="comment">#重命名文件夹</span></span><br><span class="line">mv myfile myfile01</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>man 查看linux命令手册</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看ls手册</span></span><br><span class="line">man ls	</span><br><span class="line"><span class="comment">#查看帮助reboot </span></span><br><span class="line"><span class="built_in">help</span> <span class="built_in">cd</span>	</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li><p>reboot  重启linux系统</p>
+</li>
+<li><p>shutdown 立即关机</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 立即关机</span></span><br><span class="line">shotdown -h now </span><br></pre></td></tr></table></figure>
+
+<ol start="9">
+<li><p>ctrl + - 缩小命令行字体大小，ctrl + shift + + 放大</p>
+</li>
+<li><p>ctrl + alt + T 在桌面快速启动终端</p>
+</li>
+<li><p>ls -lah    查看当前目录下所有文件详情</p>
+</li>
+<li><p>time  加执行文件，可以计时运行文件消耗时间</p>
+</li>
+<li><p>查看ubuntu 挂载详情 df -h</p>
+</li>
+<li><p>切换用户：su root</p>
+</li>
+<li><p>更新linux环境：source /etc/environment</p>
+</li>
+<li><p>软链接如：sudo ln -fs /usr/bin/npm /usr/local/bin/npm</p>
+</li>
+<li><p>linux 端口占用查看和关闭</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看已经连接的服务端口（ESTABLISHED）</span></span><br><span class="line"></span><br><span class="line">netstat -a</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看所有的服务端口（LISTEN，ESTABLISHED）</span></span><br><span class="line"></span><br><span class="line">netstat -ap</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看指定端口，可以结合grep命令：</span></span><br><span class="line"></span><br><span class="line">netstat -ap | grep 8000</span><br><span class="line"></span><br><span class="line"><span class="comment">#还可以使用lsof命令：</span></span><br><span class="line"></span><br><span class="line">lsof -i:4000</span><br><span class="line"></span><br><span class="line"><span class="comment">#关闭正在使用端口的程序，用kill + 对应的pid</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">kill</span> -9 pid(号)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="18">
+<li>pip 下载镜像源</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#使用方法：</span></span><br><span class="line">pip install requsets -i https://pypi.tuna.tsinghua.edu.cn/simple/ Scip</span><br><span class="line"><span class="comment">#镜像源列表：</span></span><br><span class="line">https://mirrors.aliyun.com/pypi/simple/ //阿里</span><br><span class="line">https://pypi.tuna.tsinghua.edu.cn/simple/ //清华</span><br><span class="line">https://pypi.douban.com/ //豆瓣</span><br><span class="line">https://pypi.hustunique.com/ //华中理工大学</span><br><span class="line">https://pypi.sdutlinux.org/ //山东理工大学</span><br><span class="line">https://pypi.mirrors.ustc.edu.cn/ //中国科学技术大学</span><br></pre></td></tr></table></figure>
+
+<ol start="19">
+<li>ubuntu 系统命令行设置投屏显示 </li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用单显示屏---关闭笔记电脑屏幕（即主屏 LVDS-1不同笔记本可能不一样有eDP-1端口等）</span></span><br><span class="line">xrandr --output LVDS-1 --off  </span><br><span class="line"></span><br><span class="line"><span class="comment">#扩展屏幕模式</span></span><br><span class="line">xrandr --output HDMI-1 --right-of LVDS-1 --auto</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切回主屏命令（或者直接合上笔记本再打开）</span></span><br><span class="line">xrandr --output LVDS-1 --auto</span><br></pre></td></tr></table></figure>
+
+<p>​      <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38863413/article/details/101454236">Ubuntu系统笔记本投屏显示器方法—参考</a></p>
+<ol start="20">
+<li>在linux中制作desktop快捷链接方式  </li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#新建一个连接程序</span></span><br><span class="line">vim typora.desktop</span><br><span class="line"></span><br><span class="line">[DesktopEntry]</span><br><span class="line">Name=Typora</span><br><span class="line"><span class="comment">#打开软件路径</span></span><br><span class="line">Exec=/opt/Typora/bin/Typora-linux-x64/Typora	</span><br><span class="line"><span class="comment">#类型</span></span><br><span class="line">Type=Application	</span><br><span class="line"><span class="comment">#图标位置</span></span><br><span class="line">Icon=opt/Typora/bin/Typora-linux-x64/resources/assets/iconicon_512x512.png	</span><br><span class="line"></span><br><span class="line"><span class="comment">#将程序拷贝到目标地址</span></span><br><span class="line">cp typora.desktop /usr/share/applications/	</span><br><span class="line"></span><br><span class="line"><span class="comment">#将可执行的程序链接到终端的可执行命令，即配置环境</span></span><br><span class="line">ln -s /home/robot/software/Typora/bin/Typora-linux-x64/Typora /usr/sbin/</span><br><span class="line"></span><br><span class="line"><span class="comment">#更改可执行权限(在./Typora文件中)</span></span><br><span class="line">chown root.rootchrome-sandbox</span><br><span class="line">chmod 755 chrome-sandbox</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="21">
+<li>Linux 系统目录结构</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> / ：根 </span><br><span class="line">每一个文件和目录从根目录开始。</span><br><span class="line">只有root用户具有该目录下的写权限。请注意，/root是root用户的主目录，这与/不一样</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> /bin ：用户二进制文件</span><br><span class="line">包含二进制可执行文件。</span><br><span class="line">在单用户模式下，你需要使用的常见Linux命令都位于此目录下。系统的所有用户使用的命令都设在这里。</span><br><span class="line">例如：ps、ls、ping、grep、cp</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> /sbin ：系统二进制文件</span><br><span class="line">就像/bin，/sbin同样也包含二进制可执行文件。</span><br><span class="line">但是，在这个目录下的linux命令通常由系统管理员使用，对系统进行维护。例如：iptables、reboot、fdisk、ifconfig、swapon命令</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span> /etc ：配置文件</span><br><span class="line">包含所有程序所需的配置文件。</span><br><span class="line">也包含了用于启动/停止单个程序的启动和关闭shell脚本。例如：/etc/resolv.conf、/etc/logrotate.conf</span><br><span class="line">hosts：设备名称（或域名）到ip地址的解析，相当于本地存在的dns功能。</span><br><span class="line"></span><br><span class="line"><span class="number">5.</span> /dev ：设备文件</span><br><span class="line">包含设备文件。</span><br><span class="line">这些包括终端设备、USB或连接到系统的任何设备。例如：/dev/tty1、/dev/usbmon0</span><br><span class="line"></span><br><span class="line"><span class="number">6.</span> /proc ：进程信息</span><br><span class="line">包含系统进程的相关信息。</span><br><span class="line">这是一个虚拟的文件系统，包含有关正在运行的进程的信息。例如：/proc/&#123;pid&#125;目录中包含的与特定pid相关的信息。</span><br><span class="line">这是一个虚拟的文件系统，系统资源以文本信息形式存在。例如：/proc/uptime</span><br><span class="line"></span><br><span class="line"><span class="number">7.</span> /<span class="keyword">var</span> ：变量文件</span><br><span class="line"><span class="keyword">var</span>代表变量文件。</span><br><span class="line">这个目录下可以找到内容可能增长的文件。</span><br><span class="line">这包括 - 系统日志文件（/<span class="keyword">var</span>/log）;包和数据库文件（/<span class="keyword">var</span>/lib）;电子邮件（/<span class="keyword">var</span>/mail）;打印队列（/<span class="keyword">var</span>/spool）;</span><br><span class="line">锁文件（/<span class="keyword">var</span>/lock）;多次重新启动需要的临时文件（/<span class="keyword">var</span>/tmp）;</span><br><span class="line"></span><br><span class="line"><span class="number">8.</span> /tem ：临时文件</span><br><span class="line">包含系统和用户创建的临时文件。</span><br><span class="line">当系统重新启动时，这个目录下的文件都将被删除。</span><br><span class="line"></span><br><span class="line"><span class="number">9.</span> /usr ：系统应用程序</span><br><span class="line">包含二进制文件、库文件、文档和二级程序的源代码。</span><br><span class="line">/usr/bin中包含用户程序的二进制文件。如果你在/bin中找不到用户二进制文件，到/usr/bin目录看看。例如：at、awk、cc、less、scp。</span><br><span class="line">/usr/sbin中包含系统管理员的二进制文件。如果你在/sbin中找不到系统二进制文件，到/usr/sbin目录看看。例如：atd、cron、sshd、useradd、userdel。</span><br><span class="line">/usr/lib中包含了/usr/bin和/usr/sbin用到的库。</span><br><span class="line">/usr/local中包含了从源安装的用户程序。例如，当你从源安装Apache，它会在/usr/local/apache2中。</span><br><span class="line"></span><br><span class="line"><span class="number">10.</span> /home ：HOME 目录</span><br><span class="line">所有用户用home目录来存储他们的个人档案。</span><br><span class="line">例如：/home/robot/</span><br><span class="line"></span><br><span class="line"><span class="number">11.</span> /boot ：引导加载程序文件</span><br><span class="line">包含引导加载程序相关的文件。</span><br><span class="line">内核的initrd、vmlinux、grub文件位于/boot下。</span><br><span class="line">例如：initrd.img-<span class="number">2.6</span><span class="number">.32</span>-<span class="number">24</span>-generic、vmlinuz-<span class="number">2.6</span><span class="number">.32</span>-<span class="number">24</span>-generic</span><br><span class="line"></span><br><span class="line"><span class="number">12.</span> /lib ：系统库</span><br><span class="line">包含支持位于/bin和/sbin下的二进制文件的库文件.</span><br><span class="line">库文件名为 ld或lib.so.*</span><br><span class="line">例如：ld-<span class="number">2.11</span><span class="number">.1</span>.so，libncurses.so<span class="number">.5</span><span class="number">.7</span></span><br><span class="line"></span><br><span class="line"><span class="number">13.</span> /opt代表可选的。</span><br><span class="line">包含从个别厂商的附加应用程序。</span><br><span class="line">附加应用程序应该安装在/opt/或者/opt/的子目录下。</span><br><span class="line"></span><br><span class="line"><span class="number">14</span> /mnt ：挂载目录</span><br><span class="line">临时安装目录，系统管理员可以挂载文件系统。</span><br><span class="line"></span><br><span class="line"><span class="number">15</span> /media ：可移动媒体设备</span><br><span class="line">用于挂载可移动设备的临时目录。</span><br><span class="line">举例来说，挂载CD-ROM的/media/cdrom，挂载软盘驱动器的/media/floppy;</span><br><span class="line"></span><br><span class="line"><span class="number">16</span> /srv ：服务数据</span><br><span class="line">srv代表服务。</span><br><span class="line">包含服务器特定服务相关的数据。</span><br><span class="line">例如，/srv/cvs包含cvs相关的数据。</span><br></pre></td></tr></table></figure>
+
+<ol start="22">
+<li>SSH 协议</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在 ~/.bashrc 文件中配置如下命令：</span></span><br><span class="line"><span class="built_in">alias</span> name01 = <span class="string">&quot;ssh root@192.168.17.2&quot;</span></span><br><span class="line"></span><br><span class="line">注：在终端中输入 name01相当于ssh root@192.168.17.2,其中<span class="built_in">alias</span>是别名</span><br><span class="line">执行过程中需要输入远程许可密码，可以使用ssh-keygen生成本地秘钥，然后将该秘钥复制到远程服务器的authorized_keys文件（在 ~/.ssh位置），</span><br><span class="line">内容追加方式添加。</span><br></pre></td></tr></table></figure>
+
+<ol start="23">
+<li>开启ssh远程登陆—在ubuntu上配置流程</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载 opnessh-server</span></span><br><span class="line">sudo apt update 	//更新源文件</span><br><span class="line">sudo apt upgrate	//更新软件，升级包文件</span><br><span class="line">sudo apt install openssh-server 	//下载ssh第三包</span><br><span class="line"><span class="comment"># 激活和参看ssh状态</span></span><br><span class="line">sudo systemctl <span class="built_in">enable</span> ssh 	//激活</span><br><span class="line">sudo systemctl start ssh	//启动</span><br><span class="line">sudo systemctl status ssh	//查看ssh网络状态</span><br><span class="line"><span class="comment">#设置firewall允许ssh端口(默认port 22)</span></span><br><span class="line">sudo ufw allow ssh		//sudo ufw allow|deny [service] 开启或禁用某个服务</span><br><span class="line">sudo ufw <span class="built_in">enable</span>			// 重启firewall</span><br><span class="line">sudo ufw status</span><br><span class="line"><span class="comment">#查看本机网络ip及用户名</span></span><br><span class="line">ifconfig</span><br><span class="line">whoami</span><br><span class="line"><span class="comment">#在其他平台上通过远程连接工具(xshell等)登陆ubuntu</span></span><br><span class="line">ssh username@ip		//需要输入登陆ubuntu该用户的密码</span><br><span class="line"><span class="comment">#-------------------------其他操作-------------------------</span></span><br><span class="line"><span class="comment">#更改端口号</span></span><br><span class="line">sudo vim /etc/ssh/sshd_config //将port 22 更改成1024之后的端口如(port 2222)，取消<span class="comment">#号注释</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#重启ssh</span></span><br><span class="line">sudo /etc/init.d/ssh restart </span><br><span class="line">sudo service ssh restart</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看服务状态</span></span><br><span class="line">ps ax | grep ssh</span><br><span class="line">sudo netstat -ant	// 查看与外部连接端口情况</span><br><span class="line"></span><br><span class="line"><span class="comment">#用root账号密码远程登陆需要设置</span></span><br><span class="line">sudo password root (密码)			//重置密码</span><br><span class="line">sudo vim /etc/ssh/sshd_config	//取消root登陆限制，更改成PermitRootLogin yes</span><br><span class="line">sudo service ssh restart		//重启</span><br></pre></td></tr></table></figure>
+
+<ol start="24">
+<li>ubuntu 安装、卸载清除</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装软件</span></span><br><span class="line">sudo apt-get install softname</span><br><span class="line"><span class="comment"># 卸载软件</span></span><br><span class="line">sudo apt-get remove softname</span><br><span class="line"><span class="comment"># 卸载清理配置</span></span><br><span class="line">sudo apt-get remove -purge softname</span><br><span class="line"><span class="comment"># 更新软件信息数据库</span></span><br><span class="line">sudo apt-get update</span><br><span class="line"><span class="comment"># 系统升级</span></span><br><span class="line">sudo apt-get upgrade</span><br><span class="line"><span class="comment"># 搜索软件包</span></span><br><span class="line">sudo apt-cache search softname</span><br><span class="line"></span><br><span class="line"><span class="comment">#--------deb 软件的安装卸载--------</span></span><br><span class="line"><span class="comment"># 安装deb软件包</span></span><br><span class="line">dpkg -i xxx.deb</span><br><span class="line"><span class="comment"># 删除deb软件包</span></span><br><span class="line">dpkg -r xxx.deb</span><br><span class="line"><span class="comment"># 删除deb软件包及配置文件</span></span><br><span class="line">dpkg -r -purge xxx.deb</span><br><span class="line"><span class="comment"># 查看软件包信息</span></span><br><span class="line">dpkg -info xxx.deb</span><br><span class="line"><span class="comment"># 查看文件拷贝详情</span></span><br><span class="line">dpkg -L xxx.deb</span><br><span class="line"><span class="comment"># 查看系统中安装的deb包详情</span></span><br><span class="line">dpkg -l</span><br><span class="line"><span class="comment"># 重新配置软件包</span></span><br><span class="line">dpkg -reconfigure xxx</span><br></pre></td></tr></table></figure>
+
+<ol start="25">
+<li>删除缓存</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get autoclean		<span class="comment"># 清理旧版本的软件缓存</span></span><br><span class="line">sudo apt-get clean 			<span class="comment"># 清理所有软件缓存</span></span><br><span class="line">sudo apt-get autoremove		<span class="comment"># 删除系统不再使用的孤立软件</span></span><br><span class="line"><span class="comment">#--------------------------------</span></span><br><span class="line"><span class="comment"># 卸载：tracker(此应用与文件管理器关联)</span></span><br><span class="line"><span class="comment"># 这个东西一般我只要安装ubuntu就会第一删掉tracker 他不仅会产生大量的cache文件而且还会影响开机速度。所以在新得利里面删掉就行。</span></span><br></pre></td></tr></table></figure>
+
+<ol start="26">
+<li>删除多余内核</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 当前Ubuntu系统使用的内核</span></span><br><span class="line">uname -a</span><br><span class="line"><span class="comment"># 查看所有内核</span></span><br><span class="line">dpkg --get-selections | grep linux</span><br><span class="line"><span class="comment"># 删除旧内核，注意一般选内核号较小的</span></span><br><span class="line">sudo apt-get remove linux-image-xxxxx-generic</span><br><span class="line">sudo apt-get remove linux-headers-xxxxx</span><br><span class="line">sudo apt-get remove linux-headers-xxxxx-generic</span><br></pre></td></tr></table></figure>
+
+<ol start="27">
+<li>.tar.gz文件解压缩命令—linux文件</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 压缩命令</span></span><br><span class="line">tar -zcvf 压缩文件名.tar.gz</span><br><span class="line"><span class="comment"># 解压缩</span></span><br><span class="line">tar -zxvf 文件名.tar.gz</span><br></pre></td></tr></table></figure>
+
+<ol start="28">
+<li>ubuntu中Python虚拟环境</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#------------pipenv---------------</span></span><br><span class="line"><span class="comment"># 安装 pip3</span></span><br><span class="line">sudo apt install python3-pip</span><br><span class="line"><span class="comment"># 安装 pipenv</span></span><br><span class="line">pip install pipenv</span><br><span class="line"><span class="comment"># 全局安装 pipenv</span></span><br><span class="line">sudo -H pip install -U pipenv</span><br></pre></td></tr></table></figure>
+
+<ol start="29">
+<li>linux系统架构</li>
+</ol>
+<blockquote>
+<p>linux系统架构：AMD、ARM、x86、x86_64等</p>
+<p>公认i386为32位系统，也就是x86</p>
+<p>ARM架构是一个32位精简指令集（RISC）<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%A4%84%E7%90%86%E5%99%A8">处理器</a>架构，主要应用在智能手机和平板电脑</p>
+<p>x86_64,x64,AMD64基本上是同一个东西，市面上的intel/amd的桌面级CPU基本上都是x86_64</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看内核版本</span></span><br><span class="line">uname -a</span><br><span class="line">uname -r</span><br><span class="line"><span class="comment"># 查看linux版本信息</span></span><br><span class="line">cat /etc/issue</span><br><span class="line"><span class="comment"># 查看linux是64为还是32位</span></span><br><span class="line">file /bin/ls</span><br><span class="line"><span class="comment"># 查看系统的架构</span></span><br><span class="line">arch</span><br><span class="line">dpkg --print-architecture</span><br><span class="line">file /lib/systemd/systemd</span><br></pre></td></tr></table></figure>
+
+
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wf19930209/article/details/79536506">cpu架构叫法区别x86\x86_64\amd64</a></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://bingeone.github.io/bione/posts/2396000966.html" title="Linux 基础知识" target="_blank" rel="external">https://bingeone.github.io/bione/posts/2396000966.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://bingeone.github.io/bione/" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/bione/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://bingeone.github.io/bione/" target="_blank"><span class="text-dark">Bingeone</span><small class="ml-1x">生命在于折腾，长寿源于静止</small></a></h3>
+        <div>个人简介-爱折腾，喜欢足球，python业娱选手。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="lv-container" data-id="city" data-uid="MTAyMC81NDUzNC8zMTAwNQ==">
+        <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+      </div>    
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/bione/posts/4072117687.html" title="gcc编译和Cmake使用"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/bione/posts/3869305285.html" title="初始化Django项目一般流程(虚拟环境env)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/bione/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/bione/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+                  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+   window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<!-- 
+<script src="/bione/js/src/pjax_main.js"></script>
+ -->
+
+<script src="/bione/js/src/jquery_pjax.min.js"></script>
+
+   
+               
+<script src="/bione/js/src/click.js"></script>
+
+                  
+<script src="/bione/js/plugin.min.js"></script>
+
+                     
+<script src="/bione/js/application.js"></script>
+
+                        
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/bione/',
+        CONTENT_URL: '/bione/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/bione/js/insight.js"></script>
+
+
+
+                           
+                                    
+                                             
+                                                
+	<!-- <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+	<script async src="/bione/js/src/busuanzi.pure.mini.js"></script>
+	
+
+		
+                                                   
+                                                      
+                                                         
+    
+<script defer type="text/javascript">
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+
+    if (typeof LivereTower === 'function') { return; }
+
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+
+                                                            
+                                                               
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+                                                                  
+
+
+                    <!-- <script src="/bione/js/jquery.min.js"></script> -->
+                    <!-- <script src="/bione/js/src/jquery_pjax.min.js"></script> -->
+                    <!-- <div class="pjax_loading"></div>
+            <div class="pjax_loading1"></div>
+            <script src="js/src/pjax_main.js"></script> -->
+                    <!-- <div id="content">
+            </div> -->
+                    <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+    
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Bingeone" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="/bione/null" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/bione/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+        <div class="copyright">
+            
+                &copy; 2022
+                    Bingeone
+                        
+                            <div class="publishby">
+                                Theme by <a href="https://github.com/cofess" target="_blank">
+                                        cofess </a>
+                                    base on <a href="https://github.com/cofess/hexo-theme-pure"
+                                            target="_blank">pure</a>.
+                            </div>
+        </div>
+        <!-- 站点时间 -->
+        <span class="copyright" id="sitetime"></span>
+        <script language=javascript src="/bione/js/src/site_time.js"></script>
+        </br>
+        <!-- 不蒜子统计 -->
+        <div class="copyright">
+            
+                <span id="busuanzi_container_site_uv" style='display:block'>本站访客数<span
+                        id="busuanzi_value_site_uv"></span>人</span>
+                <span class="post-meta-divider">|</span>
+                <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+                
+        </div>
+        <!-- aplayer 播放器 -->
+        <link rel="stylesheet" href="/bione/aplayer/APlayer.min.css">
+        <script src="/bione/aplayer/APlayer.min.js"></script>
+        <script src="/bione/aplayer/Meting.min.js"></script>
+        <div>
+            <meting-js server="netease" type="playlist" id="60198" fixed="true" autoplay="false" loop="all"
+                order="random" preload="auto" list-folded="ture" list-max-height="200px" lrc-type="0">
+            </meting-js>
+        </div>
+        <!-- <script>
+            $(document).pjax('a[target!=_blank]', '#content', { fragment: '#content', timeout: 6000 });
+        </script>
+        <script type="text/javascript" src="/bione/js/src/jquery_pjax.min.js"></script> -->
+</footer>
+
+      </body>
+
+      </html>

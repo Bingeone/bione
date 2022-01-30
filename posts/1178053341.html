@@ -17,20 +17,32 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>友情链接 | Bingeone博客</title>
-  <meta name="description" content="学无止境，勇闯天涯">
-<meta property="og:type" content="website">
-<meta property="og:title" content="友情链接">
-<meta property="og:url" content="https://bingeone.github.io/bione/links/index.html">
+  <title>Ubuntu20.04下mysql数据库相关操作 | Bingeone博客</title>
+  <meta name="description" content="安装mysql、重置密码 更新下载源：sudo apt-get update 安装：sudo apt install mysql-server    安装mysql客户端：sudo apt install mysql-client    重启mysql服务：sudo service mysql restart 配置mysql：sudo mysql_secure_installation    接上">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu20.04下mysql数据库相关操作">
+<meta property="og:url" content="https://bingeone.github.io/bione/posts/1178053341.html">
 <meta property="og:site_name" content="Bingeone博客园">
-<meta property="og:description" content="学无止境，勇闯天涯">
+<meta property="og:description" content="安装mysql、重置密码 更新下载源：sudo apt-get update 安装：sudo apt install mysql-server    安装mysql客户端：sudo apt install mysql-client    重启mysql服务：sudo service mysql restart 配置mysql：sudo mysql_secure_installation    接上">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-10-18T15:56:25.400Z">
-<meta property="article:modified_time" content="2021-10-17T15:42:36.092Z">
+<meta property="og:image" content="https://i.loli.net/2021/09/06/Aqf6QprFeaYOEI1.png">
+<meta property="og:image" content="https://i.loli.net/2021/09/06/RHr3MOe6QIFg9Cb.png">
+<meta property="og:image" content="https://i.loli.net/2021/09/06/KXRMQHw3SOhpB1x.png">
+<meta property="og:image" content="https://i.loli.net/2021/09/06/9Srutcn58sDv4Lg.png">
+<meta property="og:image" content="https://i.loli.net/2021/09/06/mR1zpeCZnXovDP9.png">
+<meta property="og:image" content="https://i.loli.net/2021/09/06/JW1l9INLYhkCsXP.png">
+<meta property="og:image" content="https://i.loli.net/2021/09/06/82W3aj1fxTRQlIr.png">
+<meta property="og:image" content="https://i.loli.net/2021/09/06/YZHVvwO8enqom2y.png">
+<meta property="og:image" content="https://i.loli.net/2021/09/06/R4DSeAtuJ2VqIp6.png">
+<meta property="article:published_time" content="2022-01-25T14:15:06.000Z">
+<meta property="article:modified_time" content="2022-01-30T14:15:55.257Z">
 <meta property="article:author" content="Bingeone">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/09/06/Aqf6QprFeaYOEI1.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://bingeone.github.io/bione/links/index.html">
+  <link rel="canonical" href="https://bingeone.github.io/bione/posts/1178053341.html">
   
     <link rel="alternate" href="/atom.xml" title="Bingeone博客园" type="application/atom+xml">
   
@@ -50,7 +62,7 @@
 
     
 
-      <body class="main-center no-sidebar" itemscope itemtype="http://schema.org/WebPage">
+      <body class="main-center" itemscope itemtype="http://schema.org/WebPage">
         <header class="header" itemscope itemtype="http://schema.org/WPHeader">
   <div class="slimContent">
     <div class="navbar-header">
@@ -357,60 +369,169 @@
 </aside>
 
               
-                <main class="main" role="main">
-  <article class="article article-links article-type-list" itemscope="">
-  <header class="article-header">
-    <h1 itemprop="title">友情链接</h1>
-    <p class="text-muted">
-      欢迎交换链接，可在当前页面留言
-    </p>
-  </header>
-  <div class="article-body">
-    <div class="row">
+                
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85mysql%E3%80%81%E9%87%8D%E7%BD%AE%E5%AF%86%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">安装mysql、重置密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu%E4%B8%8B%E5%BD%BB%E5%BA%95%E5%8D%B8%E8%BD%BDmysql%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">2.</span> <span class="toc-text">Ubuntu下彻底卸载mysql数据库</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Ubuntu20.04下mysql数据库相关操作" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
       
         
-          <div class="col-sm-6 col-md-4">
-            <div class="panel panel-default hover-shadow hover-grow">
-              <figure class="media media-middle">
-                <div class="media-left pr-no">
-                  <a href="http://chuangzaoshi.com/" target="_blank" class="img-burn thumb-md media-middle">
-                    <img src="/images/favatar/chuangzaoshi-logo.png" class="w-full" alt="">
-                  </a>
-                </div>
-                <div class="media-body p-0x">
-                  <h4 class="media-heading"><a href="http://chuangzaoshi.com/" target="_blank"><span class="text-dark">创造狮</span></a></h4>
-                  <div class="text-muted">
-                    为创意工作者而设计
-                  </div>
-                </div>
-              </figure>
-            </div>
-          </div>
-          
-        
-          <div class="col-sm-6 col-md-4">
-            <div class="panel panel-default hover-shadow hover-grow">
-              <figure class="media media-middle">
-                <div class="media-left pr-no">
-                  <a href="http://idesign.qq.com/" target="_blank" class="img-burn thumb-md media-middle">
-                    <img src="/images/favatar/idesign-logo.png" class="w-full" alt="">
-                  </a>
-                </div>
-                <div class="media-body p-0x">
-                  <h4 class="media-heading"><a href="http://idesign.qq.com/" target="_blank"><span class="text-dark">腾讯设计导航</span></a></h4>
-                  <div class="text-muted">
-                    网罗全网高逼格的设计站点
-                  </div>
-                </div>
-              </figure>
-            </div>
-          </div>
-          
-    </div>
-  </div>
-</article>
-
   
+    <h1 class="article-title" itemprop="name">
+      Ubuntu20.04下mysql数据库相关操作
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/bione/posts/1178053341.html" class="article-date">
+	  <time datetime="2022-01-25T14:15:06.000Z" itemprop="datePublished">2022-01-25</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/bione/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/bione/tags/mysql/" rel="tag">mysql</a>, <a class="article-tag-link-link" href="/bione/tags/python/" rel="tag">python</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+		<i class="icon icon-eye-fill" aria-hidden="true"></i>
+		<span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+	
+		
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/bione/posts/1178053341.html#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 302(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h3 id="安装mysql、重置密码"><a href="#安装mysql、重置密码" class="headerlink" title="安装mysql、重置密码"></a>安装mysql、重置密码</h3><ul>
+<li>更新下载源：sudo apt-get update</li>
+<li>安装：sudo apt install mysql-server</li>
+</ul>
+<p><img src="https://i.loli.net/2021/09/06/Aqf6QprFeaYOEI1.png"></p>
+<ul>
+<li>安装mysql客户端：sudo apt install mysql-client</li>
+</ul>
+<p><img src="https://i.loli.net/2021/09/06/RHr3MOe6QIFg9Cb.png"></p>
+<ul>
+<li>重启mysql服务：sudo service mysql restart</li>
+<li>配置mysql：sudo mysql_secure_installation</li>
+</ul>
+<p><img src="https://i.loli.net/2021/09/06/KXRMQHw3SOhpB1x.png"></p>
+<ul>
+<li>接上述内容</li>
+</ul>
+<p><img src="https://i.loli.net/2021/09/06/9Srutcn58sDv4Lg.png"></p>
+<ul>
+<li>接上述内容</li>
+</ul>
+<p><img src="https://i.loli.net/2021/09/06/mR1zpeCZnXovDP9.png"></p>
+<ul>
+<li>用最大权限直接登陆mysql</li>
+</ul>
+<p><img src="https://i.loli.net/2021/09/06/JW1l9INLYhkCsXP.png"></p>
+<ul>
+<li>select user,authentication_string,plugin,host from mysql.user;</li>
+</ul>
+<img src="https://i.loli.net/2021/09/06/82W3aj1fxTRQlIr.png"  />
+
+<ul>
+<li>直接输入重置密码：ALTER USER ‘root‘@’localhost’ IDENTIFIED BY “123456”;        结果大概率报错（ERROR 1819），显示密码过于简单不满足要求</li>
+<li>查看密码要求： show variables like ‘validate_password%’;</li>
+</ul>
+<img src="https://i.loli.net/2021/09/06/YZHVvwO8enqom2y.png"  />
+
+<ul>
+<li>密码重置配置</li>
+</ul>
+<blockquote>
+<p>mysql&gt; set global validate_password.policy=0;</p>
+<p>Query OK, 0 rows affected (0.00 sec)</p>
+<p>mysql&gt; set global validate_password.length=1;</p>
+<p>Query OK, 0 rows affected (0.01 sec)</p>
+<p>mysql&gt; alter user ‘root’@‘localhost’ identified by ‘123456’;        </p>
+<p>Query OK, 0 rows affected (0.04 sec)</p>
+<p>mysql&gt; flush privileges;        </p>
+<p>Query OK, 0 rows affected (0.04 sec)</p>
+<p>mysql&gt; ALTER USER ‘root‘@’localhost’ IDENTIFIED WITH caching_sha2_password by ‘123456’;    </p>
+<p>Query OK, 0 rows affected (0.04 sec)</p>
+</blockquote>
+<img src="https://i.loli.net/2021/09/06/R4DSeAtuJ2VqIp6.png"  />
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ingenuou_/article/details/107602508">详情参考该博文</a></p>
+<h3 id="Ubuntu下彻底卸载mysql数据库"><a href="#Ubuntu下彻底卸载mysql数据库" class="headerlink" title="Ubuntu下彻底卸载mysql数据库"></a>Ubuntu下彻底卸载mysql数据库</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1、查看相关文件</span><br><span class="line">dpkg --list|grep mysql</span><br><span class="line">2、卸载</span><br><span class="line">sudo apt-get remove mysql-common</span><br><span class="line">3、卸载</span><br><span class="line">sudo apt-get autoremove --purge mysql-server-5.7</span><br><span class="line">4、清除残留数据</span><br><span class="line">dpkg -l|grep ^rc|awk &#x27;&#123;print$2&#125;&#x27;|sudo xargs dpkg -P</span><br><span class="line">5、查看MySQL的剩余依赖项</span><br><span class="line">dpkg --list|grep mysql</span><br><span class="line">6、继续删除剩余依赖项</span><br><span class="line">sudo apt-get autoremove --purge mysql-apt-config</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://bingeone.github.io/bione/posts/1178053341.html" title="Ubuntu20.04下mysql数据库相关操作" target="_blank" rel="external">https://bingeone.github.io/bione/posts/1178053341.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://bingeone.github.io/bione/" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/bione/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://bingeone.github.io/bione/" target="_blank"><span class="text-dark">Bingeone</span><small class="ml-1x">生命在于折腾，长寿源于静止</small></a></h3>
+        <div>个人简介-爱折腾，喜欢足球，python业娱选手。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
   <section id="comments">
   	
       <div id="lv-container" data-id="city" data-uid="MTAyMC81NDUzNC8zMTAwNQ==">
@@ -419,6 +540,89 @@
     
   </section>
 
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/bione/posts/3708940461.html" title="docker容器技术基础"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/bione/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/bione/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -469,6 +673,13 @@
                            
                                     
                                              
+                                                
+	<!-- <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+	<script async src="/bione/js/src/busuanzi.pure.mini.js"></script>
+	
+
+		
+                                                   
                                                       
                                                          
     

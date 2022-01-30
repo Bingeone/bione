@@ -17,22 +17,23 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>vscode基础使用文档 | Bingeone博客</title>
-  <meta name="description" content="Vs code 快捷键详述1、注释： 　　a) 单行注释：[ctrl+k,ctrl+c] 或 ctrl+&#x2F; 　　b) 取消单行注释：[ctrl+k,ctrl+u] (按下ctrl不放，再按k + u) 　　c) 多行注释：[alt+shift+A] 　　d) 多行注释：&#x2F;** 2、移动行：alt+up&#x2F;down 3、显示&#x2F;隐藏左侧目录栏 ctrl + b 4、复制当前行：shift + alt +">
+  <title>docker容器技术基础 | Bingeone博客</title>
+  <meta name="description" content="Docker简介Docker是一种基于go语言开发、开源的应用容器引擎。Docker公司原先是一家叫dotCloud平台的服务商，docker是dotCloud平台利用Linux容器技术开发形成一套内部工具。2103年dotCloud平台的业务开展艰难，新聘Ben Golub 作为CEO，将公司重命名为Docker，放弃原来的PaaS平台。向世界开放推广Docker和容器技术，当前docker版本">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vscode基础使用文档">
-<meta property="og:url" content="https://bingeone.github.io/bione/posts/43791.html">
+<meta property="og:title" content="docker容器技术基础">
+<meta property="og:url" content="https://bingeone.github.io/bione/posts/3708940461.html">
 <meta property="og:site_name" content="Bingeone博客园">
-<meta property="og:description" content="Vs code 快捷键详述1、注释： 　　a) 单行注释：[ctrl+k,ctrl+c] 或 ctrl+&#x2F; 　　b) 取消单行注释：[ctrl+k,ctrl+u] (按下ctrl不放，再按k + u) 　　c) 多行注释：[alt+shift+A] 　　d) 多行注释：&#x2F;** 2、移动行：alt+up&#x2F;down 3、显示&#x2F;隐藏左侧目录栏 ctrl + b 4、复制当前行：shift + alt +">
+<meta property="og:description" content="Docker简介Docker是一种基于go语言开发、开源的应用容器引擎。Docker公司原先是一家叫dotCloud平台的服务商，docker是dotCloud平台利用Linux容器技术开发形成一套内部工具。2103年dotCloud平台的业务开展艰难，新聘Ben Golub 作为CEO，将公司重命名为Docker，放弃原来的PaaS平台。向世界开放推广Docker和容器技术，当前docker版本">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-10-19T15:11:57.000Z">
-<meta property="article:modified_time" content="2021-10-24T14:24:44.285Z">
+<meta property="og:image" content="https://i.loli.net/2021/09/16/o9CAIDFzGN7WHXh.png">
+<meta property="article:published_time" content="2022-01-25T14:15:06.000Z">
+<meta property="article:modified_time" content="2022-01-30T14:15:34.829Z">
 <meta property="article:author" content="Bingeone">
-<meta property="article:tag" content="vscode">
-<meta property="article:tag" content="工具">
+<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/09/16/o9CAIDFzGN7WHXh.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://bingeone.github.io/bione/posts/43791.html">
+  <link rel="canonical" href="https://bingeone.github.io/bione/posts/3708940461.html">
   
     <link rel="alternate" href="/atom.xml" title="Bingeone博客园" type="application/atom+xml">
   
@@ -364,21 +365,21 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">文章目录</h3>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vs-code-%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AF%A6%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">Vs code 快捷键详述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vs-code-%E9%AB%98%E9%A2%91%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">2.</span> <span class="toc-text">Vs code 高频快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vs-code%E6%8B%93%E5%B1%95%E6%8F%92%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">Vs code拓展插件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#HTMl%E5%BF%85%E5%A4%87"><span class="toc-number">3.1.</span> <span class="toc-text">HTMl必备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CSS%E5%BF%85%E5%A4%87"><span class="toc-number">3.2.</span> <span class="toc-text">CSS必备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Python%E5%BF%85%E5%A4%87"><span class="toc-number">3.3.</span> <span class="toc-text">Python必备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#C-C-%E5%BF%85%E5%A4%87"><span class="toc-number">3.4.</span> <span class="toc-text">C&#x2F;C++必备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Vue%E5%BF%85%E5%A4%87"><span class="toc-number">3.5.</span> <span class="toc-text">Vue必备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#React%E5%BF%85%E5%A4%87"><span class="toc-number">3.6.</span> <span class="toc-text">React必备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Egg%E6%A1%86%E6%9E%B6%E5%BF%85%E5%A4%87"><span class="toc-number">3.7.</span> <span class="toc-text">Egg框架必备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">3.8.</span> <span class="toc-text">数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#other"><span class="toc-number">3.9.</span> <span class="toc-text">other</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">Docker简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">docker安装教程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%95%9C%E5%83%8F%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">镜像操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4"><span class="toc-number">4.</span> <span class="toc-text">容器相关命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2"><span class="toc-number">5.</span> <span class="toc-text">常用容器部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql%E9%83%A8%E7%BD%B2"><span class="toc-number">5.1.</span> <span class="toc-text">mysql部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nginx%E9%83%A8%E7%BD%B2"><span class="toc-number">5.2.</span> <span class="toc-text">Nginx部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redis%E9%83%A8%E7%BD%B2"><span class="toc-number">5.3.</span> <span class="toc-text">redis部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rabbitmq%E9%83%A8%E7%BD%B2"><span class="toc-number">5.4.</span> <span class="toc-text">rabbitmq部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Elasticsearch%E9%83%A8%E7%BD%B2"><span class="toc-number">5.5.</span> <span class="toc-text">Elasticsearch部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Zookeeper%E9%83%A8%E7%BD%B2"><span class="toc-number">5.6.</span> <span class="toc-text">Zookeeper部署</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%81%E7%A7%BB%E5%92%8C%E5%A4%87%E4%BB%BD"><span class="toc-number">6.</span> <span class="toc-text">迁移和备份</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dockerfile"><span class="toc-number">7.</span> <span class="toc-text">Dockerfile</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker%E7%A7%81%E6%9C%89%E4%BB%93%E5%BA%93"><span class="toc-number">8.</span> <span class="toc-text">Docker私有仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%81%E6%9C%89%E4%BB%93%E5%BA%93%E7%9A%84%E6%90%AD%E5%BB%BA%E5%92%8C%E9%85%8D%E7%BD%AE"><span class="toc-number">8.1.</span> <span class="toc-text">私有仓库的搭建和配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%93%E5%BA%93%E9%95%9C%E5%83%8F%E4%B8%8A%E4%BC%A0"><span class="toc-number">8.2.</span> <span class="toc-text">仓库镜像上传</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DockerMaven%E6%8F%92%E4%BB%B6"><span class="toc-number">9.</span> <span class="toc-text">DockerMaven插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Maven%E6%8F%92%E4%BB%B6%E9%83%A8%E7%BD%B2%E6%AD%A5%E9%AA%A4"><span class="toc-number">9.1.</span> <span class="toc-text">Maven插件部署步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E5%AE%83%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">10.</span> <span class="toc-text">其它常用命令</span></a></li></ol>
     </nav>
   </div>
 </aside>
 
 <main class="main" role="main">
   <div class="content">
-  <article id="post-vscode基础使用文档" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-docker容器技术基础" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      vscode基础使用文档
+      docker容器技术基础
     </h1>
   
 
@@ -386,20 +387,20 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/bione/posts/43791.html" class="article-date">
-	  <time datetime="2021-10-19T15:11:57.000Z" itemprop="datePublished">2021-10-19</time>
+	<a href="/bione/posts/3708940461.html" class="article-date">
+	  <time datetime="2022-01-25T14:15:06.000Z" itemprop="datePublished">2022-01-25</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/bione/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
+    <a class="article-category-link" href="/bione/categories/%E7%BC%96%E7%A8%8B/">编程</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/bione/tags/vscode/" rel="tag">vscode</a>, <a class="article-tag-link-link" href="/bione/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a>
+	<a class="article-tag-link-link" href="/bione/tags/docker/" rel="tag">docker</a>
   </span>
 
 
@@ -412,208 +413,481 @@
 	</span>
 	
 		
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/bione/posts/43791.html#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/bione/posts/3708940461.html#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 936(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2.2k(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 9(分)</span>
 	
 
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h3 id="Vs-code-快捷键详述"><a href="#Vs-code-快捷键详述" class="headerlink" title="Vs code 快捷键详述"></a>Vs code 快捷键详述</h3><p>1、注释：</p>
-<p>　　a) 单行注释：[ctrl+k,ctrl+c] 或 ctrl+/</p>
-<p>　　b) 取消单行注释：[ctrl+k,ctrl+u] (按下ctrl不放，再按k + u)</p>
-<p>　　c) 多行注释：[alt+shift+A]</p>
-<p>　　d) 多行注释：/**</p>
-<p>2、移动行：alt+up/down</p>
-<p>3、显示/隐藏左侧目录栏 ctrl + b</p>
-<p>4、复制当前行：shift + alt +up/down</p>
-<p>5、删除当前行：shift + ctrl + k</p>
-<p>6、控制台终端显示与隐藏：ctrl + ~</p>
-<p>7、查找文件/安装vs code 插件地址：ctrl + p</p>
-<p>8、代码格式化：shift + alt +f</p>
-<p>9、新建一个窗口: ctrl + shift + n</p>
-<p>10、行增加缩进: ctrl + [</p>
-<p>11、行减少缩进: ctrl + ]</p>
-<p>12、裁剪尾随空格(去掉一行的末尾那些没用的空格) : ctrl + shift + x</p>
-<p>13、字体放大/缩小: ctrl + ( + 或 - )</p>
-<p>14、拆分编辑器 :ctrl + 1/2/3</p>
-<p>15、切换窗口:  ctrl + shift + left/right</p>
-<p>16、关闭编辑器窗口:  ctrl + w</p>
-<p>17、关闭所有窗口 : ctrl + k + w</p>
-<p>18、切换全屏 :F11</p>
-<p>19、自动换行:  alt + z</p>
-<p>20、显示git:   ctrl + shift + g</p>
-<p>21、全局查找文件：ctrl + p</p>
-<p>22、显示相关插件的命令(如：git log)：ctrl + shift + p</p>
-<p>23、选中文字：shift + left / right / up / down</p>
-<p>24、折叠代码： ctrl + k + 0-9 (0是完全折叠)</p>
-<p>25、展开代码： ctrl + k + j (完全展开代码)</p>
-<p>26、删除行 ： ctrl + shift + k</p>
-<p>27、快速切换主题：ctrl + k / ctrl + t</p>
-<p>28、快速回到顶部 ： ctrl + home</p>
-<p>29、快速回到底部 : ctrl + end</p>
-<p>30、格式化选定代码 ：ctrl + k / ctrl +f</p>
-<p>31、选中代码 ： shift + 鼠标左键</p>
-<p>32、多行同时添加内容（光标） ：ctrl + alt + up/down</p>
-<p>33、全局替换：ctrl + shift + h</p>
-<p>34、当前文件替换：ctrl + h</p>
-<p>35、打开最近打开的文件：ctrl + r</p>
-<p>36、打开新的命令窗：ctrl + shift + c</p>
-<p>37、自动生成闭合标签：VsCode内置了Emmet语法,在后缀为.html/.css中输入缩写后按Tab键即会自动生成相应代码</p>
-<h3 id="Vs-code-高频快捷键"><a href="#Vs-code-高频快捷键" class="headerlink" title="Vs code 高频快捷键"></a>Vs code 高频快捷键</h3><table>
+        <h2 id="Docker简介"><a href="#Docker简介" class="headerlink" title="Docker简介"></a>Docker简介</h2><p><a target="_blank" rel="noopener" href="https://www.docker.com/">Docker</a>是一种基于go语言开发、开源的应用容器引擎。Docker公司原先是一家叫dotCloud平台的服务商，docker是dotCloud平台利用Linux容器技术开发形成一套内部工具。2103年dotCloud平台的业务开展艰难，新聘Ben Golub 作为CEO，将公司重命名为Docker，放弃原来的PaaS平台。向世界开放推广Docker和容器技术，当前docker版本分为社区版(CE：免费版)和企业版(EE：收费版)。</p>
+<p>Docker三个<strong>基本概念</strong>：</p>
+<ul>
+<li><strong>镜像（Image）</strong>:Docker 镜像，就相当于是一个 root 文件系统</li>
+<li><strong>容器（Container）</strong>:容器可以被创建、启动、停止、删除、暂停等</li>
+<li><strong>仓库（Repository）</strong>：仓库可看成一个代码控制中心，用来保存镜像</li>
+</ul>
+<blockquote>
+<p>镜像和容器的关系:</p>
+<p>镜像是静态的定义，容器是镜像运行时的实体</p>
+</blockquote>
+<p><strong>Docker特点</strong>：</p>
+<blockquote>
+<p>借助Docker，你可以将容器当做重量轻、模块化的虚拟机来使用，同时，你还将获得高度的灵活性，从而实现对容器的高效创建、部署和复制，并能将其从一个环境顺利迁移至另外一个环境。</p>
+</blockquote>
+<h2 id="docker安装教程"><a href="#docker安装教程" class="headerlink" title="docker安装教程"></a>docker安装教程</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/">官网教程</a></li>
+<li><a target="_blank" rel="noopener" href="http://c.biancheng.net/view/3121.html">docker中文教程一</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/docker/windows-docker-install.html">docker中文教程二</a></li>
+</ul>
+<h2 id="镜像操作"><a href="#镜像操作" class="headerlink" title="镜像操作"></a>镜像操作</h2><ul>
+<li>查看镜像</li>
+</ul>
+<blockquote>
+<p>docker images    </p>
+</blockquote>
+<p>镜像存储在docker宿主机的/var/lib/docker的目录下</p>
+<ul>
+<li>搜索镜像</li>
+</ul>
+<blockquote>
+<p>docker search 镜像名</p>
+</blockquote>
+<ul>
+<li>拉取镜像</li>
+</ul>
+<blockquote>
+<p>docker pull 镜像名</p>
+</blockquote>
+<ul>
+<li>删除镜像</li>
+</ul>
+<blockquote>
+<p>docker rmi -f 镜像id            # -f 表示强制删除</p>
+<p>docker rmi  ‘docker iamges -q’        #删除所有镜像</p>
+</blockquote>
+<h2 id="容器相关命令"><a href="#容器相关命令" class="headerlink" title="容器相关命令"></a>容器相关命令</h2><ul>
+<li>查看容器</li>
+</ul>
+<blockquote>
+<p>docker ps        # 查看正在运行的容器</p>
+<p>docker ps -a     # 查看所容器</p>
+<p>docker ps -l     # 查看最后一次运行的容器</p>
+<p>docker ps -f status=exited    #停止所有容器</p>
+</blockquote>
+<ul>
+<li>创建和启动容器</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --name=容器名称	镜像名称：标签/bin/bash</span><br><span class="line">-i			<span class="comment"># 表示运行容器</span></span><br><span class="line">-t 			<span class="comment"># 表示容器启动后并进入其命令行模式</span></span><br><span class="line">--name		<span class="comment"># 为创建的容器命名</span></span><br><span class="line">-v			<span class="comment"># 表示目录映射关系（目录挂载）</span></span><br><span class="line">-p			<span class="comment"># 表示端口映射		</span></span><br><span class="line">-d			<span class="comment"># 创建一个守护式容器在后台运行，但不登录</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 案例：</span></span><br><span class="line"><span class="comment"># 直接进入容器的命令模式</span></span><br><span class="line">docker run -it --name=mycentos centos:7 /bin/bash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入容器后台守护模式	退出容器不影响其运行</span></span><br><span class="line">docker run -di --name=mycentos2 centos:7</span><br><span class="line">docker <span class="built_in">exec</span> -it mycentos2 /bin/bash 	<span class="comment">#进入到命令模式	exce表示执行</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>退出</li>
+</ul>
+<blockquote>
+<p>exit</p>
+<p>docker stop 容器name或者id        # 停止后台运行的容器，相当杀死后台</p>
+<p>docker start 容器name或者id        # 启动容器</p>
+</blockquote>
+<ul>
+<li>宿主机和容器之间文件传输</li>
+</ul>
+<blockquote>
+<p>docker cp 文件名    mycentos2:/usr/local            # 从宿主机到容器</p>
+<p>docker cp mycentos2:/usr/local/文件名 宿主机路径        # 不加路径和名字默认为根目录</p>
+</blockquote>
+<ul>
+<li>文件共享目录</li>
+</ul>
+<blockquote>
+<p>docker run -di -v /usr/local/mydata:/usr/local/mydata –name=mycentos3 centos:7     #共享文件夹路径/usr/local/mydata（在创建容器的时候挂载）</p>
+</blockquote>
+<ul>
+<li>查看容器内部运行的数据</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker inspect mycentos3</span><br><span class="line"></span><br><span class="line">docker inspect --format=&#123;&#123;.NetworkSettings.IPAddress&#125;&#125; mycentos3	<span class="comment"># 查看容器的ip</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除容器</li>
+</ul>
+<blockquote>
+<p>docker rm 容器名称或id            # 前提先停止容器运行: docker stop mycentos3</p>
+</blockquote>
+<br>
+
+<h2 id="常用容器部署"><a href="#常用容器部署" class="headerlink" title="常用容器部署"></a>常用容器部署</h2><h3 id="mysql部署"><a href="#mysql部署" class="headerlink" title="mysql部署"></a>mysql部署</h3><ul>
+<li>拉取mysql镜像</li>
+</ul>
+<blockquote>
+<p>docker pull mysql:5.7</p>
+</blockquote>
+<ul>
+<li>部署镜像</li>
+</ul>
+<blockquote>
+<p>docker run -di –name=mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root mysql:5.7    </p>
+<p>​        -e MYSQL_ROOT_PASSWORD=root        # 初始化mysql登录配置</p>
+<p>​        3306:3306        # 宿主机与容器端口映射</p>
+</blockquote>
+<ul>
+<li>启动mysql</li>
+</ul>
+<blockquote>
+<p>docker exec -it mysql /bin/bash</p>
+</blockquote>
+<ul>
+<li>进入mysql</li>
+</ul>
+<blockquote>
+<p>mysql -uroot -proot –default-character-set=utf8</p>
+<p>​        -proot            #设置初始密码为root</p>
+<p>​        –default-character-set=utf8        # 初始编码格式为utf8</p>
+</blockquote>
+<ul>
+<li>mysql常用查询命令</li>
+</ul>
+<blockquote>
+<p>show databases;        # 查数据库</p>
+<p>use mysql（数据库名）    # 选择数据库</p>
+<p>show tables;                # 查表格</p>
+<p>desc 表名;                    # 显示表结构</p>
+</blockquote>
+<br>
+
+<h3 id="Nginx部署"><a href="#Nginx部署" class="headerlink" title="Nginx部署"></a>Nginx部署</h3><ul>
+<li>拉取nginx镜像</li>
+</ul>
+<blockquote>
+<p>docker pull nginx         # 拉取最新版的nginx</p>
+</blockquote>
+<ul>
+<li>部署到后台运行</li>
+</ul>
+<blockquote>
+<p>docker run -di –name=nginx -p 80:80 nginx</p>
+<p>​            80:80        # 宿主机和容器端口映射</p>
+<p>​            宿主机ip:80    # 浏览器访问nginx</p>
+</blockquote>
+<ul>
+<li>配置nginx一般过程</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将容器nginx配置文件拷贝到宿主机上修改</span></span><br><span class="line">docker cp nginx:/etc/nginx /usr/<span class="built_in">local</span>/mydata/nginx	</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将文件重命名，修改nginx相关配置</span></span><br><span class="line">mv ngnix conf	</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止nginx运行</span></span><br><span class="line">docker stop nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除nginx镜像</span></span><br><span class="line">docker rm nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重新部署并配置挂载目录</span></span><br><span class="line">docker run -di --name=nginx -p 80:80 -v /usr/<span class="built_in">local</span>/mydata/conf:/etc/nginx nginx</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="redis部署"><a href="#redis部署" class="headerlink" title="redis部署"></a>redis部署</h3><ul>
+<li>拉取redis镜像</li>
+</ul>
+<blockquote>
+<p>docker pull redis</p>
+</blockquote>
+<ul>
+<li>部署到后台运行</li>
+</ul>
+<blockquote>
+<p>docker run -di –name=redis -p 6379:6379 redis</p>
+</blockquote>
+<ul>
+<li>可视化工具访问</li>
+</ul>
+<blockquote>
+<p>宿主机ip：6379</p>
+</blockquote>
+<br>
+
+<h3 id="rabbitmq部署"><a href="#rabbitmq部署" class="headerlink" title="rabbitmq部署"></a>rabbitmq部署</h3><blockquote>
+<p>实现了高级消息队列协议（AMQP）的开源消息代理软件（亦称面向消息的中间件）</p>
+</blockquote>
+<ul>
+<li>拉取镜像</li>
+</ul>
+<blockquote>
+<p>docker pull rabbitmq:3.7.12        # 常用版本</p>
+</blockquote>
+<ul>
+<li>部署后台运行</li>
+</ul>
+<blockquote>
+<p>docker run -di –name=rabbitmq -p 5671:5671 -p 5672:5672 -p 4369:4369 -p 25672:25672 -p 15671:15671 -p 15672:15672 rabbitmq:3.7.12</p>
+</blockquote>
+<ul>
+<li>进入rabbitmq </li>
+</ul>
+<blockquote>
+<p>docker exec -it rabbitmq /bin/bash</p>
+</blockquote>
+<ul>
+<li>激活rabbitmq的ui界面插件，并通过网页访问</li>
+</ul>
+<blockquote>
+<p>rabbitmq-plugins enable rabbitmq_management        # 激活插件</p>
+<p>宿主机ip + 端口: 15672            # 访问网页端rabbitmq        初始账号密码：guest</p>
+</blockquote>
+<br>
+
+<h3 id="Elasticsearch部署"><a href="#Elasticsearch部署" class="headerlink" title="Elasticsearch部署"></a>Elasticsearch部署</h3><blockquote>
+<p>Elasticsearch是一个基于<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Lucene/6753302">Lucene</a>的搜索服务器。它提供了一个分布式多用户能力的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%85%A8%E6%96%87%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/7847410">全文搜索引擎</a>，基于RESTful web接口。</p>
+</blockquote>
+<ul>
+<li>拉取镜像</li>
+</ul>
+<blockquote>
+<p>docker pull elasticsearch</p>
+</blockquote>
+<ul>
+<li>修改虚拟内存区域大小，否者会因为过小而无法启动</li>
+</ul>
+<blockquote>
+<p>sysctl -w vm.max_map_count=262144            # 此步骤关键，宿主机内存过小是个问题</p>
+</blockquote>
+<ul>
+<li>启动，环境配置，目录挂载</li>
+</ul>
+<blockquote>
+<p>docker run -di –name=elasticsearch -p 9300:9300 -e “discovery.type=single-node” -e “cluster.name=elasticsearch” -v /usr/local/mydata/elasticsearch/plugins:/usr/share/elasticsearch/plugins elasticsearch:7.5.0</p>
+</blockquote>
+<ul>
+<li>在elasticsearch容器中安装插件</li>
+</ul>
+<blockquote>
+<p>elasticsearch-plugins install <a target="_blank" rel="noopener" href="https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.5.0/elasticsearch-analysis-ik-7.5.0.zip">https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.5.0/elasticsearch-analysis-ik-7.5.0.zip</a>        # ik中文分词器</p>
+</blockquote>
+<ul>
+<li>安装完成后在容器外部重启elasticsearch</li>
+</ul>
+<blockquote>
+<p>docker restart elasticsearch </p>
+</blockquote>
+<ul>
+<li>在网页上访问</li>
+</ul>
+<blockquote>
+<p>宿主机ip + 端口（9300）</p>
+</blockquote>
+<br>
+
+<h3 id="Zookeeper部署"><a href="#Zookeeper部署" class="headerlink" title="Zookeeper部署"></a>Zookeeper部署</h3><blockquote>
+<p>分布式锁是控制分布式系统之间同步访问共享资源的一种方式。</p>
+</blockquote>
+<ul>
+<li>拉取镜像</li>
+</ul>
+<blockquote>
+<p>docker pull zookeeper:3.4.13        </p>
+</blockquote>
+<ul>
+<li>部署后台运行</li>
+</ul>
+<blockquote>
+<p>docker run -di –name=zookeeper -p 2181:2181 zookeeper</p>
+</blockquote>
+<br>
+
+<h2 id="迁移和备份"><a href="#迁移和备份" class="headerlink" title="迁移和备份"></a>迁移和备份</h2><ul>
+<li>容器保存为镜像</li>
+</ul>
+<blockquote>
+<p>docker commit redis myredis            # 将redis 打包成myredis镜像文件</p>
+</blockquote>
+<ul>
+<li>镜像备份</li>
+</ul>
+<blockquote>
+<p>docker save -o myredis.tar myredis        # 备份镜像</p>
+</blockquote>
+<ul>
+<li>恢复备份</li>
+</ul>
+<blockquote>
+<p>docker load -i myredis.tar</p>
+</blockquote>
+<br>
+
+<h2 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h2><blockquote>
+<p>由一系列的命令和参数构成的脚本，这些命令应用于基础镜像并最终创建一个新的镜像</p>
+</blockquote>
+<ul>
+<li>常用命令</li>
+</ul>
+<table>
 <thead>
 <tr>
-<th>功能</th>
-<th>快捷键</th>
-<th>功能</th>
-<th>快捷键</th>
+<th>命令</th>
+<th align="left">作用</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>文件检索</td>
-<td>ctrl + p</td>
-<td>关闭文件</td>
-<td>ctrl + w</td>
+<td>FROM image_name:tag</td>
+<td align="left">定义了使用哪个基础镜像启动构建流程</td>
 </tr>
 <tr>
-<td>打开命令面板</td>
-<td>ctrl + shift + p</td>
-<td>当前行上下移动</td>
-<td>alt+Up/Down</td>
+<td>MAINTAINER user_name</td>
+<td align="left">声明镜像的创建者</td>
 </tr>
 <tr>
-<td>打开终端</td>
-<td>ctrl + `</td>
-<td>变量名统一命名</td>
-<td>F2</td>
+<td>ENV key value</td>
+<td align="left">设置环境变量（可以多写）</td>
 </tr>
 <tr>
-<td>关闭侧边栏</td>
-<td>ctrl + B</td>
-<td>转到变量定义处</td>
-<td>F12</td>
+<td>RUN command</td>
+<td align="left">Dockerfile的核心（可以多写）</td>
 </tr>
 <tr>
-<td>复制文本</td>
-<td>ctrl + c</td>
-<td>保存文本</td>
-<td>ctrl + s</td>
+<td>ADD sourece_dir/file<br>dest_dir/file</td>
+<td align="left">将宿主机的文件复制到容器内，如果是一个压缩文件，将会在复制后自动解压</td>
 </tr>
 <tr>
-<td>粘贴文本</td>
-<td>ctrl + v</td>
-<td>撤销操作</td>
-<td>ctrl + z</td>
+<td>COPY source_dir/file<br>dest_dir/file</td>
+<td align="left">和ADD 相似，但是如果有压缩文件并不会解压</td>
 </tr>
 <tr>
-<td>删除当前行</td>
-<td>ctrl + d（自定义）</td>
-<td>代码格式化</td>
-<td>ctrl +shift + i（Format Document)</td>
-</tr>
-<tr>
-<td>在当前行向下插入一行</td>
-<td>ctrl + enter</td>
-<td>光标移到行首/行尾</td>
-<td>home/end</td>
-</tr>
-<tr>
-<td>在当前行向上插入一行</td>
-<td>ctrl + shift + enter</td>
-<td>根据单词快速移动光标</td>
-<td>ctrl + 左右方向键</td>
-</tr>
-<tr>
-<td>查找/替换</td>
-<td>ctrl+F/ctrl +H</td>
-<td>单词小写转大写</td>
-<td>shift + q（自定义）</td>
-</tr>
-<tr>
-<td>全屏</td>
-<td>F11</td>
-<td>单词大写转小写</td>
-<td>shift + w（自定义）</td>
-</tr>
-<tr>
-<td>空间大小缩放</td>
-<td>ctrl + +/-</td>
-<td>编辑区大小缩放</td>
-<td>ctrl + 鼠标滚轮</td>
+<td>WORKDIR path_dir</td>
+<td align="left">设置工作目录</td>
 </tr>
 </tbody></table>
-<h3 id="Vs-code拓展插件"><a href="#Vs-code拓展插件" class="headerlink" title="Vs code拓展插件"></a>Vs code拓展插件</h3><h4 id="HTMl必备"><a href="#HTMl必备" class="headerlink" title="HTMl必备"></a>HTMl必备</h4><ul>
-<li><p>Chinese (Simplified) Language Pack for Visual Studio Code    （汉化）</p>
-</li>
-<li><p>open in browser                    （打开浏览器，快捷键“Alt+B”）</p>
-</li>
-<li><p>vscode-icons                    （编辑器的文件图标 =&gt; 好看）</p>
-</li>
-<li><p>Auto Rename Tag                    （自动匹配HMTL标签）</p>
-</li>
-<li><p>Bracket Pair Colorizer            （彩色的括号）</p>
-</li>
-<li><p>Highlight Matching Tag            （高亮对应HTML标签 &amp; 表示对应括号，高效）</p>
-</li>
-<li><p>stylelint（css/sass/less语法检查）</p>
-</li>
-<li><p>Path Intellisense（智能路径提示）</p>
-</li>
-<li><p>HTML Snippets    （智能填充）</p>
-</li>
-<li><p>TODO Hightlight  （注释语法高亮）</p>
-</li>
-<li><p>Prettier-Code formatter   （代码格式化）</p>
-</li>
+<ul>
+<li>使用脚本创建镜像（示例：基于centos7 构建jdk8）</li>
 </ul>
-<h4 id="CSS必备"><a href="#CSS必备" class="headerlink" title="CSS必备"></a>CSS必备</h4><ul>
-<li>CSS Peek    (智能提取)</li>
-<li>HTML CSS Support</li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Dockerfile</span></span><br><span class="line"></span><br><span class="line">FROM centos:7</span><br><span class="line">MAINTAINER xxxx</span><br><span class="line">WORKDIR /usr</span><br><span class="line">RUN mkdir /usr/<span class="built_in">local</span>/java</span><br><span class="line">ADD jdk-8u211-linux-x64.tar.gz /usr/<span class="built_in">local</span>/java</span><br><span class="line">ENV JAVA_HOME /usr/<span class="built_in">local</span>/java/jdk1.8.0_211</span><br><span class="line">ENV PATH <span class="variable">$JAVA_HOME</span>/bin/:<span class="variable">$PATH</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>构建镜像</li>
 </ul>
-<h4 id="Python必备"><a href="#Python必备" class="headerlink" title="Python必备"></a>Python必备</h4><ul>
-<li>Python</li>
-<li>Pylance</li>
-<li>Jupyter</li>
+<blockquote>
+<p>docker build -t=“jdk1.8” .                # 点前面有空格，点指定为当前目录的Dockerfile</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/09/16/o9CAIDFzGN7WHXh.png"></p>
+<br>
+
+<h2 id="Docker私有仓库"><a href="#Docker私有仓库" class="headerlink" title="Docker私有仓库"></a>Docker私有仓库</h2><h3 id="私有仓库的搭建和配置"><a href="#私有仓库的搭建和配置" class="headerlink" title="私有仓库的搭建和配置"></a>私有仓库的搭建和配置</h3><ul>
+<li>拉取私有仓库镜像</li>
 </ul>
-<h4 id="C-C-必备"><a href="#C-C-必备" class="headerlink" title="C/C++必备"></a>C/C++必备</h4><ul>
-<li>C/C++</li>
-<li>CMake</li>
-<li>CMake Tools</li>
+<blockquote>
+<p>docker pull registry</p>
+</blockquote>
+<ul>
+<li>启动私有仓库容器</li>
 </ul>
-<h4 id="Vue必备"><a href="#Vue必备" class="headerlink" title="Vue必备"></a>Vue必备</h4><ul>
-<li><p>Vetur（Vue必备，提示的嘛，方便）</p>
-</li>
-<li><p>Live Server（代码保存后，浏览器自动更新）</p>
-</li>
+<blockquote>
+<p>docker run -di –name=registry -p 5000:5000 registry</p>
+<p>仓库地址 https://宿主机ip:5000/v2/_catalog</p>
+</blockquote>
+<ul>
+<li>修改daemon.json</li>
 </ul>
-<h4 id="React必备"><a href="#React必备" class="headerlink" title="React必备"></a>React必备</h4><ul>
-<li>Prettier（格式化插件，比Beautify好）</li>
+<blockquote>
+<p>vim /etc/docker/daemon.json</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># daemon.json</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="string">&quot;insecure-registries&quot;</span>:[“宿主机ip”:5000]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>重启docker服务</li>
 </ul>
-<h4 id="Egg框架必备"><a href="#Egg框架必备" class="headerlink" title="Egg框架必备"></a>Egg框架必备</h4><ul>
-<li>Egg.js dev tools（NodeJs中 EggJs框架，方便）</li>
+<blockquote>
+<p>systemctl restart docker</p>
+</blockquote>
+<h3 id="仓库镜像上传"><a href="#仓库镜像上传" class="headerlink" title="仓库镜像上传"></a>仓库镜像上传</h3><ul>
+<li>镜像打标签</li>
 </ul>
-<h4 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h4><ul>
-<li>SQLite </li>
-<li>MySQL</li>
+<blockquote>
+<p>docker tag jdk1.8 宿主机ip:5000/jdk1.8    # 前面为镜像名称，后面为镜像的标签名</p>
+</blockquote>
+<ul>
+<li>上传</li>
 </ul>
-<h4 id="other"><a href="#other" class="headerlink" title="other"></a>other</h4><ul>
-<li><p>carbon-now-sh（截获代码为PNG，Ctrl+Shift+P =&gt; Carbon）</p>
-</li>
-<li><p>background（界面右下角有个小人）</p>
-</li>
-<li><p>Code Runner   (运行代码)</p>
-</li>
-<li><p>Git Blame   (git管理工具)</p>
-</li>
-<li><p>Vscode Google Translate (谷歌翻译)</p>
-</li>
+<blockquote>
+<p>docker push 宿主机ip:5000/jdk1.8            # 标签格式固定</p>
+</blockquote>
+<ul>
+<li>拉取镜像</li>
 </ul>
+<blockquote>
+<p>安装docker，配置vim /etc/docker/daemon.json内容，然后重启systemctl restart docker</p>
+<p>{<br>“insecure-registries”:[“宿主机ip”:5000]<br>}</p>
+</blockquote>
+<br>
+
+<h2 id="DockerMaven插件"><a href="#DockerMaven插件" class="headerlink" title="DockerMaven插件"></a>DockerMaven插件</h2><h3 id="Maven插件部署步骤"><a href="#Maven插件部署步骤" class="headerlink" title="Maven插件部署步骤"></a>Maven插件部署步骤</h3><ul>
+<li>修改宿主机的docker配置，使其允许远程访问</li>
+</ul>
+<blockquote>
+<p>vim /lib/systemd/system/docker.service</p>
+</blockquote>
+<ul>
+<li>修改ExecStart开头行</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock</span><br><span class="line"><span class="comment"># 修改为</span></span><br><span class="line">ExecStart=</span><br><span class="line">ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:2375</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>刷新配置</li>
+</ul>
+<blockquote>
+<p>systemctl daemon-reload            # 刷新配置daemon.json</p>
+<p>systemctl restart docker                # 重启docker</p>
+</blockquote>
+<ul>
+<li>启动registry</li>
+</ul>
+<blockquote>
+<p>systemctl start registry        # 重启registry容器</p>
+</blockquote>
+<ul>
+<li>将java项目打包成镜像</li>
+</ul>
+<blockquote>
+<p>此处略过视频内容，详情查看<a target="_blank" rel="noopener" href="https://github.com/spotify/docker-maven-plugin">maven插件教程</a></p>
+</blockquote>
+<ul>
+<li>启动镜像后台运行</li>
+</ul>
+<blockquote>
+<p>docker run -di –name=test -p 7070:7070 镜像名称</p>
+</blockquote>
+<ul>
+<li>网页访问</li>
+</ul>
+<blockquote>
+<p>宿主机ip:7070</p>
+</blockquote>
+<br>
+
+<h2 id="其它常用命令"><a href="#其它常用命令" class="headerlink" title="其它常用命令"></a>其它常用命令</h2><ul>
+<li>启动</li>
+</ul>
+<blockquote>
+<p>开机启动： sudo systemctl enable docker.service</p>
+<p>禁止开机启动：sudo systemctl disable docker.service</p>
+</blockquote>
+<ul>
+<li><strong>非root用户操作docker更改权限</strong></li>
+</ul>
+<blockquote>
+<p>sudo groupadd docker            # 创建docker用户组</p>
+<p>sudo usermod -aG docker $USER        # 添加docker到用户组中</p>
+<p>newgrp docker        # 激活用户组</p>
+</blockquote>
+<ul>
+<li>重新加载和重启docker</li>
+</ul>
+<blockquote>
+<p>sudo systemctl daemon-reload        # 重新加载配置</p>
+<p>sudo systemctl restart docker        # 重启</p>
+</blockquote>
+<ul>
+<li>查看建立的链接</li>
+</ul>
+<blockquote>
+<p>sudo netstat -tanlp</p>
+</blockquote>
 
       
     </div>
@@ -623,7 +897,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://bingeone.github.io/bione/posts/43791.html" title="vscode基础使用文档" target="_blank" rel="external">https://bingeone.github.io/bione/posts/43791.html</a>
+      <a href="https://bingeone.github.io/bione/posts/3708940461.html" title="docker容器技术基础" target="_blank" rel="external">https://bingeone.github.io/bione/posts/3708940461.html</a>
     </li>
     
     <li class="post-copyright-license">
@@ -672,9 +946,13 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/bione/posts/974.html" title="CSS入门学习收录"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+      <a href="/bione/posts/1178053341.html" title="Ubuntu20.04下mysql数据库相关操作"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
     </li>
     
+    
+    <li class="next">
+      <a href="/bione/posts/4072117687.html" title="gcc编译和Cmake使用"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
     
     
     <li class="toggle-toc">
